@@ -7,6 +7,8 @@ import ContactForm from "../_components/ContactForm";
 import SuppliersText from "../_components/SuppliersText";
 import SoftwareText from "../_components/SoftwareText";
 
+export const dynamic = "force-dynamic";
+
 export async function generateMetadata({
   searchParams,
 }: {

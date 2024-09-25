@@ -21,6 +21,8 @@ export async function generateMetadata({
   }
 }
 
+export const dynamic = "force-dynamic";
+
 function Page({
   searchParams,
 }: {

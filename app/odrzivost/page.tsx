@@ -7,6 +7,8 @@ export const metadata: Metadata = {
   title: "Održivost",
 };
 
+export const dynamic = "force-dynamic";
+
 function Page() {
   return (
     <>
