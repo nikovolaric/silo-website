@@ -6,8 +6,8 @@ import ServiceText from "../_components/ServiceText";
 import ContactForm from "../_components/ContactForm";
 import SuppliersText from "../_components/SuppliersText";
 import SoftwareText from "../_components/SoftwareText";
-
-export const dynamic = "force-dynamic";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 export async function generateMetadata({
   searchParams,
@@ -36,6 +36,11 @@ function Page({
     software?: boolean;
   };
 }) {
+  const session = cookies().get("jwt")?.value;
+
+  if (!session) {
+    redirect("/login");
+  }
   return (
     <>
       <Header />

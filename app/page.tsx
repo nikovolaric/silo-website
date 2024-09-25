@@ -1,11 +1,11 @@
-import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 import ContactForm from "./_components/ContactForm";
 import Counter from "./_components/Counter";
 import HomeHeader from "./_components/HomeHeader";
 import HomeServices from "./_components/HomeServices";
 import HomeText from "./_components/HomeText";
 import WhySilo from "./_components/WhySilo";
-import { redirect } from "next/navigation";
+import { cookies } from "next/headers";
 
 function Page() {
   const session = cookies().get("jwt")?.value;

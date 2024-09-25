@@ -1,9 +1,11 @@
+import { cookies } from "next/headers";
 import AboutUsNav from "../_components/AboutUsNav";
 import AboutUsText from "../_components/AboutUsText";
 import Header from "../_components/Header";
 import HeadText from "../_components/HeadText";
 import HistoryText from "../_components/HistoryText";
 import QualityText from "../_components/QualityText";
+import { redirect } from "next/navigation";
 
 export async function generateMetadata({
   searchParams,
@@ -21,13 +23,16 @@ export async function generateMetadata({
   }
 }
 
-export const dynamic = "force-dynamic";
-
 function Page({
   searchParams,
 }: {
   searchParams: { history?: boolean; quality?: boolean };
 }) {
+  const session = cookies().get("jwt")?.value;
+
+  if (!session) {
+    redirect("/login");
+  }
   return (
     <>
       <Header />

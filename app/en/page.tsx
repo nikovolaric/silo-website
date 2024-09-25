@@ -5,6 +5,8 @@ import Counter from "../_components/Counter";
 import ContactForm from "../_components/ContactForm";
 import HomeServices from "../_components/HomeServices";
 import HomeText from "../_components/HomeText";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Welcome",
@@ -13,6 +15,11 @@ export const metadata: Metadata = {
 };
 
 function Page() {
+  const session = cookies().get("jwt")?.value;
+
+  if (!session) {
+    redirect("/login");
+  }
   return (
     <>
       <HomeHeader />

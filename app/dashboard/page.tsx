@@ -2,9 +2,9 @@ import {
   DocumentArrowDownIcon,
   UserPlusIcon,
 } from "@heroicons/react/24/outline";
-// import { cookies } from "next/headers";
+import { cookies } from "next/headers";
 import Link from "next/link";
-// import { redirect } from "next/navigation";
+import { redirect } from "next/navigation";
 //   import Logout from "../_components/Logout";
 import { Metadata } from "next";
 
@@ -13,9 +13,9 @@ export const metadata: Metadata = {
 };
 
 function Page() {
-  //   const session = cookies().get("jwt")?.value;
+  const session = cookies().get("jwt")?.value;
 
-  //   if (!session) redirect("/login");
+  if (!session) redirect("/login");
   return (
     <div className="max-w-7xl h-dvh mx-auto text-primary ">
       <h2 className="text-3xl font-raj font-bold py-6">Dashboard</h2>
@@ -52,7 +52,6 @@ function Page() {
         </Link>
         {/* <Logout /> */}
       </div>
-      
     </div>
   );
 }

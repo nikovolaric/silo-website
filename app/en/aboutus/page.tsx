@@ -4,6 +4,8 @@ import HeadText from "@/app/_components/HeadText";
 import HistoryText from "@/app/_components/HistoryText";
 import QualityText from "@/app/_components/QualityText";
 import Header from "@/app/_components_en/Header";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 export async function generateMetadata({
   searchParams,
@@ -21,13 +23,16 @@ export async function generateMetadata({
   }
 }
 
-export const dynamic = "force-dynamic";
-
 function Page({
   searchParams,
 }: {
   searchParams: { history?: boolean; quality?: boolean };
 }) {
+  const session = cookies().get("jwt")?.value;
+
+  if (!session) {
+    redirect("/login");
+  }
   return (
     <>
       <Header />

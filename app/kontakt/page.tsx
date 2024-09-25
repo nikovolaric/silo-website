@@ -1,13 +1,20 @@
+import { cookies } from "next/headers";
 import ContactText from "../_components/ContactText";
 import Header from "../_components/Header";
 import HeadText from "../_components/HeadText";
 import { Metadata } from "next";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Kontakt",
 };
 
 function Page() {
+  const session = cookies().get("jwt")?.value;
+
+  if (!session) {
+    redirect("/login");
+  }
   return (
     <>
       <Header />

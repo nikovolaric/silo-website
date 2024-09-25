@@ -4,12 +4,20 @@ import Spinner from "@/app/_components/Spinner";
 import Link from "next/link";
 import { Suspense } from "react";
 import { Metadata } from "next";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Downloadi",
 };
 
 async function Page() {
+  const session = cookies().get("jwt")?.value;
+
+  if (!session) {
+    redirect("/login");
+  }
+
   const data = await getAllDownloads();
 
   const { downloads } = data;

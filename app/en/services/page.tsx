@@ -6,6 +6,8 @@ import SoftwareText from "@/app/_components/SoftwareText";
 import SuppliersText from "@/app/_components/SuppliersText";
 import Header from "@/app/_components_en/Header";
 import Services from "@/app/_components_en/Services";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 export async function generateMetadata({
   searchParams,
@@ -26,8 +28,6 @@ export async function generateMetadata({
   }
 }
 
-export const dynamic = "force-dynamic";
-
 function Page({
   searchParams,
 }: {
@@ -36,6 +36,11 @@ function Page({
     software?: boolean;
   };
 }) {
+  const session = cookies().get("jwt")?.value;
+
+  if (!session) {
+    redirect("/login");
+  }
   return (
     <>
       <Header />
