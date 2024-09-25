@@ -1,0 +1,109 @@
+import Image from "next/image";
+import img from "@/public/service-img.png";
+import LinkBtn from "./LinkBtn";
+
+function ServiceText({ srb }: { srb: boolean }) {
+  return (
+    <>
+      <div className="mt-20 flex flex-col gap-8 md:gap-20 md:mt-24 lg:mt-36 lg:grid lg:grid-cols-2">
+        <div className="relative w-full h-56 md:w-7/12 md:h-64 lg:w-full lg:h-80 mx-auto">
+          <Image
+            src={img}
+            alt="service image"
+            fill
+            placeholder="blur"
+            className="object-cover rounded-lg"
+            sizes="(max-width:768px)95vw,66vw"
+          />
+        </div>
+        <div className="flex flex-col gap-8">
+          <h3 className="font-raj font-bold text-2xl text-primary">
+            {srb
+              ? "Naša posvećenost pouzdanosti i bezbednosti"
+              : "Our Commitment to Reliability and Safety"}
+          </h3>
+          <div className="text-secondary font-light">
+            {srb ? (
+              <p>
+                Obezbeđujemo pouzdanost kroz kontinuirani rast, obuku osoblja i
+                naprednu tehnologiju.
+                <br />
+                <br />
+                Bezbednost je prioritet uz EFTCO sertifikovano čišćenje
+                prikolica silosa, nakon čega slede detaljne inspekcije. Svi
+                podaci o transportu i čišćenju su sledljivi i dostupni kupcima
+                na zahtev.
+              </p>
+            ) : (
+              <p>
+                We ensure reliability through continuous growth, staff training,
+                and advanced technology.
+                <br />
+                <br />
+                Safety is prioritized with EFTCO-certified cleaning of silo
+                trailers, followed by thorough inspections. All transport and
+                cleaning data is traceable and available to customers on
+                request.
+              </p>
+            )}
+          </div>
+        </div>
+        <div className="relative w-full h-56 md:w-7/12 md:h-64 lg:w-full lg:h-80 lg:col-start-2 lg:row-start-2 mx-auto">
+          <Image
+            src={img}
+            alt="service image"
+            fill
+            placeholder="blur"
+            className="object-cover rounded-lg"
+            sizes="(max-width:768px)95vw,66vw"
+          />
+        </div>
+        <div className="flex flex-col gap-8">
+          <h3 className="font-raj font-bold text-2xl text-primary">
+            {srb
+              ? "Fleksibilnost i proaktivna rešenja"
+              : "Flexibility and Proactive Solutions"}
+          </h3>
+          <div className="text-secondary font-light">
+            {srb ? (
+              <p>
+                Uz proaktivno planiranje, integraciju tehnologije i strateško
+                prisustvo širom Evrope, brzo odgovaramo na potrebe tržišta.
+                Stalna obuka zaposlenih drži nas u skladu sa očekivanjima
+                klijenata i tehnološkim napretkom.
+                <br />
+                <br />
+                Svesni smo senzibilnosti svakog materijala koji transportujemo i
+                pridajemo veliki značaj individualnim zahtevima svakog kupca.
+              </p>
+            ) : (
+              <p>
+                With proactive planning, technology integration, and a strategic
+                presence across Europe, we respond swiftly to market needs.
+                Ongoing employee training keeps us aligned with client
+                expectations and technological advancements.
+                <br />
+                <br />
+                We are aware of sensibility of each material we transport and we
+                put great importance to individual requests of every customer.
+              </p>
+            )}
+          </div>
+        </div>
+      </div>
+      <div className="mt-8 flex items-center justify-center gap-5 md:mt-20">
+        <LinkBtn
+          type="secondary"
+          href={srb ? "/onama?quality=true" : "/en/aboutus?quality=true"}
+        >
+          {srb ? "Standardi kvaliteta" : "Quality standards"}
+        </LinkBtn>
+        <LinkBtn type="primary" href={srb ? "/kariera" : "/en/career"}>
+          {srb ? "Kariera" : "Career"}
+        </LinkBtn>
+      </div>
+    </>
+  );
+}
+
+export default ServiceText;

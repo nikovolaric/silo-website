@@ -8,9 +8,24 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        raj: "var(--font-raj)",
+      },
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        primary: "#112f64",
+        secondary: "#001A47",
+        terciary: "#0093DD",
+        accent: "#00aaff",
+        // accent: "#DBC023",
+        neutral: "#F6F6F6",
+        neutraltwo: "#EBEBEB",
+        grad: "#737373",
+      },
+      listStyleImage: {
+        check: 'url("/icons/check.svg")',
+        one: 'url("/icons/one.svg")',
+        two: 'url("/icons/two.svg")',
+        three: 'url("/icons/three.svg")',
       },
     },
   },
