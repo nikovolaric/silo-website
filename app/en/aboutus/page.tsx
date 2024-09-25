@@ -3,9 +3,11 @@ import AboutUsText from "@/app/_components/AboutUsText";
 import HeadText from "@/app/_components/HeadText";
 import HistoryText from "@/app/_components/HistoryText";
 import QualityText from "@/app/_components/QualityText";
+import Spinner from "@/app/_components/Spinner";
 import Header from "@/app/_components_en/Header";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { Suspense } from "react";
 
 export async function generateMetadata({
   searchParams,
@@ -22,6 +24,8 @@ export async function generateMetadata({
     return { title: "Quality" };
   }
 }
+
+// export const dynamic = "force-static";
 
 function Page({
   searchParams,
@@ -45,7 +49,9 @@ function Page({
               kvalitet, pouzdanost I fleksibilnost zaslužili smo njihovo
               poverenje.
             </HeadText>
-            <AboutUsText />
+            <Suspense fallback={<Spinner />}>
+              <AboutUsText />
+            </Suspense>
           </>
         )}
         {searchParams.history && (

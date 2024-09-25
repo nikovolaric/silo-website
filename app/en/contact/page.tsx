@@ -9,6 +9,8 @@ export const metadata: Metadata = {
   title: "Kontakt",
 };
 
+// export const dynamic = "force-static";
+
 function Page() {
   const session = cookies().get("jwt")?.value;
 

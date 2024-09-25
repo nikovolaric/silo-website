@@ -6,6 +6,8 @@ import HeadText from "../_components/HeadText";
 import HistoryText from "../_components/HistoryText";
 import QualityText from "../_components/QualityText";
 import { redirect } from "next/navigation";
+import { Suspense } from "react";
+import Spinner from "../_components/Spinner";
 
 export async function generateMetadata({
   searchParams,
@@ -22,6 +24,8 @@ export async function generateMetadata({
     return { title: "Kvalitet" };
   }
 }
+
+// export const dynamic = "force-static";
 
 function Page({
   searchParams,
@@ -45,7 +49,9 @@ function Page({
               kvalitet, pouzdanost I fleksibilnost zaslužili smo njihovo
               poverenje.
             </HeadText>
-            <AboutUsText srb />
+            <Suspense fallback={<Spinner />}>
+              <AboutUsText srb />
+            </Suspense>
           </>
         )}
         {searchParams.history && (

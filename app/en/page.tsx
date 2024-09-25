@@ -14,6 +14,8 @@ export const metadata: Metadata = {
     "We are leading dry bulk transporter dedicated to needs of our partners since 2001.",
 };
 
+// export const dynamic = "force-static";
+
 function Page() {
   const session = cookies().get("jwt")?.value;
 

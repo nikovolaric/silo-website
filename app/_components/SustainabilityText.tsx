@@ -4,6 +4,8 @@ import img from "@/public/history-6.jpg";
 import LinkBtn from "./LinkBtn";
 import ESM from "./ESM";
 import ComplaintForm from "./ComplaintForm";
+import { Suspense } from "react";
+import Spinner from "./Spinner";
 
 interface iESG {
   ime: string;
@@ -84,7 +86,9 @@ function SustainabilityText({ srb }: { srb?: boolean }) {
           {srb ? "Standardi kvaliteta" : "Quality standards"}
         </LinkBtn>
       </div>
-      <ESM srb={srb} />
+      <Suspense fallback={<Spinner />}>
+        <ESM srb={srb} />
+      </Suspense>
       <ComplaintForm srb={srb} />
     </div>
   );

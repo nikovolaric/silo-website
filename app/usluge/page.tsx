@@ -8,6 +8,8 @@ import SuppliersText from "../_components/SuppliersText";
 import SoftwareText from "../_components/SoftwareText";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { Suspense } from "react";
+import Spinner from "../_components/Spinner";
 
 export async function generateMetadata({
   searchParams,
@@ -27,6 +29,8 @@ export async function generateMetadata({
     return { title: "Softver" };
   }
 }
+
+export const dynamic = "force-static";
 
 function Page({
   searchParams,
@@ -63,7 +67,9 @@ function Page({
               U našoj kompaniji, odgovorno upravljanje lancem snabdevanja čini
               osnovu održivog i uspešnog poslovanja.
             </HeadText>
-            <SuppliersText srb />
+            <Suspense fallback={<Spinner />}>
+              <SuppliersText srb />
+            </Suspense>
           </>
         )}
         {searchParams?.software && (

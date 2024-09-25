@@ -9,6 +9,8 @@ export const metadata: Metadata = {
   title: "Sustainability",
 };
 
+// export const dynamic = "force-static";
+
 function Page() {
   const session = cookies().get("jwt")?.value;
 

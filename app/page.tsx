@@ -7,6 +7,8 @@ import HomeText from "./_components/HomeText";
 import WhySilo from "./_components/WhySilo";
 import { cookies } from "next/headers";
 
+// export const dynamic = "force-static";
+
 function Page() {
   const session = cookies().get("jwt")?.value;
 

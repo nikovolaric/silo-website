@@ -3,11 +3,13 @@ import HeadText from "@/app/_components/HeadText";
 import ServicesNav from "@/app/_components/ServicesNav";
 import ServiceText from "@/app/_components/ServiceText";
 import SoftwareText from "@/app/_components/SoftwareText";
+import Spinner from "@/app/_components/Spinner";
 import SuppliersText from "@/app/_components/SuppliersText";
 import Header from "@/app/_components_en/Header";
 import Services from "@/app/_components_en/Services";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { Suspense } from "react";
 
 export async function generateMetadata({
   searchParams,
@@ -27,6 +29,8 @@ export async function generateMetadata({
     return { title: "Software" };
   }
 }
+
+// export const dynamic = "force-static";
 
 function Page({
   searchParams,
@@ -63,7 +67,9 @@ function Page({
               In our company, responsible supply chain management forms the
               foundation of sustainable and successful business operations.
             </HeadText>
-            <SuppliersText />
+            <Suspense fallback={<Spinner />}>
+              <SuppliersText />
+            </Suspense>
           </>
         )}
         {searchParams?.software && (
