@@ -30,7 +30,7 @@ export async function generateMetadata({
   }
 }
 
-export const dynamic = "force-static";
+// export const dynamic = "force-static";
 
 function Page({
   searchParams,
