@@ -1,9 +1,12 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { sendComplaint, sendEnquiry } from "../_config/mail";
+import { sendApplication, sendComplaint, sendEnquiry } from "../_config/mail";
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
+import { Attachment } from "nodemailer/lib/mailer";
+import User from "../_models/userModel";
+import { jwtDecode } from "jwt-decode";
 
 /*-----------------------------------------------------------maili--------------------------------------------------------------------*/
 export async function SendMail(formData: FormData) {
@@ -30,12 +33,52 @@ export async function newComplaint(formData: FormData) {
   return result;
 }
 
+export async function newApplication(formData: FormData) {
+  const CV = formData.get("CV") as File;
+
+  const bufferFile = await CV.arrayBuffer();
+  const fileBase64 = Buffer.from(bufferFile).toString("base64");
+
+  const filePath = `data:${CV.type};base64,${fileBase64}`;
+
+  const data: {
+    name: string;
+    mail: string;
+    phone: string;
+    position: string;
+    message: string;
+    file: Attachment[];
+  } = {
+    name: formData.get("name") as string,
+    mail: formData.get("mail") as string,
+    phone: formData.get("phone") as string,
+    position: formData.get("position") as string,
+    message: formData.get("message") as string,
+    file: [{ filename: CV.name, path: filePath }],
+  };
+
+  const result = await sendApplication(data);
+
+  return result;
+}
+
 /*-------------------------------------------------------------downloadi----------------------------------------------------------------*/
 
 export async function deleteAsset(public_id: string) {
+  const session = cookies().get("jwt")?.value as string;
+  const { id: userId }: { id: string } = await jwtDecode(session);
+  const user = await User.findById(userId);
+  if (!user || user.role !== "admin") {
+    cookies().delete("jwt");
+    redirect("/login");
+  }
+
+  const auth = "Bearer " + session;
+
   await fetch(`${process.env.API_URL}/api/pdf`, {
     method: "POST",
     headers: {
+      authorization: auth,
       accept: "aplication/json",
       "content-type": "application/json",
     },
@@ -44,11 +87,22 @@ export async function deleteAsset(public_id: string) {
 }
 
 export async function createDownload(formData: FormData) {
+  const session = cookies().get("jwt")?.value as string;
+  const { id: userId }: { id: string } = await jwtDecode(session);
+  const user = await User.findById(userId);
+  if (!user || user.role !== "admin") {
+    cookies().delete("jwt");
+    redirect("/login");
+  }
+
+  const auth = "Bearer " + session;
+
   const data = Object.fromEntries(formData);
 
   await fetch(`${process.env.API_URL}/api/downloads`, {
     method: "POST",
     headers: {
+      authorization: auth,
       accept: "aplication/json",
       "content-type": "application/json",
     },
@@ -65,11 +119,22 @@ export async function createDownload(formData: FormData) {
 }
 
 export async function editDownload(formData: FormData, id: string) {
+  const session = cookies().get("jwt")?.value as string;
+  const { id: userId }: { id: string } = await jwtDecode(session);
+  const user = await User.findById(userId);
+  if (!user || user.role !== "admin") {
+    cookies().delete("jwt");
+    redirect("/login");
+  }
+
+  const auth = "Bearer " + session;
+
   const data = Object.fromEntries(formData);
 
   await fetch(`${process.env.API_URL}/api/downloads/${id}`, {
     method: "PATCH",
     headers: {
+      authorization: auth,
       accept: "aplication/json",
       "content-type": "application/json",
     },
@@ -87,12 +152,21 @@ export async function editDownload(formData: FormData, id: string) {
 }
 
 export async function deleteDownload(id: string) {
+  const session = cookies().get("jwt")?.value as string;
+  const { id: userId }: { id: string } = await jwtDecode(session);
+  const user = await User.findById(userId);
+  if (!user || user.role !== "admin") {
+    cookies().delete("jwt");
+    redirect("/login");
+  }
+
+  const auth = "Bearer " + session;
+
   await fetch(`${process.env.API_URL}/api/downloads/${id}`, {
     method: "DELETE",
-    // headers: {
-    //   accept: "aplication/json",
-    //   "content-type": "application/json",
-    // },
+    headers: {
+      authorization: auth,
+    },
   });
 
   revalidatePath("/dashboard/downloads");
@@ -135,10 +209,286 @@ export async function login(formData: FormData) {
       httpOnly: true,
       secure: true,
       sameSite: "strict",
+      expires: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000),
     });
 
     return loggedInUser;
   } catch (err) {
     return err;
+  } finally {
+    redirect("/dashboard");
   }
+}
+
+export async function logout() {
+  cookies().delete("jwt");
+
+  redirect("/");
+}
+
+/*---------------------------------------------------------------cookies------------------------------------------------------------------------ */
+export async function acceptAllCookies() {
+  cookies().set("analyticsConsent", "true", {
+    secure: true,
+    sameSite: "lax",
+    httpOnly: true,
+    expires: new Date(Date.now() + 730 * 24 * 60 * 60 * 1000),
+  });
+
+  cookies().set("thirdPartyConsent", "true", {
+    secure: true,
+    sameSite: "lax",
+    httpOnly: true,
+    expires: new Date(Date.now() + 730 * 24 * 60 * 60 * 1000),
+  });
+
+  revalidatePath("/");
+}
+
+export async function declineAllCookies() {
+  cookies().set("analyticsConsent", "false", {
+    secure: true,
+    sameSite: "lax",
+    httpOnly: true,
+    expires: new Date(Date.now() + 730 * 24 * 60 * 60 * 1000),
+  });
+
+  cookies().set("thirdPartyConsent", "false", {
+    secure: true,
+    sameSite: "lax",
+    httpOnly: true,
+    expires: new Date(Date.now() + 730 * 24 * 60 * 60 * 1000),
+  });
+
+  cookies().set("_ga", "", {
+    expires: new Date(Date.now() + 1000),
+    domain: ".silo-jelicic.com",
+  });
+
+  cookies().set("_ga_E0QE91KPQW", "", {
+    expires: new Date(Date.now() + 1000),
+    domain: ".silo-jelicic.com",
+  });
+
+  revalidatePath("/");
+}
+
+export async function acceptAnalytics() {
+  cookies().set("analyticsConsent", "true", {
+    secure: true,
+    sameSite: "lax",
+    httpOnly: true,
+    expires: new Date(Date.now() + 730 * 24 * 60 * 60 * 1000),
+  });
+
+  revalidatePath("/");
+}
+
+export async function declineAnalytics() {
+  cookies().set("analyticsConsent", "false", {
+    secure: true,
+    sameSite: "lax",
+    httpOnly: true,
+    expires: new Date(Date.now() + 730 * 24 * 60 * 60 * 1000),
+  });
+
+  cookies().set("_ga", "", {
+    expires: new Date(Date.now() + 1000),
+    domain: ".silo-jelicic.com",
+  });
+
+  cookies().set("_ga_E0QE91KPQW", "", {
+    expires: new Date(Date.now() + 1000),
+    domain: ".silo-jelicic.com",
+  });
+
+  revalidatePath("/");
+}
+
+export async function acceptThirdParty() {
+  cookies().set("thirdPartyConsent", "true", {
+    secure: true,
+    sameSite: "lax",
+    httpOnly: true,
+    expires: new Date(Date.now() + 730 * 24 * 60 * 60 * 1000),
+  });
+
+  revalidatePath("/");
+}
+
+export async function declineThirdParty() {
+  cookies().set("thirdPartyConsent", "false", {
+    secure: true,
+    sameSite: "lax",
+    httpOnly: true,
+    expires: new Date(Date.now() + 730 * 24 * 60 * 60 * 1000),
+  });
+
+  revalidatePath("/");
+}
+
+/*---------------------------------------------------------------kariera--------------------------------------------------------------------------*/
+
+export async function addJob(formData: FormData) {
+  const session = cookies().get("jwt")?.value as string;
+  const { id: userId }: { id: string } = await jwtDecode(session);
+  const user = await User.findById(userId);
+  if (!user || user.role !== "admin") {
+    cookies().delete("jwt");
+    redirect("/login");
+  }
+
+  const auth = "Bearer " + session;
+
+  const job = {
+    title: formData.get("title"),
+    titleSrb: formData.get("titleSrb"),
+    titleSlo: formData.get("titleSlo"),
+    responsibilities: formData.getAll("responsibilities"),
+    responsibilitiesSrb: formData.getAll("responsibilitiesSrb"),
+    responsibilitiesSlo: formData.getAll("responsibilitiesSlo"),
+    qualifications: formData.getAll("qualifications"),
+    qualificationsSrb: formData.getAll("qualificationsSrb"),
+    qualificationsSlo: formData.getAll("qualificationsSlo"),
+  };
+
+  fetch(`${process.env.API_URL}/api/jobs`, {
+    method: "POST",
+    headers: {
+      authorization: auth,
+      accept: "aplication/json",
+      "content-type": "application/json",
+    },
+    body: JSON.stringify(job),
+  });
+
+  revalidatePath("/kariera");
+  revalidatePath("/si/zaposlitev");
+  revalidatePath("/en/career");
+  revalidatePath("/dashboard/kariera");
+
+  redirect("/dashboard/kariera");
+}
+
+export async function updateJob(formData: FormData, id: string) {
+  const session = cookies().get("jwt")?.value as string;
+  const { id: userId }: { id: string } = await jwtDecode(session);
+  const user = await User.findById(userId);
+  if (!user || user.role !== "admin") {
+    cookies().delete("jwt");
+    redirect("/login");
+  }
+
+  const auth = "Bearer " + session;
+
+  const job = {
+    title: formData.get("title"),
+    titleSrb: formData.get("titleSrb"),
+    titleSlo: formData.get("titleSlo"),
+    responsibilities: formData.getAll("responsibilities"),
+    responsibilitiesSrb: formData.getAll("responsibilitiesSrb"),
+    responsibilitiesSlo: formData.getAll("responsibilitiesSlo"),
+    qualifications: formData.getAll("qualifications"),
+    qualificationsSrb: formData.getAll("qualificationsSrb"),
+    qualificationsSlo: formData.getAll("qualificationsSlo"),
+  };
+
+  fetch(`${process.env.API_URL}/api/jobs/${id}`, {
+    method: "PATCH",
+    headers: {
+      authorization: auth,
+      accept: "aplication/json",
+      "content-type": "application/json",
+    },
+    body: JSON.stringify(job),
+  });
+
+  revalidatePath("/kariera");
+  revalidatePath("/si/zaposlitev");
+  revalidatePath("/en/career");
+  revalidatePath("/dashboard/kariera");
+
+  redirect("/dashboard/kariera");
+}
+
+export async function deleteJob(id: string) {
+  const session = cookies().get("jwt")?.value as string;
+  const { id: userId }: { id: string } = await jwtDecode(session);
+  const user = await User.findById(userId);
+  if (!user || user.role !== "admin") {
+    cookies().delete("jwt");
+    redirect("/login");
+  }
+
+  const auth = "Bearer " + session;
+
+  fetch(`${process.env.API_URL}/api/jobs/${id}`, {
+    method: "DELETE",
+    headers: { authorization: auth },
+  });
+
+  revalidatePath("/dashboard/kariera");
+  revalidatePath("/kariera");
+  revalidatePath("/si/zaposlitev");
+  revalidatePath("/en/career");
+
+  redirect("/dashboard/kariera");
+}
+
+export async function addToCareer(id: string) {
+  const session = cookies().get("jwt")?.value as string;
+  const { id: userId }: { id: string } = await jwtDecode(session);
+  const user = await User.findById(userId);
+  if (!user || user.role !== "admin") {
+    cookies().delete("jwt");
+    redirect("/login");
+  }
+
+  const auth = "Bearer " + session;
+
+  fetch(`${process.env.API_URL}/api/jobs/${id}`, {
+    method: "PATCH",
+    headers: {
+      authorization: auth,
+      accept: "aplication/json",
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({ hidden: false }),
+  });
+
+  revalidatePath("/dashboard/kariera");
+  revalidatePath("/kariera");
+  revalidatePath("/si/zaposlitev");
+  revalidatePath("/en/career");
+
+  redirect("/dashboard/kariera");
+}
+
+export async function hideFromCareer(id: string) {
+  const session = cookies().get("jwt")?.value as string;
+  const { id: userId }: { id: string } = await jwtDecode(session);
+  const user = await User.findById(userId);
+  if (!user || user.role !== "admin") {
+    cookies().delete("jwt");
+    redirect("/login");
+  }
+
+  const auth = "Bearer " + session;
+
+  fetch(`${process.env.API_URL}/api/jobs/${id}`, {
+    method: "PATCH",
+    headers: {
+      authorization: auth,
+      accept: "aplication/json",
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({ hidden: true }),
+  });
+
+  revalidatePath("/dashboard/kariera");
+  revalidatePath("/kariera");
+  revalidatePath("/si/zaposlitev");
+  revalidatePath("/en/career");
+
+  redirect("/dashboard/kariera");
 }

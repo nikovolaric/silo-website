@@ -32,7 +32,9 @@ function NavMenu() {
       <div className="lg:hidden">
         <div>
           <Bars3Icon
-            className="h-8 text-primary hover:cursor-pointer"
+            className={`h-8 ${
+              pathname === "/en" ? "text-white" : "text-primary"
+            } hover:cursor-pointer`}
             onClick={handleClick}
           />
         </div>
@@ -90,11 +92,20 @@ function NavMenu() {
                   Kontakt
                 </Link>
               </li>
-              <li className={`${isOpen ? "h-6" : "h-0 hidden"}`}>
+              <li className={`${isOpen ? "h-6" : "h-0 hidden"} flex gap-1`}>
                 <Link href="/">
                   <Image
                     src="https://flagicons.lipis.dev/flags/4x3/rs.svg"
                     alt="gb-flag"
+                    height={18}
+                    width={24}
+                    className="object-contain rounded-sm"
+                  />
+                </Link>
+                <Link href="/si">
+                  <Image
+                    src="https://flagicons.lipis.dev/flags/4x3/si.svg"
+                    alt="slo-flag"
                     height={18}
                     width={24}
                     className="object-contain rounded-sm"
@@ -106,7 +117,11 @@ function NavMenu() {
         </div>
       </div>
       <div className="hidden lg:block">
-        <ul className="text-primary font-raj flex items-center gap-8 text-lg font-semibold uppercase">
+        <ul
+          className={`${
+            pathname === "/en" ? "text-white" : "text-primary"
+          } font-raj flex items-center gap-8 text-lg font-semibold uppercase`}
+        >
           <li
             className={`w-fit ${
               pathname === "/en/services"
@@ -155,11 +170,20 @@ function NavMenu() {
               Contact
             </Link>
           </li>
-          <li>
+          <li className="flex gap-1">
             <Link href="/">
               <Image
                 src="https://flagicons.lipis.dev/flags/4x3/rs.svg"
                 alt="gb-flag"
+                height={15}
+                width={20}
+                className="object-contain rounded-sm"
+              />
+            </Link>
+            <Link href="/si">
+              <Image
+                src="https://flagicons.lipis.dev/flags/4x3/si.svg"
+                alt="slo-flag"
                 height={15}
                 width={20}
                 className="object-contain rounded-sm"

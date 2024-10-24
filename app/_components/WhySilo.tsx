@@ -7,12 +7,14 @@ import {
 
 function WhySilo({
   srb,
+  slo,
   one,
   two,
   three,
   four,
 }: {
-  srb: boolean;
+  srb?: boolean;
+  slo?: boolean;
   one: string;
   two: string;
   three: string;
@@ -21,7 +23,7 @@ function WhySilo({
   return (
     <div className="mt-28 md:mt-36 lg:mt-40">
       <h3 className="font-raj font-bold text-primary text-2xl text-center">
-        {srb ? "Zašto" : "Why"} Silo jeličić?
+        {slo ? "Zakaj" : srb ? "Zašto" : "Why"} Silo jeličić?
       </h3>
       <ul className="mt-8 font-semibold text-primary flex flex-col gap-6 md:flex-row md:gap-5">
         <li className="py-5 px-7 border rounded-lg shadow-xl flex items-center gap-9 md:flex-col md:justify-between md:gap-6 md:text-center md:w-1/4 md:py-4 md:px-2">

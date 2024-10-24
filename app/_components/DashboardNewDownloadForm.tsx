@@ -61,10 +61,15 @@ function DashboardNewDownloadForm() {
         </div>
         {site === "quality" && (
           <div className="flex flex-col gap-1.5">
-            <label>Opis (Srpski | Angleški):</label>
+            <label>Opis (SRB | SLO | ANG):</label>
             <div className="flex gap-5">
               <textarea
                 name="descriptionSrb"
+                autoComplete="off"
+                className="px-2 h-20 rounded-lg border border-primary w-1/2"
+              />
+              <textarea
+                name="descriptionSlo"
                 autoComplete="off"
                 className="px-2 h-20 rounded-lg border border-primary w-1/2"
               />

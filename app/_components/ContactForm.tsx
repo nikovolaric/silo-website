@@ -7,16 +7,24 @@ import { useState } from "react";
 const input =
   "border-primary rounded bg-neutraltwo h-8 py-2 px-4 focus:bg-white transition-all duration-200";
 
-function ContactForm({ srb }: { srb?: boolean }) {
+function ContactForm({ srb, slo }: { srb?: boolean; slo?: boolean }) {
   const [message, setMessage] = useState("");
 
   async function formAction(formData: FormData) {
     const result = await SendMail(formData);
     if (result.includes("Ok")) {
-      setMessage(srb ? "Mail poslan uspešno!" : "Mail snet successfully");
+      setMessage(
+        slo
+          ? "Mail poslan uspešno!"
+          : srb
+          ? "Mail poslan uspešno!"
+          : "Mail sent successfully"
+      );
     } else {
       setMessage(
-        srb
+        slo
+          ? "Nekaj je šlo narobe! Poskusite znova!"
+          : srb
           ? "Nešto nije uredu! Pokušaj ponovno!"
           : "Something went wrong! Try again later!"
       );
@@ -27,10 +35,16 @@ function ContactForm({ srb }: { srb?: boolean }) {
     <div className="mt-32">
       <div className="mb-10 flex flex-col gap-5 md:text-center md:gap-6">
         <h3 className="font-raj font-bold text-2xl text-primary">
-          {srb ? "Kontaktirajte nas" : "Contact us today"}
+          {slo
+            ? "Kontaktirajte nas"
+            : srb
+            ? "Kontaktirajte nas"
+            : "Contact us today"}
         </h3>
         <p className="text-secondary">
-          {srb
+          {slo
+            ? "Naša izkušena ekipa vam z veseljem pomaga."
+            : srb
             ? "Naš iskusni tim će vam rado pomoći."
             : "Our experienced team is happy to assist you."}
         </p>
@@ -38,7 +52,13 @@ function ContactForm({ srb }: { srb?: boolean }) {
       <form action={formAction}>
         <div className="grid grid-cols-1 gap-4 md:w-7/12 md:mx-auto lg:grid-cols-3 lg:w-3/4">
           <input
-            placeholder={srb ? "Ime i prezime*:" : "First name and last name*:"}
+            placeholder={
+              slo
+                ? "Ime in priimek*:"
+                : srb
+                ? "Ime i prezime*:"
+                : "First name and last name*:"
+            }
             required
             className={input}
             name="name"
@@ -52,13 +72,19 @@ function ContactForm({ srb }: { srb?: boolean }) {
             autoComplete="off"
           />
           <input
-            placeholder={srb ? "Broj telefona:" : "Phone number:"}
+            placeholder={
+              slo
+                ? "Telefonska številka:"
+                : srb
+                ? "Broj telefona:"
+                : "Phone number:"
+            }
             className={input}
             name="phone"
             autoComplete="off"
           />
           <textarea
-            placeholder={srb ? "Poruka*:" : "Message*:"}
+            placeholder={slo ? "Sporočilo*:" : srb ? "Poruka*:" : "Message*:"}
             required
             className={`border-primary rounded bg-neutraltwo h-56 py-2 px-4 focus:bg-white transition-all duration-200 lg:col-span-3`}
             name="message"
@@ -71,14 +97,14 @@ function ContactForm({ srb }: { srb?: boolean }) {
           </p>
         )}
         <div className="text-right mt-6 md:w-7/12 md:mx-auto lg:w-3/4 lg:mt-10">
-          <Button srb={srb} />
+          <Button srb={srb} slo={slo} />
         </div>
       </form>
     </div>
   );
 }
 
-function Button({ srb }: { srb?: boolean }) {
+function Button({ srb, slo }: { srb?: boolean; slo?: boolean }) {
   const { pending } = useFormStatus();
 
   return (
@@ -86,7 +112,17 @@ function Button({ srb }: { srb?: boolean }) {
       className="text-white bg-accent py-0.5 px-6 rounded-full font-semibold shadow-xl md:px-10 lg:hover:bg-white lg:hover:text-primary transition-colors duration-300 disabled:text-primary disabled:bg-white disabled:cursor-not-allowed"
       disabled={pending}
     >
-      {pending ? (srb ? "Šaljem..." : "Sending...") : srb ? "Šalji" : "Send"}
+      {pending
+        ? slo
+          ? "Pošiljam..."
+          : srb
+          ? "Šaljem..."
+          : "Sending..."
+        : slo
+        ? "Pošlji"
+        : srb
+        ? "Šalji"
+        : "Send"}
     </button>
   );
 }

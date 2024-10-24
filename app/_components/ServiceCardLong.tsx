@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 
-function ServiceCardLong({ srb }: { srb: boolean }) {
+function ServiceCardLong({ srb, slo }: { srb?: boolean; slo?: boolean }) {
   const [page, setPage] = useState(1);
 
   return (
@@ -20,7 +20,7 @@ function ServiceCardLong({ srb }: { srb: boolean }) {
         <div className="text-secondary flex flex-col justify-start gap-8 w-full flex-none bg-neutraltwo py-6 px-5 rounded-lg shadow-lg lg:px-8">
           <div className="relative w-full h-40">
             <Image
-              src="/vakuum-silo.png"
+              src="/consulting.jpg"
               alt="service image"
               className="object-cover rounded-lg"
               fill
@@ -28,16 +28,18 @@ function ServiceCardLong({ srb }: { srb: boolean }) {
             />
           </div>
           <h2 className="font-raj font-bold text-2xl text-primary text-center">
-            {srb ? "Konsalting" : "Consulting"}
+            {srb ? "Konsalting" : slo ? "Svetovanje" : "Consulting"}
           </h2>
           <p>
             {srb
               ? "Ako želite da unapredite svoju proizvodnu tehnologiju, proširite ili optimizujete kapacitete prelaskom sa podnog skladišta na skladište u silosima, možete se osloniti na našu stručnost za rešenja po meri."
+              : slo
+              ? "Če želite izboljšati svojo proizvodno tehnologijo, razširiti ali optimizirati zmogljivosti s prehodom s talnega skladišča na silosno skladiščenje, se lahko zanesete na našo strokovnost za rešitve po meri."
               : "If you are looking to enhance your production technology, expand or optimize capacities by transitioning from floor storage to silo storage, you can rely on our expertise for tailored solutions."}
           </p>
           <div className="grow flex flex-col justify-end">
             <button
-              className="bg-accent w-10 h-10 rounded-full font-raj text-2xl text-primary self-end lg:hover:bg-white transition-colors duration-300"
+              className="bg-accent w-10 h-10 rounded-full font-raj text-2xl text-white self-end lg:hover:text-primary lg:hover:bg-white transition-colors duration-300"
               onClick={() => setPage(2)}
             >
               &rarr;
@@ -90,7 +92,7 @@ function ServiceCardLong({ srb }: { srb: boolean }) {
                 </ul>
               </div>
               <button
-                className="bg-accent w-10 h-10 rounded-full font-raj text-2xl text-primary self-end lg:hover:bg-white transition-colors duration-300"
+                className="bg-accent w-10 h-10 rounded-full font-raj text-2xl text-white self-end lg:hover:text-primary lg:hover:bg-white transition-colors duration-300"
                 onClick={() => setPage(3)}
               >
                 &rarr;
@@ -122,7 +124,7 @@ function ServiceCardLong({ srb }: { srb: boolean }) {
                 </p>
               </div>
               <button
-                className="border border-primary w-10 h-10 rounded-full font-raj text-2xl text-primary self-end lg:hover:bg-white lg:hover:border-white transition-colors duration-300"
+                className="border border-primary w-10 h-10 rounded-full font-raj text-2xl text-white self-end lg:hover:text-primary lg:hover:bg-white lg:hover:border-white transition-colors duration-300"
                 onClick={() => setPage(1)}
               >
                 &larr;
@@ -130,7 +132,7 @@ function ServiceCardLong({ srb }: { srb: boolean }) {
             </div>
           </>
         )}
-        {!srb && (
+        {!srb && !slo && (
           <>
             <div className="bg-neutraltwo py-4 px-2 rounded-lg shadow-lg flex flex-col justify-between w-full flex-none">
               <div className="text-secondary">
@@ -196,6 +198,85 @@ function ServiceCardLong({ srb }: { srb: boolean }) {
                   <span className="font-bold">
                     {" "}
                     faster return on investment and lower overhead costs.
+                  </span>
+                </p>
+              </div>
+              <button
+                className="border border-primary w-10 h-10 rounded-full font-raj text-2xl text-primary self-end lg:hover:bg-white lg:hover:border-white transition-colors duration-300"
+                onClick={() => setPage(1)}
+              >
+                &larr;
+              </button>
+            </div>
+          </>
+        )}
+        {slo && (
+          <>
+            <div className="bg-neutraltwo py-4 px-2 rounded-lg shadow-lg flex flex-col justify-between w-full flex-none">
+              <div className="text-secondary">
+                <p>Moderni silosi ponujajo pomembne prednosti:</p>
+                <ul className="mt-4 font-bold list-disc list-inside">
+                  <li>
+                    Zahtevajo manj prostora, kar zmanjšuje stroške zemljišča
+                  </li>
+                  <li>Podaljšajo življenjsko dobo izdelkov</li>
+                  <li>
+                    Ščitijo pred bakterijami, glivami in insekti ter tako
+                    zmanjšujejo izgube
+                    <span className="font-normal">
+                      {" "}
+                      (v klasičnih skladiščih te izgube znašajo 2–6 % skupne
+                      količine)
+                    </span>
+                  </li>
+                  <li>
+                    Vključujejo sisteme za nadzor temperature
+                    <span className="font-normal">
+                      , ki preprečujejo kvarjenje zaradi nihanja temperature in
+                      vlage
+                    </span>
+                  </li>
+                  <li>Ne potrebujejo dodatnih zalog</li>
+                  <li>
+                    Zmanjšajo stroške dela
+                    <span className="font-normal">
+                      {" "}
+                      (v primerjavi do 1:10 glede na klasična skladišča)
+                    </span>
+                  </li>
+                  <li>
+                    Zmanjšajo izgubo materiala
+                    <span className="font-normal">
+                      {" "}
+                      zaradi človeških napak in neučinkovitosti, ki jih najdemo
+                      v tradicionalnih skladiščnih sistemih, zahvaljujoč sistemu
+                      ALL IN-ALL OUT
+                    </span>
+                  </li>
+                </ul>
+              </div>
+              <button
+                className="bg-accent w-10 h-10 rounded-full font-raj text-2xl text-white self-end lg:hover:text-primary lg:hover:bg-white transition-colors duration-300"
+                onClick={() => setPage(3)}
+              >
+                &rarr;
+              </button>
+            </div>
+            <div className="bg-neutraltwo py-4 px-2 rounded-lg shadow-lg flex flex-col justify-between w-full flex-none">
+              <div className="text-secondary">
+                <p>V primerjavi s transportom big-bag silo transport nudi:</p>
+                <ul className="mt-4 font-bold list-inside list-disc">
+                  <li>Prihranek vsaj 10 €/t pri stroških embalaže in palet</li>
+                  <li>Višjo produktivnost zaradi avtomatizacije</li>
+                  <li>Manjša ali ničelna izguba pri razkladanju</li>
+                  <li>Večje količine prepeljanega materiala na eno vožnjo</li>
+                </ul>
+                <p className="mt-4">
+                  Z reševanjem teh izzivov silosi ne ponujajo le operativne
+                  učinkovitosti, temveč tudi
+                  <span className="font-bold">
+                    {" "}
+                    hitrejšo donosnost naložb in nižje režijske stroške.
                   </span>
                 </p>
               </div>

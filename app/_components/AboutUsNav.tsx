@@ -2,9 +2,11 @@ import Link from "next/link";
 
 function AboutUsNav({
   srb,
+  slo,
   params,
 }: {
   srb?: boolean;
+  slo?: boolean;
   params?: {
     history?: boolean;
     quality?: boolean;
@@ -19,11 +21,11 @@ function AboutUsNav({
               ? "border-2 border-primary px-3 py-1 rounded-full text-primary"
               : "text-primary/50"
           } font-medium`}
-          href={srb ? "/onama" : "/en/aboutus"}
+          href={slo ? "/si/onas" : srb ? "/onama" : "/en/aboutus"}
           replace={true}
           scroll={false}
         >
-          {srb ? "O nama" : "About us"}
+          {slo ? "O nas" : srb ? "O nama" : "About us"}
         </Link>
       </li>
       <li>
@@ -34,13 +36,13 @@ function AboutUsNav({
               : "text-primary/50"
           } font-medium`}
           href={{
-            pathname: srb ? "/onama" : "/en/aboutus",
+            pathname: slo ? "/si/onas" : srb ? "/onama" : "/en/aboutus",
             query: { history: "true" },
           }}
           replace={true}
           scroll={false}
         >
-          {srb ? "Istorijat" : "History"}
+          {slo ? "Zgodovina" : srb ? "Istorijat" : "History"}
         </Link>
       </li>
       <li>
@@ -51,13 +53,13 @@ function AboutUsNav({
               : "text-primary/50"
           } font-medium`}
           href={{
-            pathname: srb ? "/onama" : "/en/aboutus",
+            pathname: slo ? "/si/onas" : srb ? "/onama" : "/en/aboutus",
             query: { quality: "true" },
           }}
           replace={true}
           scroll={false}
         >
-          {srb ? "Kvalitet" : "Quality"}
+          {slo ? "Kakovost" : srb ? "Kvalitet" : "Quality"}
         </Link>
       </li>
     </ul>

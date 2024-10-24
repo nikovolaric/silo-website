@@ -1,13 +1,15 @@
 import { getAllDownloads } from "../_lib/downloadApi";
 import DownloadItem from "./DownloadItem";
 
-async function ESM({ srb }: { srb?: boolean }) {
+async function ESM({ srb, slo }: { srb?: boolean; slo?: boolean }) {
   const data = await getAllDownloads("sustainability");
 
   return (
     <div>
       <h3 className="font-raj font-bold text-primary text-2xl">
-        {srb
+        {slo
+          ? "Če vas zanimajo podrobnejše informacije, lahko prenesete naše ESG politike in poročila. Oglejte si naslednje prenose."
+          : srb
           ? "Ukoliko ste zainteresovani za detaljnije informacije, možete preuzeti naše ESG politike i izveštaje putem sledećih downloada."
           : "If you are interested in more detailed information, you can download our ESG policies and reports, please see following downloads."}
       </h3>

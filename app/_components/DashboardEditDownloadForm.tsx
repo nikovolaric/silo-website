@@ -13,14 +13,23 @@ function DashboardEditDownloadForm({
     ime: string;
     name: string;
     descriptionSrb: string;
+    descriptionSlo: string;
     descriptionEng: string;
     site: string;
     downloadLink: string;
     _id: string;
   };
 }) {
-  const { ime, name, descriptionSrb, descriptionEng, site, downloadLink, _id } =
-    download;
+  const {
+    ime,
+    name,
+    descriptionSrb,
+    descriptionEng,
+    descriptionSlo,
+    site,
+    downloadLink,
+    _id,
+  } = download;
   const [curSite, setCurSite] = useState(site);
   const [pdf, setPdf] = useState(downloadLink);
 
@@ -77,13 +86,19 @@ function DashboardEditDownloadForm({
         </div>
         {curSite === "quality" && (
           <div className="flex flex-col gap-1.5">
-            <label>Opis:</label>
+            <label>Opis(SRB | SLO | ANG):</label>
             <div className="flex gap-5">
               <textarea
                 name="descriptionSrb"
                 autoComplete="off"
                 className="px-2 h-20 rounded-lg border border-primary w-1/2"
                 defaultValue={descriptionSrb}
+              />
+              <textarea
+                name="descriptionSlo"
+                autoComplete="off"
+                className="px-2 h-20 rounded-lg border border-primary w-1/2"
+                defaultValue={descriptionSlo}
               />
               <textarea
                 name="descriptionEng"

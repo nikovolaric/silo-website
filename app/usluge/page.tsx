@@ -6,10 +6,9 @@ import ServiceText from "../_components/ServiceText";
 import ContactForm from "../_components/ContactForm";
 import SuppliersText from "../_components/SuppliersText";
 import SoftwareText from "../_components/SoftwareText";
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
 import { Suspense } from "react";
 import Spinner from "../_components/Spinner";
+import BigBagComparison from "../_components/BigBagComparison";
 
 export async function generateMetadata({
   searchParams,
@@ -30,8 +29,6 @@ export async function generateMetadata({
   }
 }
 
-// export const dynamic = "force-static";
-
 function Page({
   searchParams,
 }: {
@@ -40,11 +37,6 @@ function Page({
     software?: boolean;
   };
 }) {
-  const session = cookies().get("jwt")?.value;
-
-  if (!session) {
-    redirect("/login");
-  }
   return (
     <>
       <Header />
@@ -58,6 +50,7 @@ function Page({
               uslugu vrhunskog kvaliteta.
             </HeadText>
             <Services />
+            <BigBagComparison srb />
             <ServiceText srb />
           </>
         )}

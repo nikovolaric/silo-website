@@ -7,7 +7,7 @@ import {
 import ContactForm from "./ContactForm";
 import Map from "./Map";
 
-function ContactText({ srb }: { srb?: boolean }) {
+function ContactText({ srb, slo }: { srb?: boolean; slo?: boolean }) {
   return (
     <div className="mt-6 md:mt-16 lg:mt-24">
       <h1 className="font-raj font-bold text-primary text-2xl lg:w-5/6 lg:mx-auto">
@@ -17,11 +17,11 @@ function ContactText({ srb }: { srb?: boolean }) {
         <div className="mx-10 flex flex-col gap-12">
           <div className="flex gap-5 items-center">
             <PhoneIcon className="h-6 text-accent" />
-            <p>+386 00 000 000</p>
+            <p>+386 59 789 700</p>
           </div>
           <div className="flex gap-5 items-center">
             <EnvelopeIcon className="h-6 text-accent" />
-            <p>info@silo-jelicic.rs</p>
+            <p>office@silo-jelicic.rs</p>
           </div>
           <div className="flex gap-5 items-center">
             <BuildingOffice2Icon className="h-6 text-accent" />
@@ -50,9 +50,9 @@ function ContactText({ srb }: { srb?: boolean }) {
         </div>
       </div>
       <div className="mt-14 md:mt-16 md:w-2/3 md:mx-auto lg:mt-20">
-        <Map />
+        <Map srb={srb} slo={slo} />
       </div>
-      <ContactForm srb={srb} />
+      <ContactForm srb={srb} slo={slo} />
     </div>
   );
 }

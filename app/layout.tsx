@@ -30,7 +30,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${raj.variable}`}>
+    <html lang="en" className={`${raj.variable} scroll-smooth`}>
       <body className={`${inter.className} bg-neutral`}>
         {children}
         <Footer />

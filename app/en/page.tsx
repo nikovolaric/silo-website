@@ -5,8 +5,8 @@ import Counter from "../_components/Counter";
 import ContactForm from "../_components/ContactForm";
 import HomeServices from "../_components/HomeServices";
 import HomeText from "../_components/HomeText";
+import CookiesFirstPage from "../_components/CookiesFirstPage";
 import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Welcome",
@@ -14,14 +14,9 @@ export const metadata: Metadata = {
     "We are leading dry bulk transporter dedicated to needs of our partners since 2001.",
 };
 
-// export const dynamic = "force-static";
-
 function Page() {
-  const session = cookies().get("jwt")?.value;
+  const cookie = cookies().get("analyticsConsent");
 
-  if (!session) {
-    redirect("/login");
-  }
   return (
     <>
       <HomeHeader />
@@ -30,7 +25,7 @@ function Page() {
           <HomeServices />
           <WhySilo
             srb={false}
-            one="Top technology"
+            one="Top Technology"
             two="Integrated Software Solutions"
             three="Confirmed Quality"
             four="Experienced and Trained Driving Crew"
@@ -42,6 +37,7 @@ function Page() {
           <ContactForm srb={false} />
         </div>
       </main>
+      {!cookie && <CookiesFirstPage />}
     </>
   );
 }

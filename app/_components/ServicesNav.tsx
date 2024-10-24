@@ -2,9 +2,11 @@ import Link from "next/link";
 
 function ServicesNav({
   srb,
+  slo,
   params,
 }: {
-  srb: boolean;
+  srb?: boolean;
+  slo?: boolean;
   params?: {
     suppliers?: boolean;
     software?: boolean;
@@ -19,11 +21,11 @@ function ServicesNav({
               ? "border-2 border-primary px-3 py-1 rounded-full text-primary"
               : "text-primary/50"
           } font-medium`}
-          href={srb ? "/usluge" : "/en/services"}
+          href={srb ? "/usluge" : slo ? "/si/storitve" : "/en/services"}
           replace={true}
           scroll={false}
         >
-          {srb ? "Usluge" : "Services"}
+          {srb ? "Usluge" : slo ? "Storitve" : "Services"}
         </Link>
       </li>
       <li>
@@ -34,13 +36,13 @@ function ServicesNav({
               : "text-primary/50"
           } font-medium`}
           href={{
-            pathname: srb ? "/usluge" : "/en/services",
+            pathname: srb ? "/usluge" : slo ? "/si/storitve" : "/en/services",
             query: { suppliers: "true" },
           }}
           replace={true}
           scroll={false}
         >
-          {srb ? "Dobavljaći" : "Suppliers"}
+          {srb ? "Dobavljaći" : slo ? "Dobavitelji" : "Suppliers"}
         </Link>
       </li>
       <li>
@@ -51,13 +53,13 @@ function ServicesNav({
               : "text-primary/50"
           } font-medium`}
           href={{
-            pathname: srb ? "/usluge" : "/en/services",
+            pathname: srb ? "/usluge" : slo ? "/si/storitve" : "/en/services",
             query: { software: "true" },
           }}
           replace={true}
           scroll={false}
         >
-          {srb ? "Softver" : "Software"}
+          {srb ? "Softver" : slo ? "Software" : "Software"}
         </Link>
       </li>
     </ul>

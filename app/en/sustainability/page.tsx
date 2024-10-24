@@ -2,21 +2,14 @@ import HeadText from "@/app/_components/HeadText";
 import SustainabilityText from "@/app/_components/SustainabilityText";
 import Header from "@/app/_components_en/Header";
 import { Metadata } from "next";
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Sustainability",
 };
 
-// export const dynamic = "force-static";
+export const dynamic = "force-static";
 
 function Page() {
-  const session = cookies().get("jwt")?.value;
-
-  if (!session) {
-    redirect("/login");
-  }
   return (
     <>
       <Header />

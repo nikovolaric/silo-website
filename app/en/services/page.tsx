@@ -1,3 +1,4 @@
+import BigBagComparison from "@/app/_components/BigBagComparison";
 import ContactForm from "@/app/_components/ContactForm";
 import HeadText from "@/app/_components/HeadText";
 import ServicesNav from "@/app/_components/ServicesNav";
@@ -7,8 +8,6 @@ import Spinner from "@/app/_components/Spinner";
 import SuppliersText from "@/app/_components/SuppliersText";
 import Header from "@/app/_components_en/Header";
 import Services from "@/app/_components_en/Services";
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
 import { Suspense } from "react";
 
 export async function generateMetadata({
@@ -40,11 +39,6 @@ function Page({
     software?: boolean;
   };
 }) {
-  const session = cookies().get("jwt")?.value;
-
-  if (!session) {
-    redirect("/login");
-  }
   return (
     <>
       <Header />
@@ -58,6 +52,7 @@ function Page({
               service.
             </HeadText>
             <Services />
+            <BigBagComparison />
             <ServiceText srb={false} />
           </>
         )}

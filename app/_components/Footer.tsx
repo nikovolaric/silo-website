@@ -9,6 +9,9 @@ import Link from "next/link";
 function Footer() {
   const pathname = usePathname();
 
+  const isSlo = pathname.startsWith("/si");
+  const isEn = pathname.startsWith("/en");
+
   return (
     <footer
       className={`bg-primary text-white font-medium mt-24 ${
@@ -41,17 +44,21 @@ function Footer() {
           <div className="flex flex-col gap-10">
             <div>
               <p className="font-bold">
-                {!pathname.startsWith("/en")
-                  ? "Matični broj"
-                  : "Company Registration Number"}
+                {isEn
+                  ? "Company Registration Number"
+                  : isSlo
+                  ? "Matična številka"
+                  : "Matični broj"}
               </p>
               <p>6475248000</p>
             </div>
             <div>
               <p className="font-bold">
-                {!pathname.startsWith("/en")
-                  ? "DDV broj"
-                  : "Tax Identification Number"}
+                {isEn
+                  ? "Tax Identification Number"
+                  : isSlo
+                  ? "Davčna številka"
+                  : "DDV broj"}
               </p>
               <p>61173843</p>
             </div>
@@ -63,62 +70,70 @@ function Footer() {
           </div>
           <div className="flex flex-col gap-10">
             <p className="font-bold">
-              {!pathname.startsWith("/en") ? "Brzi kontakt" : "Quick contact"}
+              {isEn
+                ? "Quick contact"
+                : isSlo
+                ? "Hiter kontakt"
+                : "Brzi kontakt"}
             </p>
             <p className="flex items-center gap-5">
               <span>
                 <PhoneIcon className="h-6 text-accent" />
               </span>
-              +386 00 000 000
+              +386 59 789 700
             </p>
             <p className="flex items-center gap-5">
               <span>
                 <EnvelopeIcon className="h-6 text-accent" />
               </span>
-              info@silo-jelicic.rs
+              office@silo-jelicic.rs
             </p>
           </div>
           <div className="flex flex-col gap-10 lg:grid lg:grid-cols-5 lg:gap-x-8 xl:grid-cols-6 xl:col-span-3 xl:w-3/4">
             <p className="font-bold lg:col-span-6">
-              {pathname.startsWith("/en") ? "Quick Links" : "Brze veze"}
+              {isEn ? "Quick Links" : isSlo ? "Hitre povezave" : "Brze veze"}
             </p>
             <Link
-              href={pathname.startsWith("/en") ? "/en/services" : "/usluge"}
+              href={isEn ? "/en/services" : isSlo ? "/si/storitve" : "/usluge"}
               className="hover:font-bold transition-[font] duration-300"
             >
-              {!pathname.startsWith("/en") ? "Usluge" : "Services"}
+              {isEn ? "Services" : isSlo ? "Storitve" : "Usluge"}
             </Link>
             <Link
-              href={pathname.startsWith("/en") ? "/en/aboutus" : "/onama"}
+              href={isEn ? "/en/aboutus" : isSlo ? "/si/onas" : "/onama"}
               className="hover:font-bold transition-[font] duration-300"
             >
-              {!pathname.startsWith("/en") ? "O nama" : "About us"}
+              {isEn ? "About us" : isSlo ? "O nas" : "O nama"}
             </Link>
             <Link
               href={
-                pathname.startsWith("/en") ? "/en/sustainability" : "/odrzivost"
+                isEn
+                  ? "/en/sustainability"
+                  : isSlo
+                  ? "/si/trajnost"
+                  : "/odrzivost"
               }
               className="hover:font-bold transition-[font] duration-300"
             >
-              {!pathname.startsWith("/en") ? "Održivost" : "Sustainability"}
+              {isEn ? "Sustainability" : isSlo ? "Trajnost" : "Održivost"}
             </Link>
             <Link
-              href={pathname.startsWith("/en") ? "/en/career" : "/kariera"}
+              href={isEn ? "/en/career" : isSlo ? "/si/zaposlitev" : "/kariera"}
               className="hover:font-bold transition-[font] duration-300"
             >
-              {!pathname.startsWith("/en") ? "Kariera" : "Carrer"}
+              {isEn ? "Career" : isSlo ? "Zaposlitev" : "Kariera"}
             </Link>
             <Link
-              href={pathname.startsWith("/en") ? "/en/contact" : "/kontakt"}
+              href={isEn ? "/en/contact" : isSlo ? "/si/kontakt" : "/kontakt"}
               className="hover:font-bold transition-[font] duration-300"
             >
-              {!pathname.startsWith("/en") ? "Kontakt" : "Contact"}
+              {isEn ? "Contact" : isSlo ? "Kontakt" : "Kontakt"}
             </Link>
             <Link
-              href={pathname.startsWith("/en") ? "/en/services" : "/usluge"}
+              href={isEn ? "/en/cookies" : isSlo ? "/si/piskotki" : "/kolacici"}
               className="hover:font-bold transition-[font] duration-300 lg:col-span-3 xl:col-span-1"
             >
-              {!pathname.startsWith("/en") ? "Kolačići" : "Cookie Policy"}
+              {isEn ? "Cookie Policy" : isSlo ? "Piškotki" : "Kolačići"}
             </Link>
           </div>
         </div>
@@ -135,8 +150,10 @@ function Footer() {
           </p>
           <p>
             &copy;{new Date().getFullYear()} Silo Jeličić, d.o.o.{" "}
-            {pathname.startsWith("/en")
+            {isEn
               ? "All rights reserved"
+              : isSlo
+              ? "Vse pravice pridržane"
               : "Sva prava zadržana"}
           </p>
         </div>

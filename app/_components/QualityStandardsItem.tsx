@@ -1,21 +1,25 @@
 function QualityStandardsItem({
   standard,
   srb,
+  slo,
 }: {
   standard: {
     name: string;
     descriptionSrb: string;
+    descriptionSlo: string;
     descriptionEng: string;
     downloadLink: string;
   };
   srb?: boolean;
+  slo?: boolean;
 }) {
-  const { name, descriptionSrb, descriptionEng, downloadLink } = standard;
+  const { name, descriptionSrb, descriptionSlo, descriptionEng, downloadLink } =
+    standard;
   return (
     <li className="font-bold text-primary">
       {name}
       <p className="font-light text-secondary ml-5 mt-2 mb-8">
-        {srb ? descriptionSrb : descriptionEng}
+        {srb ? descriptionSrb : slo ? descriptionSlo : descriptionEng}
       </p>
       <a
         href={`https://res.cloudinary.com/dho3nkc4l/image/upload/${downloadLink}`}

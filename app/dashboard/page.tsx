@@ -5,17 +5,29 @@ import {
 import { cookies } from "next/headers";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-//   import Logout from "../_components/Logout";
 import { Metadata } from "next";
+import Logout from "../_components/Logout";
+import { jwtDecode } from "jwt-decode";
+import User from "../_models/userModel";
+import connectDB from "../_config/database";
 
 export const metadata: Metadata = {
   title: "Dashboard",
 };
 
-function Page() {
-  const session = cookies().get("jwt")?.value;
+async function Page() {
+  await connectDB();
+  const session = cookies().get("jwt")?.value as string;
+  if (!session) {
+    redirect("/login");
+  }
+  const { id: userId }: { id: string } = await jwtDecode(session);
+  const user = await User.findById(userId);
+  if (!user || user.role !== "admin") {
+    cookies().delete("jwt");
+    redirect("/login");
+  }
 
-  if (!session) redirect("/login");
   return (
     <div className="max-w-7xl h-dvh mx-auto text-primary ">
       <h2 className="text-3xl font-raj font-bold py-6">Dashboard</h2>
@@ -50,7 +62,7 @@ function Page() {
         >
           &larr; Website
         </Link>
-        {/* <Logout /> */}
+        <Logout />
       </div>
     </div>
   );

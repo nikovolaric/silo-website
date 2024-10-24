@@ -5,8 +5,6 @@ import HistoryText from "@/app/_components/HistoryText";
 import QualityText from "@/app/_components/QualityText";
 import Spinner from "@/app/_components/Spinner";
 import Header from "@/app/_components_en/Header";
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
 import { Suspense } from "react";
 
 export async function generateMetadata({
@@ -25,18 +23,11 @@ export async function generateMetadata({
   }
 }
 
-// export const dynamic = "force-static";
-
 function Page({
   searchParams,
 }: {
   searchParams: { history?: boolean; quality?: boolean };
 }) {
-  const session = cookies().get("jwt")?.value;
-
-  if (!session) {
-    redirect("/login");
-  }
   return (
     <>
       <Header />
@@ -45,9 +36,8 @@ function Page({
         {!searchParams.history && !searchParams.quality && (
           <>
             <HeadText>
-              Ponosimo se dugogodišnjom saradnjom sa našim partnerima. Nudeći
-              kvalitet, pouzdanost I fleksibilnost zaslužili smo njihovo
-              poverenje.
+              We take pride in long-term relationships with our clients, built
+              on trust, quality, and flexibility.
             </HeadText>
             <Suspense fallback={<Spinner />}>
               <AboutUsText />
@@ -57,8 +47,8 @@ function Page({
         {searchParams.history && (
           <>
             <HeadText>
-              Više od {new Date().getFullYear() - 2001} godina iskustva i više
-              od xxxxxxxxx kilometara godišnje na putu.
+              More than {new Date().getFullYear() - 2001} years of experience,
+              and more than 3500000 kilometers per year on the road.
             </HeadText>
             <HistoryText />
           </>
@@ -66,9 +56,9 @@ function Page({
         {searchParams.quality && (
           <>
             <HeadText>
-              Naša kompanija je posvećena pružanju vrhunskih usluga drumskog
-              transporta rasutih materijala korišćenjem silos cisterni, što je
-              dokazano u skladu sa najvišim međunarodnim standardima.
+              Our company is committed to providing top-quality road transport
+              services for bulk materials using silo tankers, demonstrated by
+              compliance with the highest international standards.
             </HeadText>
             <QualityText />
           </>

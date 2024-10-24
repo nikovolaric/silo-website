@@ -27,6 +27,16 @@ const config: Config = {
         two: 'url("/icons/two.svg")',
         three: 'url("/icons/three.svg")',
       },
+      animation: {
+        cookieAni: "cookieAni 0.5s cubic-bezier(0.61, 0.79, 0.91, 0.98)",
+      },
+      keyframes: {
+        cookieAni: {
+          "0%, 10%": {
+            transform: "translateY(120%)",
+          },
+        },
+      },
     },
   },
   plugins: [],

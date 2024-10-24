@@ -5,19 +5,30 @@ import { useState } from "react";
 
 interface iESG {
   ime: string;
+  imeSlo: string;
   title: string;
   tekst: string;
   text: string;
+  textSlo: string;
   img: string;
 }
 
-function SustainabilityCard({ el, srb }: { el: iESG; srb?: boolean }) {
+function SustainabilityCard({
+  el,
+  srb,
+  slo,
+}: {
+  el: iESG;
+  srb?: boolean;
+  slo?: boolean;
+}) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const { ime, title, tekst, text, img } = el;
+  const { ime, imeSlo, title, tekst, text, textSlo, img } = el;
 
   const tekstArr: string[] = tekst.split("  ");
   const textArr: string[] = text.split("  ");
+  const textSloArr: string[] = textSlo.split("  ");
 
   function handleClick() {
     setIsOpen((isOpen) => !isOpen);
@@ -27,7 +38,11 @@ function SustainabilityCard({ el, srb }: { el: iESG; srb?: boolean }) {
     <div
       className={`bg-neutraltwo rounded-2xl shadow-xl flex flex-col gap-10 items-center pt-14 px-4 pb-4 md:px-5 md:w-5/6 md:mx-auto lg:w-full ${
         isOpen
-          ? `${srb ? "lg:h-[820px] xl:h-[760px]" : "lg:h-[730px] xl:h-[710px]"}`
+          ? `${
+              srb || slo
+                ? "lg:h-[820px] xl:h-[700px]"
+                : "lg:h-[730px] xl:h-[700px]"
+            }`
           : `${srb ? "lg:h-[420px] xl:h-[400px]" : "lg:h-[400px] xl:h-[390px]"}`
       } transition-[height] duration-300`}
     >
@@ -35,7 +50,7 @@ function SustainabilityCard({ el, srb }: { el: iESG; srb?: boolean }) {
         <Image src={img} alt="icon" height="40" width="40" />
       </div>
       <h3 className="font-raj font-bold text-primary text-2xl text-center lg:h-16">
-        {srb ? ime : title}
+        {slo ? imeSlo : srb ? ime : title}
       </h3>
       {srb && (
         <div className="flex flex-col gap-4 font-light text-secondary">
@@ -46,7 +61,16 @@ function SustainabilityCard({ el, srb }: { el: iESG; srb?: boolean }) {
           ))}
         </div>
       )}
-      {!srb && (
+      {slo && (
+        <div className="flex flex-col gap-4 font-light text-secondary">
+          {textSloArr.map((el: string, i: number) => (
+            <p key={i} className={`${i === 0 || isOpen ? "" : "lg:hidden"}`}>
+              {el}
+            </p>
+          ))}
+        </div>
+      )}
+      {!srb && !slo && (
         <div className="flex flex-col gap-4 font-light text-secondary">
           {textArr.map((el: string, i: number) => (
             <p key={i} className={`${i === 0 || isOpen ? "" : "lg:hidden"}`}>

@@ -1,6 +1,6 @@
-import img1 from "@/public/history-1.jpg";
+import img1 from "@/public/aboutus-photo.png";
 import img2 from "@/public/history-2.jpg";
-import img3 from "@/public/history-3.jpg";
+import img3 from "@/public/history-6.jpg";
 import Image from "next/image";
 import Misija from "./Misija";
 import Vizija from "./Vizija";
@@ -9,7 +9,7 @@ import LinkBtn from "./LinkBtn";
 import { getAllDownloads } from "../_lib/downloadApi";
 import DownloadItem from "./DownloadItem";
 
-async function AboutUsText({ srb }: { srb?: boolean }) {
+async function AboutUsText({ slo, srb }: { slo?: boolean; srb?: boolean }) {
   const data = await getAllDownloads("about");
 
   return (
@@ -26,38 +26,50 @@ async function AboutUsText({ srb }: { srb?: boolean }) {
           />
         </div>
         <h3 className="font-raj font-bold text-2xl text-primary">
-          {srb
+          {slo
+            ? "Osredotočeni na zanesljivost, kakovost, prilagodljivost in dolgoročna partnerstva"
+            : srb
             ? "Fokusirani na pouzdanost, kvalitet, fleksibilnost i dugoročna partnerstva"
             : "Focused on reliability, quality, flexibility, and long-term partnerships"}
         </h3>
         <div className="lg:flex lg:flex-col lg:gap-4">
           <p>
-            {srb
+            {slo
+              ? "Od leta 2001 smo specializirani za cestni prevoz suhega razsutega prahu in granuliranih materialov z najsodobnejšimi silosnimi tovornjaki."
+              : srb
               ? "Od 2001. godine specijalizovani smo za drumski transport suvog rasutog praha i granulisanog materijala najsavremenijim silos kamionima"
               : "Since 2001, we have specialized in road transport of dry bulk powders and granulated materials using state-of-the-art silo trucks."}
           </p>
           <p>
-            {srb
+            {slo
+              ? "Naša izkušena ekipa v kombinaciji z napredno opremo zagotavlja zanesljivo storitev za stranke v industrijskem, krmnem, prehrambnem in kemijskem sektorju."
+              : srb
               ? "Naš iskusan tim, u kombinaciji sa naprednom opremom, obezbeđuje pouzdanu uslugu za klijente u industrijskom, stočnom, prehrambenom i hemijskom sektoru."
               : "Our experienced team, combined with advanced equipment, ensures reliable service for customers in the industrial, feed, food, and chemical sectors."}
           </p>
           <p>
-            {srb
-              ? "Naša filozofija menadžmenta se fokusira na blisku saradnju između rukovodstva i vozača, uz posvećenost ispunjavanju obećanja i održavanju snažnog partnerstva sa klijentima."
+            {slo
+              ? "Naša vodstvena filozofija se osredotoča na tesno sodelovanje med vodstvom in vozniki ter na zavezanost k izpolnjevanju obljub in ohranjanju močnih partnerstev s strankami."
+              : srb
+              ? "Naša filozofija menadžmenta se fokusira na blisku saradnju između rukovodstva i vozača, uz posvećenost ispunjavanju obećanja i održavanju snažnog partnerstva sa klijentima."
               : "Our management philosophy focuses on close collaboration between leadership and drivers, with a commitment to delivering on promises and maintaining strong client partnerships."}
           </p>
         </div>
       </div>
-      <Misija srb={srb} img2={img2} />
-      <Vizija srb={srb} img3={img3} />
+      <Misija slo={slo} srb={srb} img2={img2} />
+      <Vizija slo={slo} srb={srb} img3={img3} />
       <div className="font-light flex flex-col gap-6">
         <h3 className="font-raj font-bold text-2xl text-primary">
-          {srb
+          {slo
+            ? "Naša poslovna politika temelji na načelih kakovostnega upravljanja, nenehnih izboljšav in trajnostnega razvoja."
+            : srb
             ? "Naša poslovna politika zasniva se na principima kvalitetnog upravljanja, stalnih poboljšanja i održivog razvoja."
             : "Our business policy is based on principles of quality management, continuous improvement, and sustainable development."}
         </h3>
         <p>
-          {srb
+          {slo
+            ? "Zavezani smo visokim etičnim standardom, spoštovanju zakonodaje in predpisov ter doslednemu upoštevanju mednarodnih standardov in najboljših praks. V vseh vidikih našega poslovanja si prizadevamo doseči ravnotežje med ekonomskimi, okoljskimi in družbenimi cilji, da zagotovimo dolgoročni uspeh in zadovoljstvo vseh naših deležnikov."
+            : srb
             ? "Posedujemo posvećenost visokim etičkim standardima, poštovanju zakona i regulativa, kao i doslednoj primeni međunarodnih standarda i najbolje prakse. U svim aspektima našeg poslovanja, težimo da postignemo ravnotežu između ekonomskih, ekoloških i društvenih ciljeva, osiguravajući dugoročni uspeh i zadovoljstvo svih naših zainteresovanih strana."
             : "We are committed to high ethical standards, compliance with laws and regulations, and consistent adherence to international standards and best practices. In all aspects of our operations, we strive to balance economic, environmental, and social objectives to ensure long-term success and satisfaction for all our stakeholders."}
         </p>
@@ -74,13 +86,19 @@ async function AboutUsText({ srb }: { srb?: boolean }) {
           )
         )}
       </div>
-      <WhyUs srb={srb} />
+      <WhyUs slo={slo} srb={srb} />
       <div className="flex gap-5 justify-center">
-        <LinkBtn href={srb ? "/kontakt" : "/en/contact"} type="secondary">
-          {srb ? "Kontakt" : "Contact"}
+        <LinkBtn
+          href={slo ? "/si/kontakt" : srb ? "/kontakt" : "/en/contact"}
+          type="secondary"
+        >
+          {slo ? "Kontakt" : srb ? "Kontakt" : "Contact"}
         </LinkBtn>
-        <LinkBtn href={srb ? "/kariera" : "/en/career"} type="primary">
-          {srb ? "Kariera" : "Career"}
+        <LinkBtn
+          href={slo ? "/si/zaposlitev" : srb ? "/kariera" : "/en/career"}
+          type="primary"
+        >
+          {slo ? "Zaposlitev" : srb ? "Kariera" : "Career"}
         </LinkBtn>
       </div>
     </div>

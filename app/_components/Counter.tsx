@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import img from "@/public/slika-counter.png";
+import img from "@/public/counter-bg.jpg";
 import Image from "next/image";
 
-function Counter({ srb }: { srb: boolean }) {
+function Counter({ srb, slo }: { srb?: boolean; slo?: boolean }) {
   const myref = useRef(null);
 
   const [start, setStart] = useState(false);
@@ -52,12 +52,12 @@ function Counter({ srb }: { srb: boolean }) {
 
   return (
     <>
-      <div className="mt-24 relative w-full max-h-[1000px] py-20 md:mt-32 lg:mt-40">
+      <div className="bg-primary mt-24 relative w-full max-h-[1000px] py-20 md:mt-32 lg:mt-40">
         <Image
           src={img}
           alt="image"
           fill
-          className="object-cover rounded-lg"
+          className="object-cover object-[0,-800px] rounded-lg opacity-50"
           placeholder="blur"
           sizes="(max-width:1024px)95vw, 66vw"
         />
@@ -69,7 +69,11 @@ function Counter({ srb }: { srb: boolean }) {
             <p className="font-bold font-raj text-2xl">{experienceCount}+</p>
             <div className="md:basis-14 md:flex md:flex-col md:justify-center">
               <p className="font-semibold text-xl">
-                {srb ? "godina iskustva" : "years of experience"}
+                {slo
+                  ? "let izkušenj"
+                  : srb
+                  ? "godina iskustva"
+                  : "years of experience"}
               </p>
             </div>
           </div>
@@ -77,7 +81,11 @@ function Counter({ srb }: { srb: boolean }) {
             <p className="font-bold font-raj text-2xl">{kmCount}+</p>
             <div className="md:basis-14 md:flex md:flex-col md:justify-center">
               <p className="font-semibold text-xl">
-                {srb ? "kilometara mesečno" : "kilometers/month"}
+                {slo
+                  ? "kilometrov mesečno"
+                  : srb
+                  ? "kilometara mesečno"
+                  : "kilometers/month"}
               </p>
             </div>
           </div>
@@ -85,7 +93,7 @@ function Counter({ srb }: { srb: boolean }) {
             <p className="font-bold font-raj text-2xl">{vehiceleCount}+</p>
             <div className="md:basis-14 md:flex md:flex-col md:justify-center">
               <p className="font-semibold text-xl">
-                {srb ? "vozila" : "vehicles"}
+                {slo ? "vozil" : srb ? "vozila" : "vehicles"}
               </p>
             </div>
           </div>

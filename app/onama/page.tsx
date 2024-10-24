@@ -1,11 +1,9 @@
-import { cookies } from "next/headers";
 import AboutUsNav from "../_components/AboutUsNav";
 import AboutUsText from "../_components/AboutUsText";
 import Header from "../_components/Header";
 import HeadText from "../_components/HeadText";
 import HistoryText from "../_components/HistoryText";
 import QualityText from "../_components/QualityText";
-import { redirect } from "next/navigation";
 import { Suspense } from "react";
 import Spinner from "../_components/Spinner";
 
@@ -25,18 +23,11 @@ export async function generateMetadata({
   }
 }
 
-// export const dynamic = "force-static";
-
 function Page({
   searchParams,
 }: {
   searchParams: { history?: boolean; quality?: boolean };
 }) {
-  const session = cookies().get("jwt")?.value;
-
-  if (!session) {
-    redirect("/login");
-  }
   return (
     <>
       <Header />
@@ -58,7 +49,7 @@ function Page({
           <>
             <HeadText>
               Više od {new Date().getFullYear() - 2001} godina iskustva i više
-              od xxxxxxxxx kilometara godišnje na putu.
+              od 3.500.000 kilometara godišnje na putu.
             </HeadText>
             <HistoryText srb />
           </>
