@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import img from "@/public/counter-bg.jpg";
+import img from "@/public/counter-bg.jpeg";
 import Image from "next/image";
 
 function Counter({ srb, slo }: { srb?: boolean; slo?: boolean }) {

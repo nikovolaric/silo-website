@@ -1,5 +1,5 @@
 import Image from "next/image";
-import img from "@/public/software1.jpg";
+import img from "@/public/software1.jpeg";
 import img2 from "@/public/software2.jpg";
 
 function SoftwareText({ slo, srb }: { slo?: boolean; srb?: boolean }) {
