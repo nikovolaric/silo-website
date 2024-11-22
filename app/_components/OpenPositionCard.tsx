@@ -11,16 +11,20 @@ interface iJob {
   qualifications: string[];
   qualificationsSlo: string[];
   qualificationsSrb: string[];
+  hidden: boolean;
+  _id: string;
 }
 
 function OpenPositionCard({
   srb,
   slo,
   job,
+  prev,
 }: {
   srb?: boolean;
   slo?: boolean;
   job: iJob;
+  prev?: boolean;
 }) {
   const {
     title,
@@ -36,7 +40,11 @@ function OpenPositionCard({
 
   return (
     <div>
-      <div className="flex flex-col mt-7 gap-8 px-4 py-6 bg-neutraltwo rounded-lg shadow-xl md:gap-14 md:py-8 lg:w-5/6 lg:mx-auto xl:w-2/3">
+      <div
+        className={`flex flex-col mt-7 gap-8 px-4 py-6 bg-neutraltwo rounded-lg shadow-xl md:gap-14 md:py-8 ${
+          !prev ? "lg:w-5/6 lg:mx-auto xl:w-2/3" : "w-full"
+        }`}
+      >
         <div className="flex items-center justify-between">
           <BriefcaseIcon className="text-accent h-8" />
           <h4 className="font-bold font-raj text-xl text-primary text-center flex-none w-5/6 md:text-left md:w-11/12">
@@ -100,11 +108,13 @@ function OpenPositionCard({
           )}
         </div>
       </div>
-      <div className="mt-10 text-center">
-        <LinkBtn href="#form" type="primary">
-          {srb ? "Prijavite se sada" : slo ? "Prijavi se zdaj" : "Apply now"}
-        </LinkBtn>
-      </div>
+      {!prev && (
+        <div className="mt-10 text-center">
+          <LinkBtn href="#form" type="primary">
+            {srb ? "Prijavite se sada" : slo ? "Prijavi se zdaj" : "Apply now"}
+          </LinkBtn>
+        </div>
+      )}
     </div>
   );
 }

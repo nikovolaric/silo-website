@@ -1,9 +1,9 @@
 import Header from "@/app/_components/Header";
-import HeadText from "../_components/HeadText";
-import WhatWeOffer from "../_components/WhatWeOffer";
+import HeadText from "@/app/_components/HeadText";
+import WhatWeOffer from "@/app/_components/WhatWeOffer";
 import { Metadata } from "next";
-import OpenPositions from "../_components/OpenPositions";
-import CareerForm from "../_components/CareerForm";
+import OpenPositions from "@/app/_components/OpenPositions";
+import CareerForm from "@/app/_components/CareerForm";
 
 export const metadata: Metadata = {
   title: "Kariera",

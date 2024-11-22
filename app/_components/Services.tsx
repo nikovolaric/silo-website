@@ -188,7 +188,7 @@ function Services({ slo }: { slo?: boolean }) {
       </ServiceCard>
 
       <ServiceCard
-        img="/vakuum-silo.png"
+        img="/vakuum-silo.jpg"
         title={slo ? "Vakuumski silos" : "Vacuum Silo"}
         description={
           slo

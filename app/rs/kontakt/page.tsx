@@ -1,6 +1,6 @@
-import ContactText from "../_components/ContactText";
-import Header from "../_components/Header";
-import HeadText from "../_components/HeadText";
+import ContactText from "@/app/_components/ContactText";
+import Header from "@/app/_components/Header";
+import HeadText from "@/app/_components/HeadText";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

@@ -1,11 +1,11 @@
-import AboutUsNav from "../_components/AboutUsNav";
-import AboutUsText from "../_components/AboutUsText";
-import Header from "../_components/Header";
-import HeadText from "../_components/HeadText";
-import HistoryText from "../_components/HistoryText";
-import QualityText from "../_components/QualityText";
+import AboutUsNav from "@/app/_components/AboutUsNav";
+import AboutUsText from "@/app/_components/AboutUsText";
+import Header from "@/app/_components/Header";
+import HeadText from "@/app/_components/HeadText";
+import HistoryText from "@/app/_components/HistoryText";
+import QualityText from "@/app/_components/QualityText";
 import { Suspense } from "react";
-import Spinner from "../_components/Spinner";
+import Spinner from "@/app/_components/Spinner";
 
 export async function generateMetadata({
   searchParams,
@@ -48,8 +48,8 @@ function Page({
         {searchParams.history && (
           <>
             <HeadText>
-              Više od {new Date().getFullYear() - 2001} godina iskustva i više
-              od 3.500.000 kilometara godišnje na putu.
+              Više od {new Date().getFullYear() - 1998} godina iskustva i više
+              od 6.000.000 kilometara godišnje na putu.
             </HeadText>
             <HistoryText srb />
           </>

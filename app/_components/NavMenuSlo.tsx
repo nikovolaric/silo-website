@@ -33,44 +33,44 @@ function NavMenuSlo() {
         <div>
           <Bars3Icon
             className={`h-8 ${
-              pathname === "/slo" ? "text-white" : "text-primary"
+              pathname === "/si" ? "text-white" : "text-primary"
             } hover:cursor-pointer`}
             onClick={handleClick}
           />
         </div>
         <div
-          className={`absolute top-0 left-0 mx-0 bg-neutraltwo w-dvw z-20 transition-all duration-200 ${
+          className={`absolute left-0 top-0 z-20 mx-0 w-dvw bg-neutraltwo transition-all duration-200 ${
             isOpen ? "h-dvh" : "h-0"
           }`}
         >
           <div className="px-6 py-4">
             {isOpen && (
-              <div className="flex justify-center my-10">
+              <div className="my-10 flex justify-center">
                 <XMarkIcon className="h-8 text-primary" onClick={handleClick} />
               </div>
             )}
             <ul
               className={`flex flex-col items-center ${
                 isOpen ? "h-dvh gap-10" : "h-0 gap-0"
-              } text-center text-primary font-semibold text-2xl font-raj uppercase transition-all delay-50 duration-300`}
+              } delay-50 text-center font-raj text-2xl font-semibold uppercase text-primary transition-all duration-300`}
             >
               <li
                 className={`${pathname === "/si/storitve" ? "font-bold" : ""} ${
-                  isOpen ? "h-6" : "h-0 hidden"
+                  isOpen ? "h-6" : "hidden h-0"
                 }`}
               >
                 <Link href="/si/storitve">Storitve</Link>
               </li>
               <li
                 className={`${pathname === "/si/onas" ? "font-bold" : ""} ${
-                  isOpen ? "h-6" : "h-0 hidden"
+                  isOpen ? "h-6" : "hidden h-0"
                 }`}
               >
                 <Link href="/si/onas">O nas</Link>
               </li>
               <li
                 className={`${pathname === "/si/trajnost" ? "font-bold" : ""} ${
-                  isOpen ? "h-6" : "h-0 hidden"
+                  isOpen ? "h-6" : "hidden h-0"
                 }`}
               >
                 <Link href="/si/trajnost">Trajnost</Link>
@@ -78,37 +78,37 @@ function NavMenuSlo() {
               <li
                 className={`${
                   pathname === "/si/zaposlitev" ? "font-bold" : ""
-                } ${isOpen ? "h-6" : "h-0 hidden"}`}
+                } ${isOpen ? "h-6" : "hidden h-0"}`}
               >
                 <Link href="/si/zaposlitev">Zaposlitev</Link>
               </li>
-              <li className={`${isOpen ? "h-6" : "h-0 hidden"}`}>
+              <li className={`${isOpen ? "h-6" : "hidden h-0"}`}>
                 <Link
                   href="/si/kontakt"
                   className={`${
                     pathname === "/si/kontakt" ? "font-bold" : ""
-                  } bg-accent text-white py-1.5 px-6 rounded-full shadow-lg`}
+                  } rounded-full bg-accent px-6 py-1.5 text-white shadow-lg`}
                 >
                   Kontakt
                 </Link>
               </li>
-              <li className={`${isOpen ? "h-6" : "h-0 hidden"} flex gap-1`}>
-                <Link href="/en">
+              <li className={`${isOpen ? "h-6" : "hidden h-0"} flex gap-8`}>
+                <Link href="/">
                   <Image
                     src="https://flagicons.lipis.dev/flags/4x3/gb.svg"
                     alt="gb-flag"
                     height={18}
                     width={24}
-                    className="object-contain rounded-sm"
+                    className="rounded-sm object-contain"
                   />
                 </Link>
-                <Link href="/">
+                <Link href="/rs">
                   <Image
                     src="https://flagicons.lipis.dev/flags/4x3/rs.svg"
                     alt="gb-flag"
                     height={18}
                     width={24}
-                    className="object-contain rounded-sm"
+                    className="rounded-sm object-contain"
                   />
                 </Link>
               </li>
@@ -120,13 +120,13 @@ function NavMenuSlo() {
         <ul
           className={`${
             pathname === "/si" ? "text-white" : "text-primary"
-          } font-raj flex items-center gap-8 text-lg font-semibold uppercase`}
+          } flex items-center gap-8 font-raj text-lg font-semibold uppercase`}
         >
           <li
             className={`w-fit ${
               pathname === "/si/storitve"
                 ? "font-bold"
-                : "hover:font-bold transition-[font] duration-200"
+                : "transition-[font] duration-200 hover:font-bold"
             }`}
           >
             <Link href="/si/storitve">Storitve</Link>
@@ -135,7 +135,7 @@ function NavMenuSlo() {
             className={`w-fit ${
               pathname === "/si/onas"
                 ? "font-bold"
-                : "hover:font-bold transition-[font] duration-200"
+                : "transition-[font] duration-200 hover:font-bold"
             }`}
           >
             <Link href="/si/onas">O nas</Link>
@@ -144,7 +144,7 @@ function NavMenuSlo() {
             className={`w-20 text-center ${
               pathname === "/si/trajnost"
                 ? "font-bold"
-                : "hover:font-bold transition-[font] duration-200"
+                : "transition-[font] duration-200 hover:font-bold"
             }`}
           >
             <Link href="/si/trajnost">Trajnost</Link>
@@ -153,7 +153,7 @@ function NavMenuSlo() {
             className={`w-20 text-center ${
               pathname === "/si/zaposlitev"
                 ? "font-bold"
-                : "hover:font-bold transition-[font] duration-200"
+                : "transition-[font] duration-200 hover:font-bold"
             }`}
           >
             <Link href="/si/zaposlitev">Zaposlitev</Link>
@@ -163,30 +163,30 @@ function NavMenuSlo() {
               href="/si/kontakt"
               className={`${
                 pathname === "/si/kontakt"
-                  ? "bg-white text-primary font-bold"
+                  ? "bg-white font-bold text-primary"
                   : "bg-accent text-white"
-              } py-1 px-5 rounded-full shadow-lg lg:hover:bg-white lg:hover:text-primary transition-colors duration-300`}
+              } rounded-full px-5 py-1 shadow-lg transition-colors duration-300 lg:hover:bg-white lg:hover:text-primary`}
             >
               Kontakt
             </Link>
           </li>
           <li className="flex gap-1">
-            <Link href="/en">
+            <Link href="/">
               <Image
                 src="https://flagicons.lipis.dev/flags/4x3/gb.svg"
                 alt="gb-flag"
                 height={15}
                 width={20}
-                className="object-contain rounded-sm"
+                className="rounded-sm object-contain"
               />
             </Link>
-            <Link href="/">
+            <Link href="/rs">
               <Image
                 src="https://flagicons.lipis.dev/flags/4x3/rs.svg"
                 alt="gb-flag"
                 height={15}
                 width={20}
-                className="object-contain rounded-sm"
+                className="rounded-sm object-contain"
               />
             </Link>
           </li>

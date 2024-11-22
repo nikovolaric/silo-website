@@ -13,6 +13,20 @@ export const metadata: Metadata = {
   title: "Delovna mesta",
 };
 
+interface iJob {
+  title: string;
+  titleSlo: string;
+  titleSrb: string;
+  responsibilities: string[];
+  responsibilitiesSlo: string[];
+  responsibilitiesSrb: string[];
+  qualifications: string[];
+  qualificationsSlo: string[];
+  qualificationsSrb: string[];
+  hidden: boolean;
+  _id: string;
+}
+
 async function Page() {
   const session = cookies().get("jwt")?.value as string;
   if (!session) {
@@ -57,11 +71,9 @@ async function Page() {
       <h2 className="py-10 text-center text-2xl">Delovna mesta</h2>
       <div className="flex flex-col">
         <Suspense fallback={<Spinner />}>
-          {jobs.map(
-            (job: { _id: string; titleSrb: string; hidden: boolean }) => (
-              <DashboardJobCard key={job._id} job={job} />
-            )
-          )}
+          {jobs.map((job: iJob) => (
+            <DashboardJobCard key={job._id} job={job} />
+          ))}
         </Suspense>
       </div>
       <Link

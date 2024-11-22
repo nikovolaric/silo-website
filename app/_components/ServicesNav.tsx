@@ -21,7 +21,7 @@ function ServicesNav({
               ? "border-2 border-primary px-3 py-1 rounded-full text-primary"
               : "text-primary/50"
           } font-medium`}
-          href={srb ? "/usluge" : slo ? "/si/storitve" : "/en/services"}
+          href={srb ? "/rs/usluge" : slo ? "/si/storitve" : "/services"}
           replace={true}
           scroll={false}
         >
@@ -36,13 +36,13 @@ function ServicesNav({
               : "text-primary/50"
           } font-medium`}
           href={{
-            pathname: srb ? "/usluge" : slo ? "/si/storitve" : "/en/services",
+            pathname: srb ? "/rs/usluge" : slo ? "/si/storitve" : "/services",
             query: { suppliers: "true" },
           }}
           replace={true}
           scroll={false}
         >
-          {srb ? "Dobavljaći" : slo ? "Dobavitelji" : "Suppliers"}
+          {srb ? "Dobavljači" : slo ? "Dobavitelji" : "Suppliers"}
         </Link>
       </li>
       <li>
@@ -53,7 +53,7 @@ function ServicesNav({
               : "text-primary/50"
           } font-medium`}
           href={{
-            pathname: srb ? "/usluge" : slo ? "/si/storitve" : "/en/services",
+            pathname: srb ? "/rs/usluge" : slo ? "/si/storitve" : "/services",
             query: { software: "true" },
           }}
           replace={true}

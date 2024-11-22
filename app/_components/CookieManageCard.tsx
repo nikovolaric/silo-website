@@ -26,7 +26,6 @@ function CookieManageCard({
   ga?: string;
   tp?: string;
 }) {
-  console.log(ga);
   return (
     <div className="absolute w-5/6 left-[8%] -mt-56 text-left py-6 px-3 bg-white border shadow-2xl border-primary rounded-lg flex flex-col gap-6 md:w-1/2 md:left-1/4 lg:w-1/3 lg:left-1/3">
       <XMarkIcon

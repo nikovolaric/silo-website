@@ -33,73 +33,73 @@ function NavMenu() {
         <div>
           <Bars3Icon
             className={`h-8 ${
-              pathname === "/en" ? "text-white" : "text-primary"
+              pathname === "/" ? "text-white" : "text-primary"
             } hover:cursor-pointer`}
             onClick={handleClick}
           />
         </div>
         <div
-          className={`absolute top-0 right-0 bg-neutraltwo w-dvw z-20 transition-all duration-200 ${
+          className={`absolute right-0 top-0 z-20 w-dvw bg-neutraltwo transition-all duration-200 ${
             isOpen ? "h-dvh" : "h-0"
           }`}
         >
           <div className="px-6 py-4">
             {isOpen && (
-              <div className="flex justify-center my-10">
+              <div className="my-10 flex justify-center">
                 <XMarkIcon className="h-8 text-primary" onClick={handleClick} />
               </div>
             )}
             <ul
               className={`flex flex-col items-center ${
                 isOpen ? "h-dvh gap-10" : "h-0 gap-0"
-              } text-center text-primary font-semibold text-2xl font-raj uppercase transition-all delay-50 duration-300`}
+              } delay-50 text-center font-raj text-2xl font-semibold uppercase text-primary transition-all duration-300`}
             >
               <li
-                className={`${pathname === "/en/services" ? "font-bold" : ""} ${
-                  isOpen ? "h-6" : "h-0 hidden"
+                className={`${pathname === "/services" ? "font-bold" : ""} ${
+                  isOpen ? "h-6" : "hidden h-0"
                 }`}
               >
-                <Link href="/en/services">Services</Link>
+                <Link href="/services">Services</Link>
               </li>
               <li
-                className={`${pathname === "/en/aboutus" ? "font-bold" : ""} ${
-                  isOpen ? "h-6" : "h-0 hidden"
+                className={`${pathname === "/aboutus" ? "font-bold" : ""} ${
+                  isOpen ? "h-6" : "hidden h-0"
                 }`}
               >
-                <Link href="/en/aboutus">About us</Link>
+                <Link href="/aboutus">About us</Link>
               </li>
               <li
                 className={`${
-                  pathname === "/en/sustainability" ? "font-bold" : ""
-                } ${isOpen ? "h-6" : "h-0 hidden"}`}
+                  pathname === "/sustainability" ? "font-bold" : ""
+                } ${isOpen ? "h-6" : "hidden h-0"}`}
               >
-                <Link href="/en/sustainability">Sustainability</Link>
+                <Link href="/sustainability">Sustainability</Link>
               </li>
               <li
-                className={`${pathname === "/en/career" ? "font-bold" : ""} ${
-                  isOpen ? "h-6" : "h-0 hidden"
+                className={`${pathname === "/career" ? "font-bold" : ""} ${
+                  isOpen ? "h-6" : "hidden h-0"
                 }`}
               >
-                <Link href="/en/career">career</Link>
+                <Link href="/career">career</Link>
               </li>
-              <li className={`${isOpen ? "h-6" : "h-0 hidden"}`}>
+              <li className={`${isOpen ? "h-6" : "hidden h-0"}`}>
                 <Link
-                  href="/en/contact"
+                  href="/contact"
                   className={`${
                     pathname === "/contact" ? "font-bold" : ""
-                  } bg-accent text-white py-1.5 px-6 rounded-full shadow-lg`}
+                  } rounded-full bg-accent px-6 py-1.5 text-white shadow-lg`}
                 >
-                  Kontakt
+                  Contact
                 </Link>
               </li>
-              <li className={`${isOpen ? "h-6" : "h-0 hidden"} flex gap-1`}>
-                <Link href="/">
+              <li className={`${isOpen ? "h-6" : "hidden h-0"} flex gap-8`}>
+                <Link href="/rs">
                   <Image
                     src="https://flagicons.lipis.dev/flags/4x3/rs.svg"
                     alt="gb-flag"
                     height={18}
                     width={24}
-                    className="object-contain rounded-sm"
+                    className="rounded-sm object-contain"
                   />
                 </Link>
                 <Link href="/si">
@@ -108,7 +108,7 @@ function NavMenu() {
                     alt="slo-flag"
                     height={18}
                     width={24}
-                    className="object-contain rounded-sm"
+                    className="rounded-sm object-contain"
                   />
                 </Link>
               </li>
@@ -119,65 +119,65 @@ function NavMenu() {
       <div className="hidden lg:block">
         <ul
           className={`${
-            pathname === "/en" ? "text-white" : "text-primary"
-          } font-raj flex items-center gap-8 text-lg font-semibold uppercase`}
+            pathname === "/" ? "text-white" : "text-primary"
+          } flex items-center gap-8 font-raj text-lg font-semibold uppercase`}
         >
           <li
             className={`w-fit ${
-              pathname === "/en/services"
+              pathname === "/services"
                 ? "font-bold"
-                : "hover:font-bold transition-[font] duration-200"
+                : "transition-[font] duration-200 hover:font-bold"
             }`}
           >
-            <Link href="/en/services">Services</Link>
+            <Link href="/services">Services</Link>
           </li>
           <li
             className={`w-fit ${
-              pathname === "/en/aboutus"
+              pathname === "/aboutus"
                 ? "font-bold"
-                : "hover:font-bold transition-[font] duration-200"
+                : "transition-[font] duration-200 hover:font-bold"
             }`}
           >
-            <Link href="/en/aboutus">About us</Link>
+            <Link href="/aboutus">About us</Link>
           </li>
           <li
             className={`w-28 text-center ${
-              pathname === "/en/sustainability"
+              pathname === "/sustainability"
                 ? "font-bold"
-                : "hover:font-bold transition-[font] duration-200"
+                : "transition-[font] duration-200 hover:font-bold"
             }`}
           >
-            <Link href="/en/sustainability">Sustainability</Link>
+            <Link href="/sustainability">Sustainability</Link>
           </li>
           <li
             className={`w-20 text-center ${
-              pathname === "/en/career"
+              pathname === "/career"
                 ? "font-bold"
-                : "hover:font-bold transition-[font] duration-200"
+                : "transition-[font] duration-200 hover:font-bold"
             }`}
           >
-            <Link href="/en/career">career</Link>
+            <Link href="/career">career</Link>
           </li>
           <li>
             <Link
-              href="/en/contact"
+              href="/contact"
               className={`${
-                pathname === "/en/contact"
-                  ? "bg-white text-primary font-bold"
+                pathname === "/contact"
+                  ? "bg-white font-bold text-primary"
                   : "bg-accent text-white"
-              } py-1 px-5 rounded-full shadow-lg lg:hover:bg-white lg:hover:text-primary transition-colors duration-300`}
+              } rounded-full px-5 py-1 shadow-lg transition-colors duration-300 lg:hover:bg-white lg:hover:text-primary`}
             >
               Contact
             </Link>
           </li>
           <li className="flex gap-1">
-            <Link href="/">
+            <Link href="/rs">
               <Image
                 src="https://flagicons.lipis.dev/flags/4x3/rs.svg"
                 alt="gb-flag"
                 height={15}
                 width={20}
-                className="object-contain rounded-sm"
+                className="rounded-sm object-contain"
               />
             </Link>
             <Link href="/si">
@@ -186,7 +186,7 @@ function NavMenu() {
                 alt="slo-flag"
                 height={15}
                 width={20}
-                className="object-contain rounded-sm"
+                className="rounded-sm object-contain"
               />
             </Link>
           </li>

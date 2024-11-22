@@ -4,7 +4,7 @@ import Header from "@/app/_components_en/Header";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Kontakt",
+  title: "Contact",
 };
 
 export const dynamic = "force-dynamic";

@@ -25,6 +25,7 @@ function HomeServiceCard({
           fill
           sizes="(max-width:768px) 95vw,50vw"
           className="object-cover rounded-lg"
+          quality={30}
         />
       </div>
       <div

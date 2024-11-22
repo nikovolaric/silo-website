@@ -110,10 +110,15 @@ export async function createDownload(formData: FormData) {
   });
 
   revalidatePath("/dashboard/downloads");
-  revalidatePath("/onama");
-  revalidatePath("/en/aboutus");
-  revalidatePath("/usluge");
-  revalidatePath("/en/services");
+  revalidatePath("/rs/onama");
+  revalidatePath("/si/onas");
+  revalidatePath("/aboutus");
+  revalidatePath("/rs/usluge");
+  revalidatePath("/si/storitve");
+  revalidatePath("/services");
+  revalidatePath("/sustainability");
+  revalidatePath("/rs/odrzivost");
+  revalidatePath("/si/trajnost");
 
   redirect("/dashboard/downloads");
 }
@@ -143,10 +148,15 @@ export async function editDownload(formData: FormData, id: string) {
 
   revalidatePath("/dashboard/downloads");
   revalidatePath(`/dashboard/downloads/${id}`);
-  revalidatePath("/onama");
-  revalidatePath("/en/aboutus");
-  revalidatePath("/usluge");
-  revalidatePath("/en/services");
+  revalidatePath("/rs/onama");
+  revalidatePath("/si/onas");
+  revalidatePath("/aboutus");
+  revalidatePath("/rs/usluge");
+  revalidatePath("/si/storitve");
+  revalidatePath("/services");
+  revalidatePath("/sustainability");
+  revalidatePath("/rs/odrzivost");
+  revalidatePath("/si/trajnost");
 
   redirect("/dashboard/downloads");
 }
@@ -170,8 +180,15 @@ export async function deleteDownload(id: string) {
   });
 
   revalidatePath("/dashboard/downloads");
-  revalidatePath("/onama");
-  revalidatePath("/en/aboutus");
+  revalidatePath("/rs/onama");
+  revalidatePath("/si/onas");
+  revalidatePath("/aboutus");
+  revalidatePath("/rs/usluge");
+  revalidatePath("/si/storitve");
+  revalidatePath("/services");
+  revalidatePath("/sustainability");
+  revalidatePath("/rs/odrzivost");
+  revalidatePath("/si/trajnost");
 
   redirect("/dashboard/downloads");
 }
@@ -362,9 +379,9 @@ export async function addJob(formData: FormData) {
     body: JSON.stringify(job),
   });
 
-  revalidatePath("/kariera");
+  revalidatePath("/rs/kariera");
   revalidatePath("/si/zaposlitev");
-  revalidatePath("/en/career");
+  revalidatePath("/career");
   revalidatePath("/dashboard/kariera");
 
   redirect("/dashboard/kariera");
@@ -403,9 +420,9 @@ export async function updateJob(formData: FormData, id: string) {
     body: JSON.stringify(job),
   });
 
-  revalidatePath("/kariera");
+  revalidatePath("/rs/kariera");
   revalidatePath("/si/zaposlitev");
-  revalidatePath("/en/career");
+  revalidatePath("/career");
   revalidatePath("/dashboard/kariera");
 
   redirect("/dashboard/kariera");
@@ -428,9 +445,9 @@ export async function deleteJob(id: string) {
   });
 
   revalidatePath("/dashboard/kariera");
-  revalidatePath("/kariera");
+  revalidatePath("/rs/kariera");
   revalidatePath("/si/zaposlitev");
-  revalidatePath("/en/career");
+  revalidatePath("/career");
 
   redirect("/dashboard/kariera");
 }
@@ -457,9 +474,9 @@ export async function addToCareer(id: string) {
   });
 
   revalidatePath("/dashboard/kariera");
-  revalidatePath("/kariera");
+  revalidatePath("/rs/kariera");
   revalidatePath("/si/zaposlitev");
-  revalidatePath("/en/career");
+  revalidatePath("/career");
 
   redirect("/dashboard/kariera");
 }
@@ -486,9 +503,9 @@ export async function hideFromCareer(id: string) {
   });
 
   revalidatePath("/dashboard/kariera");
-  revalidatePath("/kariera");
+  revalidatePath("/rs/kariera");
   revalidatePath("/si/zaposlitev");
-  revalidatePath("/en/career");
+  revalidatePath("/career");
 
   redirect("/dashboard/kariera");
 }

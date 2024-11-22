@@ -47,8 +47,8 @@ function Page({
         {searchParams.history && (
           <>
             <HeadText>
-              More than {new Date().getFullYear() - 2001} years of experience,
-              and more than 3500000 kilometers per year on the road.
+              More than {new Date().getFullYear() - 1998} years of experience,
+              and more than 6.000.000 kilometers per year on the road.
             </HeadText>
             <HistoryText />
           </>

@@ -89,13 +89,13 @@ async function AboutUsText({ slo, srb }: { slo?: boolean; srb?: boolean }) {
       <WhyUs slo={slo} srb={srb} />
       <div className="flex gap-5 justify-center">
         <LinkBtn
-          href={slo ? "/si/kontakt" : srb ? "/kontakt" : "/en/contact"}
+          href={slo ? "/si/kontakt" : srb ? "/rs/kontakt" : "/contact"}
           type="secondary"
         >
           {slo ? "Kontakt" : srb ? "Kontakt" : "Contact"}
         </LinkBtn>
         <LinkBtn
-          href={slo ? "/si/zaposlitev" : srb ? "/kariera" : "/en/career"}
+          href={slo ? "/si/zaposlitev" : srb ? "/rs/kariera" : "/career"}
           type="primary"
         >
           {slo ? "Zaposlitev" : srb ? "Kariera" : "Career"}

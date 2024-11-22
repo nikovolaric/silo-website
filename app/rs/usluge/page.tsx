@@ -1,14 +1,14 @@
-import Header from "../_components/Header";
-import ServicesNav from "../_components/ServicesNav";
-import HeadText from "../_components/HeadText";
-import Services from "../_components/Services";
-import ServiceText from "../_components/ServiceText";
-import ContactForm from "../_components/ContactForm";
-import SuppliersText from "../_components/SuppliersText";
-import SoftwareText from "../_components/SoftwareText";
+import Header from "@/app/_components/Header";
+import ServicesNav from "@/app/_components/ServicesNav";
+import HeadText from "@/app/_components/HeadText";
+import Services from "@/app/_components/Services";
+import ServiceText from "@/app/_components/ServiceText";
+import ContactForm from "@/app/_components/ContactForm";
+import SuppliersText from "@/app/_components/SuppliersText";
+import SoftwareText from "@/app/_components/SoftwareText";
 import { Suspense } from "react";
-import Spinner from "../_components/Spinner";
-import BigBagComparison from "../_components/BigBagComparison";
+import Spinner from "@/app/_components/Spinner";
+import BigBagComparison from "@/app/_components/BigBagComparison";
 
 export async function generateMetadata({
   searchParams,

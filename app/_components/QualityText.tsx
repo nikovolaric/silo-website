@@ -75,14 +75,14 @@ function QualityText({ srb, slo }: { srb?: boolean; slo?: boolean }) {
       </div>
       <div className="mt-24 flex justify-center gap-5 lg:mt-36">
         <LinkBtn
-          href={srb ? "/kontakt" : slo ? "/si/kontakt" : "/en/contact"}
+          href={srb ? "/rs/kontakt" : slo ? "/si/kontakt" : "/contact"}
           type="secondary"
         >
           {srb ? "Kontakt" : slo ? "Kontakt" : "Contact"}
         </LinkBtn>
         <LinkBtn
           href={
-            srb ? "/odrzivost" : slo ? "/si/trajnost" : "/en/sustainability"
+            srb ? "/rs/odrzivost" : slo ? "/si/trajnost" : "/sustainability"
           }
           type="primary"
         >

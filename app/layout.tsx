@@ -18,10 +18,10 @@ const raj = Rajdhani({
 export const metadata: Metadata = {
   title: {
     template: "%s | Silo Jeličić d.o.o.",
-    default: "Dobrodošli | Silo Jeličić d.o.o.",
+    default: "Welcome | Silo Jeličić d.o.o.",
   },
   description:
-    "Transportna kompanija Silo Jeličić d.o.o. je vodeći drumski prevoznik suvih materijala u rasutom stanju.",
+    "We are leading dry bulk transporter dedicated to needs of our partners since 2001.",
 };
 
 export default function RootLayout({

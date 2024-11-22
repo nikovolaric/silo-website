@@ -8,29 +8,29 @@ import LinkBtn from "../_components/LinkBtn";
 function HomeHeader() {
   return (
     <header>
-      <div className="relative w-full h-[600px] 2xl:h-[700px] bg-primary">
+      <div className="relative h-[600px] w-full bg-primary 2xl:h-[700px]">
         <Image
           src={bg}
           alt="background photo"
           fill
-          className="object-cover opacity-60 "
+          className="object-cover opacity-60"
           placeholder="blur"
+          quality={50}
+          sizes="100vw"
+          priority
         />
-        <div className="relative flex items-center justify-between px-4 pt-6 md:px-8 lg:mx-20 xl:mx-auto xl:px-20 max-w-7xl">
-          <Link
-            href="/en"
-            className="relative h-5 w-24 md:h-7 md:w-32 lg:h-8 lg:w-36"
-          >
+        <div className="relative flex max-w-7xl items-center justify-between px-4 pt-6 md:px-8 lg:mx-20 xl:mx-auto xl:px-20">
+          <Link href="/" className="relative h-7 w-32 lg:h-8 lg:w-36">
             <Image src={logo} alt="logo" fill sizes="30vw" />
           </Link>
           <NavMenu />
         </div>
 
-        <div className="flex justify-between md:mx-8 lg:mx-20 xl:mx-auto xl:px-20 max-w-7xl">
+        <div className="flex max-w-7xl justify-between md:mx-8 lg:mx-20 xl:mx-auto xl:px-20">
           <div></div>
-          <div className="relative bg-neutraltwo/55 ml-4 rounded-s-lg flex flex-col gap-12 p-4 mt-56 md:rounded-lg md:flex-none md:w-2/3 md:self-end md:p-5 lg:w-1/2 xl:w-5/12 2xl:mt-64">
+          <div className="relative ml-4 mt-56 flex flex-col gap-12 rounded-s-lg bg-neutraltwo/55 p-4 md:w-2/3 md:flex-none md:self-end md:rounded-lg md:p-5 lg:w-1/2 xl:w-5/12 2xl:mt-64">
             <div className="text-primary">
-              <p className="font-raj font-semibold text-2xl">
+              <p className="font-raj text-2xl font-semibold">
                 Reliable, efficient and safe transport tailored
                 <span className="font-bold"> to your needs.</span>
               </p>
@@ -40,10 +40,10 @@ function HomeHeader() {
               </p>
             </div>
             <div className="relative flex justify-center gap-4 md:gap-5">
-              <LinkBtn type="primary" href="/en/aboutus">
+              <LinkBtn type="primary" href="/aboutus">
                 About us
               </LinkBtn>
-              <LinkBtn type="secondary" href="/en/services">
+              <LinkBtn type="secondary" href="/services">
                 Our services
               </LinkBtn>
             </div>

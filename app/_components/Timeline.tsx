@@ -38,7 +38,7 @@ function Timeline({ slo, srb }: { slo?: boolean; srb?: boolean }) {
       </TimelineListItem>
       <TimelineListItem>
         <div>
-          <p className="text-primary font-bold font-raj not-italic">2006</p>
+          <p className="text-primary font-bold font-raj not-italic">2004</p>
         </div>
         <p>
           {slo
@@ -90,10 +90,10 @@ function Timeline({ slo, srb }: { slo?: boolean; srb?: boolean }) {
         </div>
         <p>
           {slo
-            ? "ustanovimo podružnico v EU in s tem pridobimo enakopraven položaj z drugimi evropskimi prevozniki, kar omogoča uporabo prednosti enotnega trga EU."
+            ? "ustanovimo podružnico v EU in s tem pridobimo enakopraven položaj z drugimi evropskimi prevozniki, kar omogoča uporabo prednosti enotnega trga EU. Prav tako smo prejeli certifikata za ISO 9001 in HACCP"
             : srb
-            ? "osnivamo ogranak u EU. Ovim se stavljamo u ravnopravan položaj sa ostalim evropskim prevoznicima koristeći sve prednosti jedinstvenog EU tržišta."
-            : "we establish our EU branch. Thus we step up to the equal position with other European bulk transporters and we take all opportunities of EU market."}
+            ? "osnivamo ogranak u EU. Ovim se stavljamo u ravnopravan položaj sa ostalim evropskim prevoznicima koristeći sve prednosti jedinstvenog EU tržišta. Takođe smo dobili sertifikate za ISO 9001 i HACCP."
+            : "we establish our EU branch. Thus we step up to the equal position with other European bulk transporters and we take all opportunities of EU market. We also got certified for ISO 9001 and HACCP."}
         </p>
         <div className="relative h-44 w-full mt-6 md:w-2/3 md:h-52 lg:w-1/2">
           <Image
@@ -185,6 +185,18 @@ function Timeline({ slo, srb }: { slo?: boolean; srb?: boolean }) {
             sizes="(max-width:768px)80vw,(max-width:1024px):50vw,30vw"
           />
         </div>
+      </TimelineListItem>
+      <TimelineListItem>
+        <div>
+          <p className="text-primary font-bold font-raj not-italic">2023</p>
+        </div>
+        <p>
+          {slo
+            ? "Ecovadis presoja."
+            : srb
+            ? "Ecovadis procena."
+            : "Ecovadis assesment."}
+        </p>
       </TimelineListItem>
     </ul>
   );

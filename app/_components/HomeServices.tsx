@@ -48,7 +48,7 @@ function HomeServices({ srb, slo }: { srb?: boolean; slo?: boolean }) {
         </HomeServiceCard>
         <HomeServiceCard
           title={slo ? "Vakuum silos" : srb ? "Vakuum silo" : "Vacuum silo"}
-          img="/vakuum-silo.png"
+          img="/vakuum-silo.jpg"
           left={false}
         >
           {slo
@@ -61,7 +61,7 @@ function HomeServices({ srb, slo }: { srb?: boolean; slo?: boolean }) {
       <div className="text-center mt-20 md:mt-24">
         <LinkBtn
           type="primary"
-          href={srb ? "/usluge" : slo ? "/si/storitve" : "/en/services"}
+          href={srb ? "/rs/usluge" : slo ? "/si/storitve" : "/services"}
         >
           {slo
             ? "Več o storitvah"

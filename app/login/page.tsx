@@ -13,7 +13,6 @@ export const dynamic = "force-dynamic";
 
 async function Page() {
   const session = cookies().get("jwt")?.value;
-  console.log(session);
   if (session) {
     const { id: userId }: { id: string } = await jwtDecode(session);
     const user = await User.findById(userId);

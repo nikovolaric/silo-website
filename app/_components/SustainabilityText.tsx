@@ -118,8 +118,8 @@ function SustainabilityText({ srb, slo }: { srb?: boolean; slo?: boolean }) {
             slo
               ? "/si/onas?quality=true"
               : srb
-              ? "/onama?quality=true"
-              : "/en/aboutus?quality=true"
+              ? "/rs/onama?quality=true"
+              : "/aboutus?quality=true"
           }
           type="primary"
         >

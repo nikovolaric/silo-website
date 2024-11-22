@@ -1,7 +1,7 @@
-import Header from "../_components/Header";
+import Header from "@/app/_components/Header";
 import { Metadata } from "next";
-import HeadText from "../_components/HeadText";
-import SustainabilityText from "../_components/SustainabilityText";
+import HeadText from "@/app/_components/HeadText";
+import SustainabilityText from "@/app/_components/SustainabilityText";
 
 export const metadata: Metadata = {
   title: "Održivost",

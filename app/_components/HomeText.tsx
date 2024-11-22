@@ -12,6 +12,7 @@ function HomeText({ srb, slo }: { srb?: boolean; slo?: boolean }) {
           placeholder="blur"
           className="object-cover rounded-lg"
           sizes="(max-width:768px)95vw,50vw"
+          quality={50}
         />
       </div>
       <h3 className="font-raj font-bold text-2xl text-primary lg:col-start-1 lg:row-start-1 lg:col-span-2">

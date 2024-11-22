@@ -47,8 +47,8 @@ function Page({
         {searchParams.history && (
           <>
             <HeadText>
-              Več kot {new Date().getFullYear() - 2001} let izkušenj in več kot
-              3.500.000 kilometrov na cesti letno.
+              Več kot {new Date().getFullYear() - 1998} let izkušenj in več kot
+              6.000.000 kilometrov na cesti letno.
             </HeadText>
             <HistoryText slo />
           </>

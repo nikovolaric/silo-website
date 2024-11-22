@@ -1,35 +1,36 @@
+import HomeHeader from "@/app/_components_en/HomeHeader";
+import WhySilo from "@/app/_components/WhySilo";
+import Counter from "@/app/_components/Counter";
+import ContactForm from "@/app/_components/ContactForm";
+import HomeServices from "@/app/_components/HomeServices";
+import HomeText from "@/app/_components/HomeText";
+import CookiesFirstPage from "@/app/_components/CookiesFirstPage";
 import { cookies } from "next/headers";
-import ContactForm from "./_components/ContactForm";
-import CookiesFirstPage from "./_components/CookiesFirstPage";
-import Counter from "./_components/Counter";
-import HomeHeader from "./_components/HomeHeader";
-import HomeServices from "./_components/HomeServices";
-import HomeText from "./_components/HomeText";
-import WhySilo from "./_components/WhySilo";
 
 function Page() {
   const cookie = cookies().get("analyticsConsent");
+
   return (
     <>
       <HomeHeader />
       <main>
         <div className="mx-4 md:mx-8 lg:mx-20 xl:px-20 xl:mx-auto max-w-7xl">
-          <HomeServices srb />
+          <HomeServices />
           <WhySilo
-            srb
-            one="Vrhunska tehnologija"
-            two="Integrisana softverska rešenja"
-            three="Potvđen kvalitet"
-            four="Iskusni i obučeni vozači"
+            srb={false}
+            one="Top Technology"
+            two="Integrated Software Solutions"
+            three="Confirmed Quality"
+            four="Experienced and Trained Driving Crew"
           />
-          <HomeText srb />
+          <HomeText />
         </div>
-        <Counter srb />
+        <Counter srb={false} />
         <div className="mx-4 md:mx-8 lg:mx-20 xl:px-20 xl:mx-auto max-w-7xl">
-          <ContactForm srb={true} />
+          <ContactForm srb={false} />
         </div>
       </main>
-      {!cookie && <CookiesFirstPage srb />}
+      {!cookie && <CookiesFirstPage />}
     </>
   );
 }

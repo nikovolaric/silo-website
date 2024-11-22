@@ -45,7 +45,7 @@ function CookiesFirstPage({ srb, slo }: { srb?: boolean; slo?: boolean }) {
               ? "Za podešavanja i više informacija pratite "
               : "For Settings and more information, please follow the "}
             <Link
-              href={slo ? "/si/piskotki" : srb ? "/kolacici" : "/en/cookies"}
+              href={slo ? "/si/piskotki" : srb ? "/rs/kolacici" : "/cookies"}
               className="underline"
             >
               {slo ? "povezavi." : srb ? "vezu." : "link."}

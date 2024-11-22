@@ -188,10 +188,10 @@ function DashboardEditJobForm({
 
         <div>
           <Link
-            href="/dashboard/downloads"
+            href="/dashboard/kariera"
             className="mt-4 rounded-md border-2 px-2 py-1 text-primary transition-colors duration-300 hover:bg-primary hover:text-white"
           >
-            &larr; Downloadi
+            &larr; Delovna mesta
           </Link>
         </div>
       </div>

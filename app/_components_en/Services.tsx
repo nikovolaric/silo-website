@@ -118,7 +118,7 @@ function Services() {
         </div>
       </ServiceCard>
       <ServiceCard
-        img="/vakuum-silo.png"
+        img="/vakuum-silo.jpg"
         description="Our Vacuum silos is at your disposal for suction cleaning, transferring and blow-drying of all types of dry bulk materials anywhere in Europe."
         title="Vacuum Silo"
         left

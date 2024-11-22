@@ -39,7 +39,7 @@ const jobSchema = new Schema({
   },
   hidden: {
     type: Boolean,
-    default: false,
+    default: true,
   },
 });
 

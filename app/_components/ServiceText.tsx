@@ -123,10 +123,10 @@ function ServiceText({ srb, slo }: { srb?: boolean; slo?: boolean }) {
           type="secondary"
           href={
             slo
-              ? "/si/onas?quality=true"
+              ? "/rs/onas?quality=true"
               : srb
               ? "/onama?quality=true"
-              : "/en/aboutus?quality=true"
+              : "/aboutus?quality=true"
           }
         >
           {slo
@@ -137,7 +137,7 @@ function ServiceText({ srb, slo }: { srb?: boolean; slo?: boolean }) {
         </LinkBtn>
         <LinkBtn
           type="primary"
-          href={slo ? "/si/zaposlitev" : srb ? "/kariera" : "/en/career"}
+          href={slo ? "/si/zaposlitev" : srb ? "/rs/kariera" : "/career"}
         >
           {slo ? "Zaposlitev" : srb ? "Kariera" : "Career"}
         </LinkBtn>

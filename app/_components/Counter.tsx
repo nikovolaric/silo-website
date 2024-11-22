@@ -9,7 +9,7 @@ function Counter({ srb, slo }: { srb?: boolean; slo?: boolean }) {
 
   const [start, setStart] = useState(false);
   const [experienceCount, setExperienceCount] = useState(0);
-  const [kmCount, setKmCount] = useState(299950);
+  const [kmCount, setKmCount] = useState(499950);
   const [vehiceleCount, SetVehicleCount] = useState(100);
 
   useEffect(
@@ -23,7 +23,7 @@ function Counter({ srb, slo }: { srb?: boolean; slo?: boolean }) {
         {
           root: null,
           threshold: 0.1,
-        }
+        },
       );
 
       if (myref.current) {
@@ -31,10 +31,10 @@ function Counter({ srb, slo }: { srb?: boolean; slo?: boolean }) {
       }
       if (start) {
         const interval = setInterval(function () {
-          if (experienceCount <= new Date().getFullYear() - 2001) {
+          if (experienceCount < new Date().getFullYear() - 1998) {
             setExperienceCount((count: number) => count + 1);
           }
-          if (kmCount < 300000) {
+          if (kmCount < 500000) {
             setKmCount((count: number) => count + 1);
           }
           if (vehiceleCount < 150) {
@@ -47,12 +47,12 @@ function Counter({ srb, slo }: { srb?: boolean; slo?: boolean }) {
         };
       }
     },
-    [experienceCount, kmCount, vehiceleCount, start]
+    [experienceCount, kmCount, vehiceleCount, start],
   );
 
   return (
     <>
-      <div className="bg-primary mt-24 relative w-full max-h-[1000px] py-20 md:mt-32 lg:mt-40">
+      <div className="relative mt-24 max-h-[1000px] w-full bg-primary py-20 md:mt-32 lg:mt-40">
         <Image
           src={img}
           alt="image"
@@ -60,39 +60,42 @@ function Counter({ srb, slo }: { srb?: boolean; slo?: boolean }) {
           className="object-cover object-left opacity-50 md:object-bottom 2xl:object-[0,-700px]"
           placeholder="blur"
           sizes="(max-width:1024px)95vw, 66vw"
+          quality={50}
         />
         <div
-          className="relative text-primary flex flex-col gap-4 md:gap-5 md:flex-row md:justify-between md:items-center lg:h-72 mx-4 md:mx-8 lg:mx-20 xl:px-20 xl:mx-auto max-w-7xl"
+          className="relative mx-4 flex max-w-7xl flex-col gap-4 text-primary md:mx-8 md:flex-row md:items-center md:justify-between md:gap-5 lg:mx-20 lg:h-72 xl:mx-auto xl:px-20"
           ref={myref}
         >
-          <div className="bg-neutral text-center mx-auto w-2/3 border border-primary rounded-lg p-8 shadow-xl flex flex-col justify-between">
-            <p className="font-bold font-raj text-2xl">{experienceCount}+</p>
-            <div className="md:basis-14 md:flex md:flex-col md:justify-center">
-              <p className="font-semibold text-xl">
+          <div className="mx-auto flex w-2/3 flex-col justify-between rounded-lg border border-primary bg-neutral p-8 text-center shadow-xl">
+            <p className="font-raj text-2xl font-bold">{experienceCount}+</p>
+            <div className="md:flex md:basis-14 md:flex-col md:justify-center">
+              <p className="text-xl font-semibold">
                 {slo
                   ? "let izkušenj"
                   : srb
-                  ? "godina iskustva"
-                  : "years of experience"}
+                    ? "godina iskustva"
+                    : "years of experience"}
               </p>
             </div>
           </div>
-          <div className="bg-neutral text-center mx-auto w-2/3 border border-primary rounded-lg p-8 shadow-xl flex flex-col justify-between">
-            <p className="font-bold font-raj text-2xl">{kmCount}+</p>
-            <div className="md:basis-14 md:flex md:flex-col md:justify-center">
-              <p className="font-semibold text-xl">
+          <div className="mx-auto flex w-2/3 flex-col justify-between rounded-lg border border-primary bg-neutral p-8 text-center shadow-xl">
+            <p className="font-raj text-2xl font-bold">
+              {new Intl.NumberFormat("de-DE").format(kmCount)}+
+            </p>
+            <div className="md:flex md:basis-14 md:flex-col md:justify-center">
+              <p className="text-xl font-semibold">
                 {slo
                   ? "kilometrov mesečno"
                   : srb
-                  ? "kilometara mesečno"
-                  : "kilometers/month"}
+                    ? "kilometara mesečno"
+                    : "kilometers/month"}
               </p>
             </div>
           </div>
-          <div className="bg-neutral text-center mx-auto w-2/3 border border-primary rounded-lg p-8 shadow-xl flex flex-col justify-between">
-            <p className="font-bold font-raj text-2xl">{vehiceleCount}+</p>
-            <div className="md:basis-14 md:flex md:flex-col md:justify-center">
-              <p className="font-semibold text-xl">
+          <div className="mx-auto flex w-2/3 flex-col justify-between rounded-lg border border-primary bg-neutral p-8 text-center shadow-xl">
+            <p className="font-raj text-2xl font-bold">{vehiceleCount}+</p>
+            <div className="md:flex md:basis-14 md:flex-col md:justify-center">
+              <p className="text-xl font-semibold">
                 {slo ? "vozil" : srb ? "vozila" : "vehicles"}
               </p>
             </div>

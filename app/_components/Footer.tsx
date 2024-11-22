@@ -10,7 +10,7 @@ function Footer() {
   const pathname = usePathname();
 
   const isSlo = pathname.startsWith("/si");
-  const isEn = pathname.startsWith("/en");
+  const isRs = pathname.startsWith("/rs");
 
   return (
     <footer
@@ -44,23 +44,23 @@ function Footer() {
           <div className="flex flex-col gap-10">
             <div>
               <p className="font-bold">
-                {isEn
-                  ? "Company Registration Number"
+                {isRs
+                  ? "Matični broj"
                   : isSlo
                   ? "Matična številka"
-                  : "Matični broj"}
+                  : "Company Registration Number"}
               </p>
               <p>6475248000</p>
             </div>
             <div>
               <p className="font-bold">
-                {isEn
-                  ? "Tax Identification Number"
+                {isRs
+                  ? "DDV broj"
                   : isSlo
                   ? "Davčna številka"
-                  : "DDV broj"}
+                  : "Tax Identification Number"}
               </p>
-              <p>61173843</p>
+              <p>SI61173843</p>
             </div>
             <div>
               <p>IBAN</p>
@@ -70,11 +70,11 @@ function Footer() {
           </div>
           <div className="flex flex-col gap-10">
             <p className="font-bold">
-              {isEn
-                ? "Quick contact"
+              {isRs
+                ? "Brzi kontakt"
                 : isSlo
                 ? "Hiter kontakt"
-                : "Brzi kontakt"}
+                : "Quick contact"}
             </p>
             <p className="flex items-center gap-5">
               <span>
@@ -91,49 +91,49 @@ function Footer() {
           </div>
           <div className="flex flex-col gap-10 lg:grid lg:grid-cols-5 lg:gap-x-8 xl:grid-cols-6 xl:col-span-3 xl:w-3/4">
             <p className="font-bold lg:col-span-6">
-              {isEn ? "Quick Links" : isSlo ? "Hitre povezave" : "Brze veze"}
+              {isRs ? "Brze veze" : isSlo ? "Hitre povezave" : "Quick Links"}
             </p>
             <Link
-              href={isEn ? "/en/services" : isSlo ? "/si/storitve" : "/usluge"}
+              href={isRs ? "/rs/usluge" : isSlo ? "/si/storitve" : "/services"}
               className="hover:font-bold transition-[font] duration-300"
             >
-              {isEn ? "Services" : isSlo ? "Storitve" : "Usluge"}
+              {isRs ? "Usluge" : isSlo ? "Storitve" : "Services"}
             </Link>
             <Link
-              href={isEn ? "/en/aboutus" : isSlo ? "/si/onas" : "/onama"}
+              href={isRs ? "/rs/onama" : isSlo ? "/si/onas" : "/aboutus"}
               className="hover:font-bold transition-[font] duration-300"
             >
-              {isEn ? "About us" : isSlo ? "O nas" : "O nama"}
+              {isRs ? "O nama" : isSlo ? "O nas" : "About us"}
             </Link>
             <Link
               href={
-                isEn
-                  ? "/en/sustainability"
+                isRs
+                  ? "/rs/odrzivost"
                   : isSlo
                   ? "/si/trajnost"
-                  : "/odrzivost"
+                  : "/sustainability"
               }
               className="hover:font-bold transition-[font] duration-300"
             >
-              {isEn ? "Sustainability" : isSlo ? "Trajnost" : "Održivost"}
+              {isRs ? "Održivost" : isSlo ? "Trajnost" : "Sustainability"}
             </Link>
             <Link
-              href={isEn ? "/en/career" : isSlo ? "/si/zaposlitev" : "/kariera"}
+              href={isRs ? "/rs/kariera" : isSlo ? "/si/zaposlitev" : "/career"}
               className="hover:font-bold transition-[font] duration-300"
             >
-              {isEn ? "Career" : isSlo ? "Zaposlitev" : "Kariera"}
+              {isRs ? "Kariera" : isSlo ? "Zaposlitev" : "Career"}
             </Link>
             <Link
-              href={isEn ? "/en/contact" : isSlo ? "/si/kontakt" : "/kontakt"}
+              href={isRs ? "/rs/kontakt" : isSlo ? "/si/kontakt" : "/contact"}
               className="hover:font-bold transition-[font] duration-300"
             >
-              {isEn ? "Contact" : isSlo ? "Kontakt" : "Kontakt"}
+              {isRs ? "Kontakt" : isSlo ? "Kontakt" : "Contact"}
             </Link>
             <Link
-              href={isEn ? "/en/cookies" : isSlo ? "/si/piskotki" : "/kolacici"}
+              href={isRs ? "/rs/kolacici" : isSlo ? "/si/piskotki" : "/cookies"}
               className="hover:font-bold transition-[font] duration-300 lg:col-span-3 xl:col-span-1"
             >
-              {isEn ? "Cookie Policy" : isSlo ? "Piškotki" : "Kolačići"}
+              {isRs ? "Kolačići" : isSlo ? "Piškotki" : "Cookie Policy"}
             </Link>
           </div>
         </div>
@@ -150,11 +150,11 @@ function Footer() {
           </p>
           <p>
             &copy;{new Date().getFullYear()} Silo Jeličić, d.o.o.{" "}
-            {isEn
-              ? "All rights reserved"
+            {isRs
+              ? "Sva prava zadržana"
               : isSlo
               ? "Vse pravice pridržane"
-              : "Sva prava zadržana"}
+              : "All rights reserved"}
           </p>
         </div>
       </div>

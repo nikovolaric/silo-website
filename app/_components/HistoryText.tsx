@@ -74,13 +74,13 @@ function HistoryText({ srb, slo }: { srb?: boolean; slo?: boolean }) {
         </ul>
         <div className="mt-20 flex justify-center gap-5 md:mt-40">
           <LinkBtn
-            href={srb ? "/kontakt" : slo ? "/si/kontakt" : "/en/contact"}
+            href={srb ? "/rs/kontakt" : slo ? "/si/kontakt" : "/contact"}
             type="secondary"
           >
             {srb ? "Kontakt" : slo ? "Kontakt" : "Contact"}
           </LinkBtn>
           <LinkBtn
-            href={srb ? "/kariera" : slo ? "/si/zaposlitev" : "/en/career"}
+            href={srb ? "/rs/kariera" : slo ? "/si/zaposlitev" : "/career"}
             type="primary"
           >
             {srb ? "Kariera" : slo ? "Zaposlitev" : "Career"}

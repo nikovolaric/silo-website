@@ -21,7 +21,7 @@ function AboutUsNav({
               ? "border-2 border-primary px-3 py-1 rounded-full text-primary"
               : "text-primary/50"
           } font-medium`}
-          href={slo ? "/si/onas" : srb ? "/onama" : "/en/aboutus"}
+          href={slo ? "/si/onas" : srb ? "/rs/onama" : "/aboutus"}
           replace={true}
           scroll={false}
         >
@@ -36,7 +36,7 @@ function AboutUsNav({
               : "text-primary/50"
           } font-medium`}
           href={{
-            pathname: slo ? "/si/onas" : srb ? "/onama" : "/en/aboutus",
+            pathname: slo ? "/si/onas" : srb ? "/rs/onama" : "/aboutus",
             query: { history: "true" },
           }}
           replace={true}
@@ -53,7 +53,7 @@ function AboutUsNav({
               : "text-primary/50"
           } font-medium`}
           href={{
-            pathname: slo ? "/si/onas" : srb ? "/onama" : "/en/aboutus",
+            pathname: slo ? "/si/onas" : srb ? "/rs/onama" : "/aboutus",
             query: { quality: "true" },
           }}
           replace={true}
