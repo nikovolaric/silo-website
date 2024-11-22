@@ -32,27 +32,27 @@ function DashboardJobCard({ job }: { job: iJob }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="flex items-center justify-between gap-6 py-6 border-b border-gray-400">
+    <div className="flex items-center justify-between gap-6 border-b border-gray-400 py-6">
       <p className="grow text-2xl font-bold">{titleSrb}</p>
-      <p className="underline cursor-pointer" onClick={() => setIsOpen(true)}>
+      <p className="cursor-pointer underline" onClick={() => setIsOpen(true)}>
         preview
       </p>
       {hidden ? (
         <form action={() => addToCareer(_id)}>
           <Button>
-            <XMarkIcon className="p-1 h-6 bg-red-400" />
+            <XMarkIcon className="h-6 bg-red-400 p-1" />
           </Button>
         </form>
       ) : (
         <form action={() => hideFromCareer(_id)}>
           <Button>
-            <CheckIcon className="p-1 h-6 bg-green-300" />
+            <CheckIcon className="h-6 bg-green-300 p-1" />
           </Button>
         </form>
       )}
       <Link
         href={`/dashboard/kariera/${_id}`}
-        className="flex items-center px-4 py-1 text-white bg-primary hover:bg-accent rounded-xl transition-colors duration-300"
+        className="flex items-center rounded-xl bg-primary px-4 py-1 text-white transition-colors duration-300 hover:bg-accent"
       >
         Uredi
         <span>
@@ -61,10 +61,10 @@ function DashboardJobCard({ job }: { job: iJob }) {
       </Link>
       <DeleteBtn id={_id} job />
       {isOpen && (
-        <div className="absolute mt-[500px] left-1/3 w-1/3">
+        <div className="absolute left-1/3 mt-[500px] w-1/3">
           <OpenPositionCard srb job={job} prev />
           <XMarkIcon
-            className="h-6 absolute top-10 right-3 cursor-pointer"
+            className="absolute right-3 top-10 h-6 cursor-pointer"
             onClick={() => setIsOpen(false)}
           />
         </div>
