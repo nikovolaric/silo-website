@@ -11,6 +11,8 @@ import { jwtDecode } from "jwt-decode";
 import User from "../_models/userModel";
 import connectDB from "../_config/database";
 
+export const dynamic = "force-static";
+
 export const metadata: Metadata = {
   title: "Dashboard",
 };
@@ -29,13 +31,13 @@ async function Page() {
   }
 
   return (
-    <div className="max-w-7xl h-dvh mx-auto text-primary ">
-      <h2 className="text-3xl font-raj font-bold py-6">Dashboard</h2>
-      <div className="my-20 grid grid-cols-2 items-center text-center gap-3">
+    <div className="mx-auto h-dvh max-w-7xl text-primary">
+      <h2 className="py-6 font-raj text-3xl font-bold">Dashboard</h2>
+      <div className="my-20 grid grid-cols-2 items-center gap-3 text-center">
         <div>
           <Link
             href="/dashboard/downloads"
-            className="flex flex-col py-12 border-2 transition-colors duration-300 hover:bg-gray-300"
+            className="flex flex-col border-2 py-12 transition-colors duration-300 hover:bg-gray-300"
           >
             Downloadi
             <span className="mt-4 flex justify-center">
@@ -46,7 +48,7 @@ async function Page() {
         <div>
           <Link
             href="/dashboard/kariera"
-            className="flex flex-col py-12 border-2 transition-colors duration-300 hover:bg-gray-300"
+            className="flex flex-col border-2 py-12 transition-colors duration-300 hover:bg-gray-300"
           >
             Kariera
             <span className="mt-4 flex justify-center">

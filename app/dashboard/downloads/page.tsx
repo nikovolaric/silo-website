@@ -9,6 +9,8 @@ import { redirect } from "next/navigation";
 import User from "@/app/_models/userModel";
 import { jwtDecode } from "jwt-decode";
 
+export const dynamic = "force-static";
+
 export const metadata: Metadata = {
   title: "Downloadi",
 };
@@ -31,7 +33,7 @@ async function Page() {
 
   if (!data.results)
     return (
-      <div className="flex h-dvh flex-col max-w-7xl mx-auto">
+      <div className="mx-auto flex h-dvh max-w-7xl flex-col">
         <h2 className="py-10 text-center text-2xl">Downloadi</h2>
         <h2 className="py-10 text-left text-xl uppercase">
           V bazi ni downloadov...
@@ -53,7 +55,7 @@ async function Page() {
       </div>
     );
   return (
-    <div className="flex h-dvh flex-col max-w-7xl mx-auto">
+    <div className="mx-auto flex h-dvh max-w-7xl flex-col">
       <h2 className="py-10 text-center text-2xl">Downloadi</h2>
       <div className="flex flex-col">
         <Suspense fallback={<Spinner />}>

@@ -9,6 +9,8 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Suspense } from "react";
 
+export const dynamic = "force-static";
+
 export const metadata: Metadata = {
   title: "Delovna mesta",
 };
@@ -45,7 +47,7 @@ async function Page() {
 
   if (!data.results)
     return (
-      <div className="flex h-dvh flex-col max-w-7xl mx-auto">
+      <div className="mx-auto flex h-dvh max-w-7xl flex-col">
         <h2 className="py-10 text-center text-2xl">Delovna mesta</h2>
         <h2 className="py-10 text-left text-xl uppercase">
           V bazi ni delovnih mest...
@@ -67,7 +69,7 @@ async function Page() {
       </div>
     );
   return (
-    <div className="flex h-dvh flex-col max-w-7xl mx-auto">
+    <div className="mx-auto flex h-dvh max-w-7xl flex-col">
       <h2 className="py-10 text-center text-2xl">Delovna mesta</h2>
       <div className="flex flex-col">
         <Suspense fallback={<Spinner />}>
