@@ -9,8 +9,6 @@ import { Metadata } from "next";
 // import User from "@/app/_models/userModel";
 // import { jwtDecode } from "jwt-decode";
 
-export const dynamic = "force-dynamic";
-
 export const metadata: Metadata = {
   title: "Downloadi",
 };
