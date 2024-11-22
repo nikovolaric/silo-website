@@ -7,13 +7,13 @@ export const metadata: Metadata = {
   title: "Održivost",
 };
 
-export const dynamic = "force-static";
+// export const dynamic = "force-static";
 
 function Page() {
   return (
     <>
       <Header />
-      <main className="mx-4 md:mx-8 lg:mx-20 xl:px-20 xl:mx-auto max-w-7xl">
+      <main className="mx-4 max-w-7xl md:mx-8 lg:mx-20 xl:mx-auto xl:px-20">
         <HeadText>
           Posvećeni smo stvaranju delotvornog okvira za sprovođenje svih naših
           aktivnosti na način koji doprinosi izgradnji održivog društva.{" "}

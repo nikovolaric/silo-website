@@ -9,13 +9,13 @@ export const metadata: Metadata = {
   title: "Career",
 };
 
-export const dynamic = "force-static";
+export const dynamic = "force-dynamic";
 
 function Page() {
   return (
     <>
       <Header />
-      <div className="mx-4 md:mx-8 lg:mx-20 xl:mx-auto xl:px-20 max-w-7xl">
+      <div className="mx-4 max-w-7xl md:mx-8 lg:mx-20 xl:mx-auto xl:px-20">
         <HeadText>Together, we shape the future of transport.</HeadText>
         <WhatWeOffer />
         <OpenPositions />
