@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Kariera",
 };
 
-// export const dynamic = "force-static";
+export const dynamic = "force-dynamic";
 
 function Page() {
   return (

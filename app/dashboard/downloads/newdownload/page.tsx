@@ -5,6 +5,8 @@ import { Metadata } from "next";
 // import { cookies } from "next/headers";
 // import { redirect } from "next/navigation";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Dodaj download",
 };
