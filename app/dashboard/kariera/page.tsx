@@ -1,12 +1,12 @@
 import DashboardJobCard from "@/app/_components/DashboardJobCard";
 import Spinner from "@/app/_components/Spinner";
 import { getAllJobs } from "@/app/_lib/jobsApi";
-import User from "@/app/_models/userModel";
-import { jwtDecode } from "jwt-decode";
+// import User from "@/app/_models/userModel";
+// import { jwtDecode } from "jwt-decode";
 import { Metadata } from "next";
-import { cookies } from "next/headers";
+// import { cookies } from "next/headers";
 import Link from "next/link";
-import { redirect } from "next/navigation";
+// import { redirect } from "next/navigation";
 import { Suspense } from "react";
 
 export const dynamic = "force-static";
@@ -30,16 +30,16 @@ interface iJob {
 }
 
 async function Page() {
-  const session = cookies().get("jwt")?.value as string;
-  if (!session) {
-    redirect("/login");
-  }
-  const { id: userId }: { id: string } = await jwtDecode(session);
-  const user = await User.findById(userId);
-  if (!user || user.role !== "admin") {
-    cookies().delete("jwt");
-    redirect("/login");
-  }
+  // const session = cookies().get("jwt")?.value as string;
+  // if (!session) {
+  //   redirect("/login");
+  // }
+  // const { id: userId }: { id: string } = await jwtDecode(session);
+  // const user = await User.findById(userId);
+  // if (!user || user.role !== "admin") {
+  //   cookies().delete("jwt");
+  //   redirect("/login");
+  // }
 
   const data = await getAllJobs();
 

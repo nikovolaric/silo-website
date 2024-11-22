@@ -4,10 +4,10 @@ import Spinner from "@/app/_components/Spinner";
 import Link from "next/link";
 import { Suspense } from "react";
 import { Metadata } from "next";
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
-import User from "@/app/_models/userModel";
-import { jwtDecode } from "jwt-decode";
+// import { cookies } from "next/headers";
+// import { redirect } from "next/navigation";
+// import User from "@/app/_models/userModel";
+// import { jwtDecode } from "jwt-decode";
 
 export const dynamic = "force-static";
 
@@ -16,16 +16,16 @@ export const metadata: Metadata = {
 };
 
 async function Page() {
-  const session = cookies().get("jwt")?.value;
-  if (!session) {
-    redirect("/login");
-  }
-  const { id: userId }: { id: string } = await jwtDecode(session);
-  const user = await User.findById(userId);
-  if (!user || user.role !== "admin") {
-    cookies().delete("jwt");
-    redirect("/login");
-  }
+  // const session = cookies().get("jwt")?.value;
+  // if (!session) {
+  //   redirect("/login");
+  // }
+  // const { id: userId }: { id: string } = await jwtDecode(session);
+  // const user = await User.findById(userId);
+  // if (!user || user.role !== "admin") {
+  //   cookies().delete("jwt");
+  //   redirect("/login");
+  // }
 
   const data = await getAllDownloads();
 
