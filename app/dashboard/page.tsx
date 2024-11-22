@@ -11,7 +11,7 @@ import { jwtDecode } from "jwt-decode";
 import User from "../_models/userModel";
 import connectDB from "../_config/database";
 
-export const dynamic = "force-static";
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Dashboard",
