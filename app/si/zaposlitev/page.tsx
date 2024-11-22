@@ -4,7 +4,7 @@ import HeadText from "@/app/_components/HeadText";
 import OpenPositions from "@/app/_components/OpenPositions";
 import WhatWeOffer from "@/app/_components/WhatWeOffer";
 
-export const dynamic = "force-dynamic";
+export const dynamic = "force-static";
 
 function Page() {
   return (
