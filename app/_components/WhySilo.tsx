@@ -22,31 +22,31 @@ function WhySilo({
 }) {
   return (
     <div className="mt-28 md:mt-36 lg:mt-40">
-      <h3 className="font-raj font-bold text-primary text-2xl text-center">
-        {slo ? "Zakaj" : srb ? "Zašto" : "Why"} Silo jeličić?
+      <h3 className="text-center font-raj text-2xl font-bold text-primary">
+        {slo ? "Zakaj" : srb ? "Zašto" : "Why"} Silo Jeličić?
       </h3>
-      <ul className="mt-8 font-semibold text-primary flex flex-col gap-6 md:flex-row md:gap-5">
-        <li className="py-5 px-7 border rounded-lg shadow-xl flex items-center gap-9 md:flex-col md:justify-between md:gap-6 md:text-center md:w-1/4 md:py-4 md:px-2">
-          <ChartBarIcon className="text-accent h-8 basis-8" />
-          <div className="md:basis-[72px] md:flex md:items-center lg:basis-12">
+      <ul className="mt-8 flex flex-col gap-6 font-semibold text-primary md:flex-row md:gap-5">
+        <li className="flex items-center gap-9 rounded-lg border px-7 py-5 shadow-xl md:w-1/4 md:flex-col md:justify-between md:gap-6 md:px-2 md:py-4 md:text-center">
+          <ChartBarIcon className="h-8 basis-8 text-accent" />
+          <div className="md:flex md:basis-[72px] md:items-center lg:basis-12">
             <p>{one}</p>
           </div>
         </li>
-        <li className="py-5 px-7 border rounded-lg shadow-xl flex items-center gap-9 md:flex-col md:justify-between md:gap-6 md:text-center md:w-1/4 md:py-4 md:px-2">
-          <ComputerDesktopIcon className="text-accent basis-8" />
-          <div className="md:basis-[72px] md:flex md:items-center lg:basis-12">
+        <li className="flex items-center gap-9 rounded-lg border px-7 py-5 shadow-xl md:w-1/4 md:flex-col md:justify-between md:gap-6 md:px-2 md:py-4 md:text-center">
+          <ComputerDesktopIcon className="basis-8 text-accent" />
+          <div className="md:flex md:basis-[72px] md:items-center lg:basis-12">
             <p>{two}</p>
           </div>
         </li>
-        <li className="py-5 px-7 border rounded-lg shadow-xl flex items-center gap-9 md:flex-col md:justify-between md:gap-6 md:text-center md:w-1/4 md:py-4 md:px-2">
-          <WrenchScrewdriverIcon className="text-accent h-8 basis-8" />
-          <div className="md:basis-[72px] md:flex md:items-center lg:basis-12">
+        <li className="flex items-center gap-9 rounded-lg border px-7 py-5 shadow-xl md:w-1/4 md:flex-col md:justify-between md:gap-6 md:px-2 md:py-4 md:text-center">
+          <WrenchScrewdriverIcon className="h-8 basis-8 text-accent" />
+          <div className="md:flex md:basis-[72px] md:items-center lg:basis-12">
             <p>{three}</p>
           </div>
         </li>
-        <li className="py-5 px-7 border rounded-lg shadow-xl flex items-center gap-9 md:flex-col md:justify-between md:gap-6 md:text-center md:w-1/4 md:py-4 md:px-2">
-          <BriefcaseIcon className="text-accent h-8 basis-8" />
-          <div className="md:basis-[72px] md:flex md:items-center lg:basis-12">
+        <li className="flex items-center gap-9 rounded-lg border px-7 py-5 shadow-xl md:w-1/4 md:flex-col md:justify-between md:gap-6 md:px-2 md:py-4 md:text-center">
+          <BriefcaseIcon className="h-8 basis-8 text-accent" />
+          <div className="md:flex md:basis-[72px] md:items-center lg:basis-12">
             <p>{four}</p>
           </div>
         </li>

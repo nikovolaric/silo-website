@@ -9,7 +9,7 @@ function Counter({ srb, slo }: { srb?: boolean; slo?: boolean }) {
 
   const [start, setStart] = useState(false);
   const [experienceCount, setExperienceCount] = useState(0);
-  const [kmCount, setKmCount] = useState(499950);
+  const [kmCount, setKmCount] = useState(495000);
   const [vehiceleCount, SetVehicleCount] = useState(100);
 
   useEffect(
@@ -35,7 +35,7 @@ function Counter({ srb, slo }: { srb?: boolean; slo?: boolean }) {
             setExperienceCount((count: number) => count + 1);
           }
           if (kmCount < 500000) {
-            setKmCount((count: number) => count + 1);
+            setKmCount((count: number) => count + 50);
           }
           if (vehiceleCount < 150) {
             SetVehicleCount((count: number) => count + 1);
