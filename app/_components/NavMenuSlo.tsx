@@ -45,7 +45,7 @@ function NavMenuSlo() {
     }
 
     if (pathname === "/si/zaposlitev") {
-      setSrbSite("/rs/kariera");
+      setSrbSite("/rs/karijera");
       setEngSite("/career");
     }
     if (pathname === "/si/kontakt") {
