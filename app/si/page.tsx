@@ -6,6 +6,11 @@ import Counter from "../_components/Counter";
 import ContactForm from "../_components/ContactForm";
 import HomeHeader from "../_components/HomeHeader";
 import CookiesFirstPage from "../_components/CookiesFirstPage";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Dobrodošli",
+};
 
 function Page() {
   const cookie = cookies().get("analyticsConsent")?.value;
@@ -14,7 +19,7 @@ function Page() {
     <>
       <HomeHeader slo />
       <main>
-        <div className="mx-4 md:mx-8 lg:mx-20 xl:px-20 xl:mx-auto max-w-7xl">
+        <div className="mx-4 max-w-7xl md:mx-8 lg:mx-20 xl:mx-auto xl:px-20">
           <HomeServices slo />
           <WhySilo
             slo
@@ -26,7 +31,7 @@ function Page() {
           <HomeText slo />
         </div>
         <Counter slo />
-        <div className="mx-4 md:mx-8 lg:mx-20 xl:px-20 xl:mx-auto max-w-7xl">
+        <div className="mx-4 max-w-7xl md:mx-8 lg:mx-20 xl:mx-auto xl:px-20">
           <ContactForm slo />
         </div>
       </main>
