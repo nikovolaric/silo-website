@@ -189,11 +189,11 @@ function Services({ slo }: { slo?: boolean }) {
 
       <ServiceCard
         img="/vakuum-silo.jpg"
-        title={slo ? "Vakuumski silos" : "Vacuum Silo"}
+        title={slo ? "Vakuum silos" : "Vacuum Silo"}
         description={
           slo
-            ? "Vakuum silos stoji na Vašem raspolaganju za čiščenje s sesanjem, prenos in sušenje vseh tipov suhih rasutih materialov kjerkoli v Evropi."
-            : "Vakuum silos stoji na Vašem raspolaganju za usisno čišćenje, presipanje i sušenje svih tipova suvih rasutih materijala bilo gde u Evropi."
+            ? "Vakuum silos vam je na voljo za čiščenje s sesanjem, prenos in sušenje vseh tipov suhih rasutih materialov kjerkoli v Evropi."
+            : "Vakuum silos stoji na vašem raspolaganju za usisno čišćenje, presipanje i sušenje svih tipova suvih rasutih materijala bilo gde u Evropi."
         }
         left
       >

@@ -45,7 +45,7 @@ function Page({
         {!searchParams?.software && !searchParams?.suppliers && (
           <>
             <HeadText>
-              Specializirani smo za cestni prevoz blaga s silos cisternami
+              Specializirani smo za cestni prevoz blaga s silo cisternami
               priznanih proizvajalcev, usposobljenim osebjem in napredno
               tehnologijo, kar zagotavlja vrhunsko kakovost storitev.
             </HeadText>

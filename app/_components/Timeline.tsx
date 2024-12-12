@@ -182,10 +182,10 @@ function Timeline({ slo, srb }: { slo?: boolean; srb?: boolean }) {
         </div>
         <p>
           {slo
-            ? "nabava vakuumskega silosa in razširitev portfelja storitev."
+            ? "nabava Vakuum silosa in razširitev portfelja storitev."
             : srb
-              ? "nabavka vakuum silosa i proširenje portfolia usluga."
-              : "introduction of vacuum silos in our service portfolio."}
+              ? "nabavka Vakuum silosa i proširenje portfolia usluga."
+              : "introduction of Vacuum silos in our service portfolio."}
         </p>
       </TimelineListItem>
       <TimelineListItem>
