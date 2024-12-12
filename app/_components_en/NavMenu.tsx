@@ -8,6 +8,8 @@ import { useEffect, useState } from "react";
 
 function NavMenu() {
   const [isOpen, setIsOpen] = useState(false);
+  const [sloSite, setSloSite] = useState("");
+  const [srbSite, setSrbSite] = useState("");
   const pathname = usePathname();
   const router = useRouter();
 
@@ -21,7 +23,37 @@ function NavMenu() {
     if (!isOpen) {
       document.body.style.overflow = "auto";
     }
-  }, [isOpen, router]);
+
+    if (pathname === "/") {
+      setSloSite("/si");
+      setSrbSite("/rs");
+    }
+    if (pathname === "/services") {
+      setSloSite("/si/storitve");
+      setSrbSite("/rs/usluge");
+    }
+    if (pathname === "/aboutus") {
+      setSloSite("/si/onas");
+      setSrbSite("/rs/onama");
+    }
+    if (pathname === "/sustainability") {
+      setSloSite("/si/trajnost");
+      setSrbSite("/rs/odrzivost");
+    }
+
+    if (pathname === "/career") {
+      setSloSite("/si/zaposlitev");
+      setSrbSite("/rs/kariera");
+    }
+    if (pathname === "/contact") {
+      setSloSite("/si/kontakt");
+      setSrbSite("/rs/kontakt");
+    }
+    if (pathname === "/cookies") {
+      setSloSite("/si/piskotki");
+      setSrbSite("/rs/kolacici");
+    }
+  }, [isOpen, router, pathname]);
 
   function handleClick() {
     setIsOpen((isOpen) => !isOpen);
@@ -93,7 +125,7 @@ function NavMenu() {
                 </Link>
               </li>
               <li className={`${isOpen ? "h-6" : "hidden h-0"} flex gap-8`}>
-                <Link href="/rs">
+                <Link href={srbSite}>
                   <Image
                     src="https://flagicons.lipis.dev/flags/4x3/rs.svg"
                     alt="gb-flag"
@@ -102,7 +134,7 @@ function NavMenu() {
                     className="rounded-sm object-contain"
                   />
                 </Link>
-                <Link href="/si">
+                <Link href={sloSite}>
                   <Image
                     src="https://flagicons.lipis.dev/flags/4x3/si.svg"
                     alt="slo-flag"
@@ -171,7 +203,7 @@ function NavMenu() {
             </Link>
           </li>
           <li className="flex gap-1">
-            <Link href="/rs">
+            <Link href={srbSite}>
               <Image
                 src="https://flagicons.lipis.dev/flags/4x3/rs.svg"
                 alt="gb-flag"
@@ -180,7 +212,7 @@ function NavMenu() {
                 className="rounded-sm object-contain"
               />
             </Link>
-            <Link href="/si">
+            <Link href={sloSite}>
               <Image
                 src="https://flagicons.lipis.dev/flags/4x3/si.svg"
                 alt="slo-flag"

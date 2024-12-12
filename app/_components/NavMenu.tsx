@@ -8,6 +8,8 @@ import { useEffect, useState } from "react";
 
 function NavMenu() {
   const [isOpen, setIsOpen] = useState(false);
+  const [sloSite, setSloSite] = useState("");
+  const [engSite, setEngSite] = useState("");
   const pathname = usePathname();
   const router = useRouter();
 
@@ -21,7 +23,40 @@ function NavMenu() {
     if (!isOpen) {
       document.body.style.overflow = "auto";
     }
-  }, [isOpen, router]);
+
+    if (pathname === "/rs") {
+      setSloSite("/si");
+      setEngSite("/");
+    }
+
+    if (pathname === "/rs/usluge") {
+      setSloSite("/si/storitve");
+      setEngSite("/services");
+    }
+
+    if (pathname === "/rs/onama") {
+      setSloSite("/si/onas");
+      setEngSite("/aboutus");
+    }
+
+    if (pathname === "/rs/odrzivost") {
+      setSloSite("/si/trajnost");
+      setEngSite("/sustainability");
+    }
+
+    if (pathname === "/rs/karijera") {
+      setSloSite("/si/zaposlitev");
+      setEngSite("/career");
+    }
+    if (pathname === "/rs/kontakt") {
+      setSloSite("/si/kontakt");
+      setEngSite("/contact");
+    }
+    if (pathname === "/rs/kolacici") {
+      setSloSite("/si/piskotki");
+      setEngSite("/cookies");
+    }
+  }, [isOpen, pathname, router]);
 
   function handleClick() {
     setIsOpen((isOpen) => !isOpen);
@@ -76,11 +111,11 @@ function NavMenu() {
                 <Link href="/rs/odrzivost">Održivost</Link>
               </li>
               <li
-                className={`${pathname === "/rs/kariera" ? "font-bold" : ""} ${
+                className={`${pathname === "/rs/karijera" ? "font-bold" : ""} ${
                   isOpen ? "h-6" : "hidden h-0"
                 }`}
               >
-                <Link href="/rs/kariera">Kariera</Link>
+                <Link href="/rs/karijera">Karijera</Link>
               </li>
               <li className={`${isOpen ? "h-6" : "hidden h-0"}`}>
                 <Link
@@ -93,7 +128,7 @@ function NavMenu() {
                 </Link>
               </li>
               <li className={`${isOpen ? "h-6" : "hidden h-0"} flex gap-8`}>
-                <Link href="/">
+                <Link href={engSite}>
                   <Image
                     src="https://flagicons.lipis.dev/flags/4x3/gb.svg"
                     alt="gb-flag"
@@ -102,7 +137,7 @@ function NavMenu() {
                     className="rounded-sm object-contain"
                   />
                 </Link>
-                <Link href="/si">
+                <Link href={sloSite}>
                   <Image
                     src="https://flagicons.lipis.dev/flags/4x3/si.svg"
                     alt="slo-flag"
@@ -151,12 +186,12 @@ function NavMenu() {
           </li>
           <li
             className={`w-20 text-center ${
-              pathname === "/rs/kariera"
+              pathname === "/rs/karijera"
                 ? "font-bold"
                 : "transition-[font] duration-200 hover:font-bold"
             }`}
           >
-            <Link href="/rs/kariera">Kariera</Link>
+            <Link href="/rs/karijera">Karijera</Link>
           </li>
           <li>
             <Link
@@ -171,7 +206,7 @@ function NavMenu() {
             </Link>
           </li>
           <li className="flex gap-1">
-            <Link href="/">
+            <Link href={engSite}>
               <Image
                 src="https://flagicons.lipis.dev/flags/4x3/gb.svg"
                 alt="gb-flag"
@@ -180,7 +215,7 @@ function NavMenu() {
                 className="rounded-sm object-contain"
               />
             </Link>
-            <Link href="/si">
+            <Link href={sloSite}>
               <Image
                 src="https://flagicons.lipis.dev/flags/4x3/si.svg"
                 alt="slo-flag"

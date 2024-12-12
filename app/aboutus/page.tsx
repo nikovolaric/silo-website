@@ -31,13 +31,13 @@ function Page({
   return (
     <>
       <Header />
-      <main className="mx-4 md:mx-8 lg:mx-20 xl:px-20 xl:mx-auto max-w-7xl">
+      <main className="mx-4 max-w-7xl md:mx-8 lg:mx-20 xl:mx-auto xl:px-20">
         <AboutUsNav params={searchParams} />
         {!searchParams.history && !searchParams.quality && (
           <>
             <HeadText>
-              We take pride in long-term relationships with our clients, built
-              on trust, quality, and flexibility.
+              We are proud of long-term cooperation with our clients, built on
+              trust, quality and flexibility.
             </HeadText>
             <Suspense fallback={<Spinner />}>
               <AboutUsText />

@@ -6,7 +6,7 @@ import OpenPositions from "@/app/_components/OpenPositions";
 import CareerForm from "@/app/_components/CareerForm";
 
 export const metadata: Metadata = {
-  title: "Kariera",
+  title: "Karijera",
 };
 
 export const dynamic = "force-static";

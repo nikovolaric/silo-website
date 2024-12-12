@@ -15,7 +15,7 @@ async function DownloadCards() {
 
   return (
     <div className="flex flex-col">
-      {downloads.map((download: { _id: string; name: string }) => (
+      {downloads.map((download: { _id: string; name: string,site:string }) => (
         <DashboardDownloadCard key={download._id} download={download} />
       ))}
     </div>

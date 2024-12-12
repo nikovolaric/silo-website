@@ -40,14 +40,14 @@ function Page({
   return (
     <>
       <Header slo />
-      <main className="mx-4 md:mx-8 lg:mx-20 xl:px-20 xl:mx-auto max-w-7xl">
+      <main className="mx-4 max-w-7xl md:mx-8 lg:mx-20 xl:mx-auto xl:px-20">
         <ServicesNav slo params={searchParams} />
         {!searchParams?.software && !searchParams?.suppliers && (
           <>
             <HeadText>
-              Specializirani smo za cestni prevoz s silosi z namensko floto,
-              usposobljenim osebjem in napredno tehnologijo, kar zagotavlja
-              vrhunsko kakovost storitev.
+              Specializirani smo za cestni prevoz blaga s silos cisternami
+              priznanih proizvajalcev, usposobljenim osebjem in napredno
+              tehnologijo, kar zagotavlja vrhunsko kakovost storitev.
             </HeadText>
             <Services slo />
             <BigBagComparison slo />

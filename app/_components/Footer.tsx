@@ -14,12 +14,12 @@ function Footer() {
 
   return (
     <footer
-      className={`bg-primary text-white font-medium mt-24 ${
+      className={`mt-24 bg-primary font-medium text-white ${
         pathname.startsWith("/dashboard") ? "hidden" : ""
       }`}
     >
-      <div className="mx-4 md:mx-8 lg:mx-20 xl:mx-auto xl:px-20 max-w-7xl">
-        <div className="pt-10 flex flex-col gap-14 md:grid md:grid-cols-2 lg:grid-cols-[5fr,7fr] xl:grid-cols-3">
+      <div className="mx-4 max-w-7xl md:mx-8 lg:mx-20 xl:mx-auto xl:px-20">
+        <div className="flex flex-col gap-14 pt-10 md:grid md:grid-cols-2 lg:grid-cols-[5fr,7fr] xl:grid-cols-3">
           <Image
             src={logo}
             alt="logo-beli"
@@ -47,8 +47,8 @@ function Footer() {
                 {isRs
                   ? "Matični broj"
                   : isSlo
-                  ? "Matična številka"
-                  : "Company Registration Number"}
+                    ? "Matična številka"
+                    : "Company Registration Number"}
               </p>
               <p>6475248000</p>
             </div>
@@ -57,8 +57,8 @@ function Footer() {
                 {isRs
                   ? "DDV broj"
                   : isSlo
-                  ? "Davčna številka"
-                  : "Tax Identification Number"}
+                    ? "Davčna številka"
+                    : "Tax Identification Number"}
               </p>
               <p>SI61173843</p>
             </div>
@@ -73,8 +73,8 @@ function Footer() {
               {isRs
                 ? "Brzi kontakt"
                 : isSlo
-                ? "Hiter kontakt"
-                : "Quick contact"}
+                  ? "Hiter kontakt"
+                  : "Quick contact"}
             </p>
             <p className="flex items-center gap-5">
               <span>
@@ -89,19 +89,19 @@ function Footer() {
               office@silo-jelicic.rs
             </p>
           </div>
-          <div className="flex flex-col gap-10 lg:grid lg:grid-cols-5 lg:gap-x-8 xl:grid-cols-6 xl:col-span-3 xl:w-3/4">
+          <div className="flex flex-col gap-10 lg:grid lg:grid-cols-5 lg:gap-x-8 xl:col-span-3 xl:w-3/4 xl:grid-cols-6">
             <p className="font-bold lg:col-span-6">
               {isRs ? "Brze veze" : isSlo ? "Hitre povezave" : "Quick Links"}
             </p>
             <Link
               href={isRs ? "/rs/usluge" : isSlo ? "/si/storitve" : "/services"}
-              className="hover:font-bold transition-[font] duration-300"
+              className="transition-[font] duration-300 hover:font-bold"
             >
               {isRs ? "Usluge" : isSlo ? "Storitve" : "Services"}
             </Link>
             <Link
               href={isRs ? "/rs/onama" : isSlo ? "/si/onas" : "/aboutus"}
-              className="hover:font-bold transition-[font] duration-300"
+              className="transition-[font] duration-300 hover:font-bold"
             >
               {isRs ? "O nama" : isSlo ? "O nas" : "About us"}
             </Link>
@@ -110,40 +110,42 @@ function Footer() {
                 isRs
                   ? "/rs/odrzivost"
                   : isSlo
-                  ? "/si/trajnost"
-                  : "/sustainability"
+                    ? "/si/trajnost"
+                    : "/sustainability"
               }
-              className="hover:font-bold transition-[font] duration-300"
+              className="transition-[font] duration-300 hover:font-bold"
             >
               {isRs ? "Održivost" : isSlo ? "Trajnost" : "Sustainability"}
             </Link>
             <Link
-              href={isRs ? "/rs/kariera" : isSlo ? "/si/zaposlitev" : "/career"}
-              className="hover:font-bold transition-[font] duration-300"
+              href={
+                isRs ? "/rs/karijera" : isSlo ? "/si/zaposlitev" : "/career"
+              }
+              className="transition-[font] duration-300 hover:font-bold"
             >
-              {isRs ? "Kariera" : isSlo ? "Zaposlitev" : "Career"}
+              {isRs ? "Karijera" : isSlo ? "Zaposlitev" : "Career"}
             </Link>
             <Link
               href={isRs ? "/rs/kontakt" : isSlo ? "/si/kontakt" : "/contact"}
-              className="hover:font-bold transition-[font] duration-300"
+              className="transition-[font] duration-300 hover:font-bold"
             >
               {isRs ? "Kontakt" : isSlo ? "Kontakt" : "Contact"}
             </Link>
             <Link
               href={isRs ? "/rs/kolacici" : isSlo ? "/si/piskotki" : "/cookies"}
-              className="hover:font-bold transition-[font] duration-300 lg:col-span-3 xl:col-span-1"
+              className="transition-[font] duration-300 hover:font-bold lg:col-span-3 xl:col-span-1"
             >
               {isRs ? "Kolačići" : isSlo ? "Piškotki" : "Cookie Policy"}
             </Link>
           </div>
         </div>
-        <div className="mt-40 pb-14 font-medium text-sm flex flex-col gap-3 md:flex-row md:justify-between md:mt-36">
+        <div className="mt-40 flex flex-col gap-3 pb-14 text-sm font-medium md:mt-36 md:flex-row md:justify-between">
           <p>
             Web Design and Development:{" "}
             <Link
               href="https://www.lamastrategies.com"
               target="_blank"
-              className="underline hover:font-bold transition-[font] duration-300"
+              className="underline transition-[font] duration-300 hover:font-bold"
             >
               LAMA Strategies
             </Link>
@@ -153,8 +155,8 @@ function Footer() {
             {isRs
               ? "Sva prava zadržana"
               : isSlo
-              ? "Vse pravice pridržane"
-              : "All rights reserved"}
+                ? "Vse pravice pridržane"
+                : "All rights reserved"}
           </p>
         </div>
       </div>

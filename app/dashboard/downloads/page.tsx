@@ -3,10 +3,10 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { Metadata } from "next";
 import DownloadCards from "@/app/_components/DownloadCards";
-// import { cookies } from "next/headers";
-// import { redirect } from "next/navigation";
-// import User from "@/app/_models/userModel";
-// import { jwtDecode } from "jwt-decode";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
+import User from "@/app/_models/userModel";
+import { jwtDecode } from "jwt-decode";
 
 export const dynamic = "force-dynamic";
 
@@ -15,16 +15,15 @@ export const metadata: Metadata = {
 };
 
 async function Page() {
-  // const session = cookies().get("jwt")?.value;
-  // if (!session) {
-  //   redirect("/login");
-  // }
-  // const { id: userId }: { id: string } = await jwtDecode(session);
-  // const user = await User.findById(userId);
-  // if (!user || user.role !== "admin") {
-  //   cookies().delete("jwt");
-  //   redirect("/login");
-  // }
+  const session = cookies().get("jwt")?.value;
+  if (!session) {
+    redirect("/login");
+  }
+  const { id: userId }: { id: string } = await jwtDecode(session);
+  const user = await User.findById(userId);
+  if (!user || user.role !== "admin") {
+    redirect("/login");
+  }
 
   return (
     <div className="mx-auto flex h-dvh max-w-7xl flex-col">

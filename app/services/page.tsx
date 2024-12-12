@@ -42,14 +42,14 @@ function Page({
   return (
     <>
       <Header />
-      <main className="mx-4 md:mx-8 lg:mx-20 xl:px-20 xl:mx-auto max-w-7xl">
+      <main className="mx-4 max-w-7xl md:mx-8 lg:mx-20 xl:mx-auto xl:px-20">
         <ServicesNav srb={false} params={searchParams} />
         {!searchParams?.software && !searchParams?.suppliers && (
           <>
             <HeadText>
-              We specialize in road silo transport with a dedicated fleet,
-              skilled staff, and advanced technology, ensuring top-quality
-              service.
+              We are specialized in road transport of goods with silo tanks of
+              renowned manufacturers, qualified staff and advanced technology,
+              ensuring top-quality service.
             </HeadText>
             <Services />
             <BigBagComparison />

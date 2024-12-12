@@ -26,7 +26,6 @@ async function Page() {
   const { id: userId }: { id: string } = await jwtDecode(session);
   const user = await User.findById(userId);
   if (!user || user.role !== "admin") {
-    cookies().delete("jwt");
     redirect("/login");
   }
 

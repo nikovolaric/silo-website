@@ -31,14 +31,13 @@ function Page({
   return (
     <>
       <Header />
-      <main className="mx-4 md:mx-8 lg:mx-20 xl:px-20 xl:mx-auto max-w-7xl">
+      <main className="mx-4 max-w-7xl md:mx-8 lg:mx-20 xl:mx-auto xl:px-20">
         <AboutUsNav srb params={searchParams} />
         {!searchParams.history && !searchParams.quality && (
           <>
             <HeadText>
-              Ponosimo se dugogodišnjom saradnjom sa našim partnerima. Nudeći
-              kvalitet, pouzdanost I fleksibilnost zaslužili smo njihovo
-              poverenje.
+              Ponosni smo na dugogodišnju saradnju sa našim klijentima,
+              izgrađenu na poverenju, kvalitetu i fleksibilnosti.
             </HeadText>
             <Suspense fallback={<Spinner />}>
               <AboutUsText srb />

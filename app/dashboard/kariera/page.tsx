@@ -1,11 +1,11 @@
 import JobCards from "@/app/_components/JobCards";
 import Spinner from "@/app/_components/Spinner";
-// import User from "@/app/_models/userModel";
-// import { jwtDecode } from "jwt-decode";
+import User from "@/app/_models/userModel";
+import { jwtDecode } from "jwt-decode";
 import { Metadata } from "next";
-// import { cookies } from "next/headers";
+import { cookies } from "next/headers";
 import Link from "next/link";
-// import { redirect } from "next/navigation";
+import { redirect } from "next/navigation";
 import { Suspense } from "react";
 
 export const dynamic = "force-dynamic";
@@ -14,17 +14,16 @@ export const metadata: Metadata = {
   title: "Delovna mesta",
 };
 
-function Page() {
-  // const session = cookies().get("jwt")?.value as string;
-  // if (!session) {
-  //   redirect("/login");
-  // }
-  // const { id: userId }: { id: string } = await jwtDecode(session);
-  // const user = await User.findById(userId);
-  // if (!user || user.role !== "admin") {
-  //   cookies().delete("jwt");
-  //   redirect("/login");
-  // }
+async function Page() {
+  const session = cookies().get("jwt")?.value as string;
+  if (!session) {
+    redirect("/login");
+  }
+  const { id: userId }: { id: string } = await jwtDecode(session);
+  const user = await User.findById(userId);
+  if (!user || user.role !== "admin") {
+    redirect("/login");
+  }
 
   return (
     <div className="mx-auto flex h-dvh max-w-7xl flex-col">

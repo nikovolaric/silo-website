@@ -6,26 +6,26 @@ import LinkBtn from "./LinkBtn";
 function ServiceText({ srb, slo }: { srb?: boolean; slo?: boolean }) {
   return (
     <>
-      <div className="mt-20 flex flex-col gap-8 md:gap-20 md:mt-24 lg:mt-36 lg:grid lg:grid-cols-2">
-        <div className="relative w-full h-56 md:w-7/12 md:h-64 lg:w-full lg:h-80 mx-auto">
+      <div className="mt-20 flex flex-col gap-8 md:mt-24 md:gap-20 lg:mt-36 lg:grid lg:grid-cols-2">
+        <div className="relative mx-auto h-56 w-full md:h-64 md:w-7/12 lg:h-80 lg:w-full">
           <Image
             src={img2}
             alt="service image"
             fill
             placeholder="blur"
-            className="object-cover rounded-lg"
+            className="rounded-lg object-cover"
             sizes="(max-width:768px)95vw,66vw"
           />
         </div>
         <div className="flex flex-col gap-8">
-          <h3 className="font-raj font-bold text-2xl text-primary">
+          <h3 className="font-raj text-2xl font-bold text-primary">
             {slo
               ? "Naša zavezanost zanesljivosti in varnosti"
               : srb
-              ? "Naša posvećenost pouzdanosti i bezbednosti"
-              : "Our Commitment to Reliability and Safety"}
+                ? "Naša posvećenost pouzdanosti i bezbednosti"
+                : "Our Commitment to Reliability and Safety"}
           </h3>
-          <div className="text-secondary font-light">
+          <div className="font-light text-secondary">
             {slo ? (
               <p>
                 Zanesljivost zagotavljamo z neprestano rastjo, usposabljanjem
@@ -62,25 +62,25 @@ function ServiceText({ srb, slo }: { srb?: boolean; slo?: boolean }) {
             )}
           </div>
         </div>
-        <div className="relative w-full h-56 md:w-7/12 md:h-64 lg:w-full lg:h-80 lg:col-start-2 lg:row-start-2 mx-auto">
+        <div className="relative mx-auto h-56 w-full md:h-64 md:w-7/12 lg:col-start-2 lg:row-start-2 lg:h-80 lg:w-full">
           <Image
             src={img}
             alt="service image"
             fill
             placeholder="blur"
-            className="object-cover rounded-lg"
+            className="rounded-lg object-cover"
             sizes="(max-width:768px)95vw,66vw"
           />
         </div>
         <div className="flex flex-col gap-8">
-          <h3 className="font-raj font-bold text-2xl text-primary">
+          <h3 className="font-raj text-2xl font-bold text-primary">
             {slo
               ? "Prilagodljivost in proaktivne rešitve"
               : srb
-              ? "Fleksibilnost i proaktivna rešenja"
-              : "Flexibility and Proactive Solutions"}
+                ? "Fleksibilnost i proaktivna rešenja"
+                : "Flexibility and Proactive Solutions"}
           </h3>
-          <div className="text-secondary font-light">
+          <div className="font-light text-secondary">
             {slo ? (
               <p>
                 S proaktivnim načrtovanjem, integracijo tehnologije in strateško
@@ -125,21 +125,21 @@ function ServiceText({ srb, slo }: { srb?: boolean; slo?: boolean }) {
             slo
               ? "/rs/onas?quality=true"
               : srb
-              ? "/onama?quality=true"
-              : "/aboutus?quality=true"
+                ? "/onama?quality=true"
+                : "/aboutus?quality=true"
           }
         >
           {slo
             ? "Starndardi kakovosti"
             : srb
-            ? "Standardi kvaliteta"
-            : "Quality standards"}
+              ? "Standardi kvaliteta"
+              : "Quality standards"}
         </LinkBtn>
         <LinkBtn
           type="primary"
-          href={slo ? "/si/zaposlitev" : srb ? "/rs/kariera" : "/career"}
+          href={slo ? "/si/zaposlitev" : srb ? "/rs/karijera" : "/career"}
         >
-          {slo ? "Zaposlitev" : srb ? "Kariera" : "Career"}
+          {slo ? "Zaposlitev" : srb ? "Karijera" : "Career"}
         </LinkBtn>
       </div>
     </>

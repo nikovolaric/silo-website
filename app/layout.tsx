@@ -31,6 +31,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${raj.variable} scroll-smooth`}>
+      {/* <GoogleAnalytics/> */}
       <body className={`${inter.className} bg-neutral`}>
         {children}
         <Footer />

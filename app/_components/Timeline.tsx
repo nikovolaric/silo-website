@@ -9,15 +9,15 @@ import TimelineListItem from "./TimelineListItem";
 function Timeline({ slo, srb }: { slo?: boolean; srb?: boolean }) {
   return (
     <ul className="mx-auto mt-36 grid list-outside list-image-check grid-cols-[1fr,5fr] gap-x-5 gap-y-8 font-light italic md:w-5/6 md:grid-cols-[1fr,9fr]">
-      <div className="row-span-12 bg-gradient-to-b from-neutral via-grad to-neutral"></div>
+      <div className="row-start-1 row-end-[15] bg-gradient-to-b from-neutral via-grad to-neutral"></div>
       <TimelineListItem>
-        <p className="font-raj font-bold not-italic text-primary">2001</p>
+        <p className="font-raj font-bold not-italic text-primary">1965</p>
         <p>
           {slo
-            ? "registracija podjetja Silo Jeličić in ta datum se šteje kot začetek korporativnih dejavnosti"
+            ? "Začetki že leta 1965."
             : srb
-              ? "registruje kao Ortačko društvo ˝Silo Jeličić˝ i ovaj datum se uzima kao početak korporativnog poslovanja"
-              : "the company Silo Jelicic is registered and it is taken as a start of corporate activities"}
+              ? "Poreklo daleke 1965. godine."
+              : "Origins from as far back as 1965."}
         </p>
         <div className="relative my-6 h-44 w-full md:h-52 md:w-2/3 lg:w-1/2">
           <Image
@@ -29,12 +29,25 @@ function Timeline({ slo, srb }: { slo?: boolean; srb?: boolean }) {
             sizes="(max-width:768px)80vw,(max-width:1024px):50vw,30vw"
           />
         </div>
+      </TimelineListItem>{" "}
+      <TimelineListItem>
+        <p className="font-raj font-bold not-italic text-primary">1998</p>
         <p>
           {slo
-            ? "izvajamo bilateralne in mednarodne prevoze med evropskimi državami, s čimer postajamo mednarodni prevoznik."
+            ? "ustanovitev podjetniškega transportnega podjetja."
             : srb
-              ? "pored bilateralnih transporta i transporte između evropskih zemalja, preuzimajući ulogu međunarodnog transportera u pravom smislu te reči. Fond znanja i iskustva raste sa ugledom kompanije koja nalazi svoje mesto na evropskom tržištu transporta."
-              : "we perform bilateral and international transports between European countries, thus taking on a roll of international transporter."}
+              ? "osnivanje preduzetničke transportne firme."
+              : "establishment of an entrepreneurial transport company."}
+        </p>
+      </TimelineListItem>
+      <TimelineListItem>
+        <p className="font-raj font-bold not-italic text-primary">2001</p>
+        <p>
+          {slo
+            ? "preoblikovanje v družbo z omejeno odgovornostjo. Podjetje opravlja bilateralne in mednarodne prevoze med evropskimi državami in tako prevzema vlogo mednarodnega prevoznika. Naše izkušnje in znanje rastejo skupaj s ugledom podjetja, ki je našlo svoje mesto na evropskem trgu."
+            : srb
+              ? "transformacija u društvo s ograničenom odgovornošću. Kompanija vrši, pored bilateralnih transporta i transporte između evropskih zemalja, preuzimajući ulogu međunarodnog transportera u pravom smislu te reči. Fond znanja i iskustva raste sa ugledom kompanije koja nalazi svoje mesto na evropskom tržištu transporta."
+              : "transformation into a limited liability company. Company performs bilateral and international transports between European countries , thus taking on a roll of international transporter. Our expirience and knowledge levels grow along with respectability of a company that found it’s place on European market."}
         </p>
       </TimelineListItem>
       <TimelineListItem>
@@ -57,7 +70,7 @@ function Timeline({ slo, srb }: { slo?: boolean; srb?: boolean }) {
           {slo
             ? "vizija namenskega industrijskega prevoznika se uresniči s popolnim osredotočanjem na cestni transport suhih razsutih tovorov s silosi. Specializiran vozni park je raznolik za vse potrebe naših strank."
             : srb
-              ? "vizija namenskog industrijskog transportera se ostvaruje kroz potpuni fokus na silos drumski transport rasutog tereta. Specijalizovani vozni park je raznolik za sve potrebe naših klijenata."
+              ? "vizija namenskog industrijskog transportera se ostvaruje kroz potpuni fokus na  drumski transport rasutog tereta silo cisternama."
               : "a vision of dedicated industrial transporter is realized through complete focus on silo road dry bulk transport. Specialized fleet is diversified for all needs of our clients."}
         </p>
       </TimelineListItem>
@@ -147,9 +160,9 @@ function Timeline({ slo, srb }: { slo?: boolean; srb?: boolean }) {
         </div>
         <p>
           {slo
-            ? "pridružimo se globalni pobudi Clean sweep (Zero pellet spill)."
+            ? "pridružimo se globalni pobudi Clean sweep (Zero pellet loss)."
             : srb
-              ? "pridružujemo se globalnoj inicijativi Clean sweep (Zero pellet spill)."
+              ? "pridružujemo se globalnoj inicijativi Clean sweep (Zero pellet loss)."
               : "we take Clean sweep pledge and joins global initiative for Zero pellet loss."}
         </p>
         <div className="relative mt-6 h-44 w-full md:h-52 md:w-2/3 lg:w-1/2">
@@ -169,7 +182,7 @@ function Timeline({ slo, srb }: { slo?: boolean; srb?: boolean }) {
         </div>
         <p>
           {slo
-            ? "nabava vakuumskih silosov in razširitev portfelja storitev."
+            ? "nabava vakuumskega silosa in razširitev portfelja storitev."
             : srb
               ? "nabavka vakuum silosa i proširenje portfolia usluga."
               : "introduction of vacuum silos in our service portfolio."}

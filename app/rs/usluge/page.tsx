@@ -40,14 +40,14 @@ function Page({
   return (
     <>
       <Header />
-      <main className="mx-4 md:mx-8 lg:mx-20 xl:px-20 xl:mx-auto max-w-7xl">
+      <main className="mx-4 max-w-7xl md:mx-8 lg:mx-20 xl:mx-auto xl:px-20">
         <ServicesNav srb={true} params={searchParams} />
         {!searchParams?.software && !searchParams?.suppliers && (
           <>
             <HeadText>
-              Specijalizovani smo za transport silosa sa vrednom flotom,
-              kvalifikovanim osobljem i naprednom tehnologijom, obezbeđujući
-              uslugu vrhunskog kvaliteta.
+              Specijalizovani smo za drumski transport robe silo cisternama
+              renomiranih proizvodjača, kvalifikovanim osobljem i naprednom
+              tehnologijom, obezbeđujući uslugu vrhunskog kvaliteta.
             </HeadText>
             <Services />
             <BigBagComparison srb />

@@ -14,16 +14,16 @@ function Services({ slo }: { slo?: boolean }) {
       >
         <p>
           {slo
-            ? "Naše prekucne prikolice za silose z minimalno prostornino od "
-            : "Naše kiper prikolice silosa sa minimalnom zapreminom od "}
+            ? "Naše kip silo cisterne s prostornino najmanj "
+            : "Naše kip silo cisterne zapremine od minimum "}
           <span className="font-bold">
             {slo ? "60 kubičnih metrov" : "60 kubnih metara"}
           </span>{" "}
           {slo
-            ? "so primerne za prevoz granulata in prahu, kot so:"
-            : "pogodni su za transport granulata i praha kao što su:"}
+            ? " so primerne za transport granulatov in praškov:"
+            : "su podobne za prevoz granulata i prahova:"}
         </p>
-        <ul className="list-inside list-disc mt-4">
+        <ul className="mt-4 list-inside list-disc">
           <li>
             <span className="font-bold">
               {slo ? "Polietilen" : "Polietlien"}
@@ -128,7 +128,7 @@ function Services({ slo }: { slo?: boolean }) {
               ? "Moderni silosi ponujajo pomembne prednosti:"
               : "Moderni silosi nude značajne prednosti:"}
           </p>
-          <ul className="mt-4 font-bold list-disc list-inside">
+          <ul className="mt-4 list-inside list-disc font-bold">
             <li>
               {slo
                 ? "Zahtevajo manj prostora, kar zmanjšuje stroške zemljišča"

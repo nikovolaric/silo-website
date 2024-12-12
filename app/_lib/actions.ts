@@ -379,7 +379,7 @@ export async function addJob(formData: FormData) {
     body: JSON.stringify(job),
   });
 
-  revalidatePath("/rs/kariera");
+  revalidatePath("/rs/karijera");
   revalidatePath("/si/zaposlitev");
   revalidatePath("/career");
   revalidatePath("/dashboard/kariera");
@@ -420,7 +420,7 @@ export async function updateJob(formData: FormData, id: string) {
     body: JSON.stringify(job),
   });
 
-  revalidatePath("/rs/kariera");
+  revalidatePath("/rs/karijera");
   revalidatePath("/si/zaposlitev");
   revalidatePath("/career");
   revalidatePath("/dashboard/kariera");
@@ -445,7 +445,7 @@ export async function deleteJob(id: string) {
   });
 
   revalidatePath("/dashboard/kariera");
-  revalidatePath("/rs/kariera");
+  revalidatePath("/rs/karijera");
   revalidatePath("/si/zaposlitev");
   revalidatePath("/career");
 
@@ -474,7 +474,7 @@ export async function addToCareer(id: string) {
   });
 
   revalidatePath("/dashboard/kariera");
-  revalidatePath("/rs/kariera");
+  revalidatePath("/rs/karijera");
   revalidatePath("/si/zaposlitev");
   revalidatePath("/career");
 
@@ -503,7 +503,7 @@ export async function hideFromCareer(id: string) {
   });
 
   revalidatePath("/dashboard/kariera");
-  revalidatePath("/rs/kariera");
+  revalidatePath("/rs/karijera");
   revalidatePath("/si/zaposlitev");
   revalidatePath("/career");
 
