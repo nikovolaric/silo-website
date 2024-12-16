@@ -24,9 +24,8 @@ async function Page({ params }: { params: { _id: string } }) {
 
   const { _id } = params;
 
-
   return (
-    <div className="mx-auto max-w-7xl">
+    <div className="mx-auto my-10 max-w-7xl">
       <Suspense fallback={<Spinner />}>
         <DashboardGetOneEdit id={_id} />
       </Suspense>

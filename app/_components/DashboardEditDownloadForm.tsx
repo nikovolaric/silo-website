@@ -35,7 +35,7 @@ function DashboardEditDownloadForm({
 
   return (
     <form action={(formData: FormData) => editDownload(formData, _id)}>
-      <h2 className="pb-4 font-raj font-bold text-2xl text-primary">
+      <h2 className="pb-4 font-raj text-2xl font-bold text-primary">
         Uredi download
       </h2>
       <div className="mt-20 flex flex-col gap-8">
@@ -45,7 +45,7 @@ function DashboardEditDownloadForm({
           ) : (
             <label>Ime (Srpski | Angleški)</label>
           )}
-          <div className="flex gap-2">
+          <div className="flex flex-col gap-2">
             {site !== "quality" && (
               <input
                 type="text"
@@ -53,7 +53,7 @@ function DashboardEditDownloadForm({
                 required
                 autoComplete="off"
                 defaultValue={ime}
-                className="px-2 h-7 rounded-lg border border-primary w-1/2"
+                className="h-7 w-1/2 rounded-lg border border-primary px-2"
               />
             )}
             <input
@@ -62,16 +62,16 @@ function DashboardEditDownloadForm({
               required
               autoComplete="off"
               defaultValue={name}
-              className="px-2 h-7 rounded-lg border border-primary w-1/2"
+              className="h-7 w-1/2 rounded-lg border border-primary px-2"
             />
           </div>
         </div>
-        <div className="flex flex-col gap-1.5 w-1/2">
+        <div className="flex w-1/2 flex-col gap-1.5">
           <label>Zavihek:</label>
           <select
             name="site"
             required
-            className="px-2 h-7 rounded-lg border border-primary"
+            className="h-7 rounded-lg border border-primary px-2"
             defaultValue={site}
             onChange={(e) => {
               e.preventDefault();
@@ -79,7 +79,7 @@ function DashboardEditDownloadForm({
             }}
           >
             <option value="quality">Kvalitet</option>
-            <option value="suppliers">Dobavljaći</option>
+            <option value="suppliers">Dobavljači</option>
             <option value="sustainability">Održivost</option>
             <option value="about">About us</option>
           </select>
@@ -87,31 +87,34 @@ function DashboardEditDownloadForm({
         {curSite === "quality" && (
           <div className="flex flex-col gap-1.5">
             <label>Opis(SRB | SLO | ANG):</label>
-            <div className="flex gap-5">
+            <div className="flex flex-col gap-5">
               <textarea
                 name="descriptionSrb"
                 autoComplete="off"
-                className="px-2 h-20 rounded-lg border border-primary w-1/2"
+                className="h-20 w-full rounded-lg border border-primary px-2"
                 defaultValue={descriptionSrb}
+                placeholder="SRB"
               />
               <textarea
                 name="descriptionSlo"
                 autoComplete="off"
-                className="px-2 h-20 rounded-lg border border-primary w-1/2"
+                className="h-20 w-full rounded-lg border border-primary px-2"
                 defaultValue={descriptionSlo}
+                placeholder="SLO"
               />
               <textarea
                 name="descriptionEng"
                 autoComplete="off"
-                className="px-2 h-20 rounded-lg border border-primary w-1/2"
+                className="h-20 w-full rounded-lg border border-primary px-2"
                 defaultValue={descriptionEng}
+                placeholder="ENG"
               />
             </div>
           </div>
         )}
         {!pdf && <Upload setPdf={setPdf} />}
         {pdf && (
-          <div className="flex flex-col gap-0.5 items-start">
+          <div className="flex flex-col items-start gap-0.5">
             <input
               type="text"
               name="downloadLink"
@@ -122,7 +125,7 @@ function DashboardEditDownloadForm({
             />
             <p>{pdf}</p>
             <button
-              className="mt-6 mb-2 bg-primary text-white px-4 py-1.5 rounded-full hover:bg-secondary transition-colors duration-300"
+              className="mb-2 mt-6 rounded-full bg-primary px-4 py-1.5 text-white transition-colors duration-300 hover:bg-secondary"
               onClick={async (e) => {
                 e.preventDefault();
                 await deleteAsset(pdf);
@@ -156,7 +159,7 @@ function Button() {
 
   return (
     <button
-      className="mt-6 mb-2 bg-primary text-white px-4 py-1.5 rounded-full hover:bg-secondary disabled:bg-neutraltwo disabled:cursor-not-allowed transition-colors duration-300"
+      className="mb-2 mt-6 rounded-full bg-primary px-4 py-1.5 text-white transition-colors duration-300 hover:bg-secondary disabled:cursor-not-allowed disabled:bg-neutraltwo"
       disabled={pending}
     >
       {pending ? "Urejam..." : "Uredi download"}

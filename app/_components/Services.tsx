@@ -4,7 +4,7 @@ function Services({ slo }: { slo?: boolean }) {
   return (
     <div className="mt-12 flex flex-col gap-10">
       <ServiceCard
-        title={slo ? "Prevoz silosa" : "Silo transport"}
+        title={slo ? "Silo transport" : "Silo transport"}
         img="/silo-transport.jpg"
         description={
           slo

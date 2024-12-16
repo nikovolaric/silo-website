@@ -23,7 +23,7 @@ async function Page() {
   }
 
   return (
-    <div className="mx-auto mb-10 max-w-7xl">
+    <div className="mx-auto my-10 max-w-7xl">
       <DashboardNewDownloadForm />
     </div>
   );

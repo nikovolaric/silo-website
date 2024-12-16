@@ -1,6 +1,8 @@
 import { getAllDownloads } from "../_lib/downloadApi";
 import QualityStandardsItem from "./QualityStandardsItem";
 
+export const revalidate = 3600;
+
 async function QualityStandards({
   srb,
   slo,
@@ -14,14 +16,14 @@ async function QualityStandards({
 
   return (
     <div>
-      <h3 className="font-raj font-bold text-2xl text-primary">
+      <h3 className="font-raj text-2xl font-bold text-primary">
         {slo
           ? "Certificirani smo glede na naslednje mednarodne standarde:"
           : srb
-          ? "Sertifikovani smo prema sledećim međunarodnim standardima:"
-          : "We are certified to the following international standards:"}
+            ? "Sertifikovani smo prema sledećim međunarodnim standardima:"
+            : "We are certified to the following international standards:"}
       </h3>
-      <ul className="mt-11 list-inside list-image-check flex flex-col gap-16 md:mt-16 md:w-5/6 mx-auto">
+      <ul className="mx-auto mt-11 flex list-inside list-image-check flex-col gap-16 md:mt-16 md:w-5/6">
         {data.downloads.map(
           (standard: {
             name: string;
@@ -37,7 +39,7 @@ async function QualityStandards({
               srb={srb}
               slo={slo}
             />
-          )
+          ),
         )}
       </ul>
     </div>

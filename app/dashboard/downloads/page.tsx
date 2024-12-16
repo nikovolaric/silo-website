@@ -40,7 +40,7 @@ async function Page() {
       <div className="flex items-center justify-between">
         <Link
           href="/dashboard"
-          className="mt-4 rounded-md border-2 px-2 py-1 text-primary transition-colors duration-300 hover:bg-primary hover:text-white"
+          className="mb-10 mt-4 rounded-md border-2 px-2 py-1 text-primary transition-colors duration-300 hover:bg-primary hover:text-white"
         >
           &larr; Dashboard
         </Link>

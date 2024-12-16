@@ -9,6 +9,9 @@ import LinkBtn from "./LinkBtn";
 import { getAllDownloads } from "../_lib/downloadApi";
 import DownloadItem from "./DownloadItem";
 
+export const revalidate = 3600;
+
+
 async function AboutUsText({ slo, srb }: { slo?: boolean; srb?: boolean }) {
   const data = await getAllDownloads("about");
 

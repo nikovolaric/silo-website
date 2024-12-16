@@ -145,7 +145,7 @@ function Footer() {
             <Link
               href="https://www.lamastrategies.com"
               target="_blank"
-              className="underline transition-[font] duration-300 hover:font-bold"
+              className="transition-[font] duration-300 hover:font-bold"
             >
               LAMA Strategies
             </Link>
