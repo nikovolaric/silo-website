@@ -3,7 +3,7 @@
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 function NavMenuSlo() {
@@ -11,7 +11,9 @@ function NavMenuSlo() {
   const [srbSite, setSrbSite] = useState("");
   const [engSite, setEngSite] = useState("");
   const pathname = usePathname();
-  const router = useRouter();
+  const params = useSearchParams();
+
+  const query = Object.fromEntries(params);
 
   useEffect(() => {
     if (isOpen) {
@@ -56,7 +58,7 @@ function NavMenuSlo() {
       setSrbSite("/rs/kolacici");
       setEngSite("/cookies");
     }
-  }, [isOpen, pathname, router]);
+  }, [isOpen, pathname]);
 
   function handleClick() {
     setIsOpen((isOpen) => !isOpen);
@@ -128,7 +130,7 @@ function NavMenuSlo() {
                 </Link>
               </li>
               <li className={`${isOpen ? "h-6" : "hidden h-0"} flex gap-8`}>
-                <Link href={engSite}>
+                <Link href={{ pathname: engSite, query }}>
                   <Image
                     src="https://flagicons.lipis.dev/flags/4x3/gb.svg"
                     alt="gb-flag"
@@ -137,7 +139,7 @@ function NavMenuSlo() {
                     className="rounded-sm object-contain"
                   />
                 </Link>
-                <Link href={srbSite}>
+                <Link href={{ pathname: srbSite, query }}>
                   <Image
                     src="https://flagicons.lipis.dev/flags/4x3/rs.svg"
                     alt="gb-flag"
@@ -206,7 +208,7 @@ function NavMenuSlo() {
             </Link>
           </li>
           <li className="flex gap-1">
-            <Link href={engSite}>
+            <Link href={{ pathname: engSite, query }}>
               <Image
                 src="https://flagicons.lipis.dev/flags/4x3/gb.svg"
                 alt="gb-flag"
@@ -215,7 +217,7 @@ function NavMenuSlo() {
                 className="rounded-sm object-contain"
               />
             </Link>
-            <Link href={srbSite}>
+            <Link href={{ pathname: srbSite, query }}>
               <Image
                 src="https://flagicons.lipis.dev/flags/4x3/rs.svg"
                 alt="gb-flag"

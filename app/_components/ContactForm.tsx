@@ -12,52 +12,52 @@ function ContactForm({ srb, slo }: { srb?: boolean; slo?: boolean }) {
 
   async function formAction(formData: FormData) {
     const result = await SendMail(formData);
-    if (result.includes("Ok")) {
+    if (result.includes("250")) {
       setMessage(
         slo
           ? "Mail poslan uspešno!"
           : srb
-          ? "Mail poslan uspešno!"
-          : "Mail sent successfully"
+            ? "Mail poslan uspešno!"
+            : "Mail sent successfully",
       );
     } else {
       setMessage(
         slo
           ? "Nekaj je šlo narobe! Poskusite znova!"
           : srb
-          ? "Nešto nije uredu! Pokušaj ponovno!"
-          : "Something went wrong! Try again later!"
+            ? "Nešto nije uredu! Pokušaj ponovno!"
+            : "Something went wrong! Try again later!",
       );
     }
   }
 
   return (
     <div className="mt-32">
-      <div className="mb-10 flex flex-col gap-5 md:text-center md:gap-6">
-        <h3 className="font-raj font-bold text-2xl text-primary">
+      <div className="mb-10 flex flex-col gap-5 md:gap-6 md:text-center">
+        <h3 className="font-raj text-2xl font-bold text-primary">
           {slo
             ? "Kontaktirajte nas"
             : srb
-            ? "Kontaktirajte nas"
-            : "Contact us today"}
+              ? "Kontaktirajte nas"
+              : "Contact us today"}
         </h3>
         <p className="text-secondary">
           {slo
             ? "Naša izkušena ekipa vam z veseljem pomaga."
             : srb
-            ? "Naš iskusni tim će vam rado pomoći."
-            : "Our experienced team is happy to assist you."}
+              ? "Naš iskusni tim će vam rado pomoći."
+              : "Our experienced team is happy to assist you."}
         </p>
       </div>
       <form action={formAction}>
-        <div className="grid grid-cols-1 gap-4 md:w-7/12 md:mx-auto lg:grid-cols-3 lg:w-3/4">
+        <div className="grid grid-cols-1 gap-4 md:mx-auto md:w-7/12 lg:w-3/4 lg:grid-cols-3">
           <input
             placeholder={
               slo
                 ? "Ime in priimek*:"
                 : srb
-                ? "Ime i prezime*:"
-                : "First name and last name*:"
+                  ? "Ime i prezime*:"
+                  : "First name and last name*:"
             }
             required
             className={input}
@@ -76,8 +76,8 @@ function ContactForm({ srb, slo }: { srb?: boolean; slo?: boolean }) {
               slo
                 ? "Telefonska številka:"
                 : srb
-                ? "Broj telefona:"
-                : "Phone number:"
+                  ? "Broj telefona:"
+                  : "Phone number:"
             }
             className={input}
             name="phone"
@@ -86,17 +86,17 @@ function ContactForm({ srb, slo }: { srb?: boolean; slo?: boolean }) {
           <textarea
             placeholder={slo ? "Sporočilo*:" : srb ? "Poruka*:" : "Message*:"}
             required
-            className={`border-primary rounded bg-neutraltwo h-56 py-2 px-4 focus:bg-white transition-all duration-200 lg:col-span-3`}
+            className={`h-56 rounded border-primary bg-neutraltwo px-4 py-2 transition-all duration-200 focus:bg-white lg:col-span-3`}
             name="message"
             autoComplete="off"
           />
         </div>
         {message && (
-          <p className="mt-2 md:w-7/12 md:mx-auto lg:w-3/4 text-primary">
+          <p className="mt-2 text-primary md:mx-auto md:w-7/12 lg:w-3/4">
             {message}
           </p>
         )}
-        <div className="text-right mt-6 md:w-7/12 md:mx-auto lg:w-3/4 lg:mt-10">
+        <div className="mt-6 text-right md:mx-auto md:w-7/12 lg:mt-10 lg:w-3/4">
           <Button srb={srb} slo={slo} />
         </div>
       </form>
@@ -109,20 +109,20 @@ function Button({ srb, slo }: { srb?: boolean; slo?: boolean }) {
 
   return (
     <button
-      className="text-white bg-accent py-0.5 px-6 rounded-full font-semibold shadow-xl md:px-10 lg:hover:bg-white lg:hover:text-primary transition-colors duration-300 disabled:text-primary disabled:bg-white disabled:cursor-not-allowed"
+      className="rounded-full bg-accent px-6 py-0.5 font-semibold text-white shadow-xl transition-colors duration-300 disabled:cursor-not-allowed disabled:bg-white disabled:text-primary md:px-10 lg:hover:bg-white lg:hover:text-primary"
       disabled={pending}
     >
       {pending
         ? slo
           ? "Pošiljam..."
           : srb
-          ? "Šaljem..."
-          : "Sending..."
+            ? "Šaljem..."
+            : "Sending..."
         : slo
-        ? "Pošlji"
-        : srb
-        ? "Šalji"
-        : "Send"}
+          ? "Pošlji"
+          : srb
+            ? "Šalji"
+            : "Send"}
     </button>
   );
 }

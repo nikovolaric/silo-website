@@ -4,7 +4,7 @@ import { Attachment } from "nodemailer/lib/mailer";
 const transporterOptions = {
   host: process.env.EMAIL_HOST,
   port: process.env.EMAIL_PORT,
-  // secure: true,
+  secure: true,
   auth: {
     user: process.env.EMAIL_USERNAME,
     pass: process.env.EMAIL_PASSWORD,
@@ -22,8 +22,8 @@ export async function sendEnquiry(options: {
 
   //2. Define the email options
   const mailOptions = {
-    from: "info@silo-jelicic.rs",
-    to: "info@silo-jelicic.rs",
+    from: "silojelicic@lamastrategies.com",
+    to: process.env.RECEIVER_MAIL,
     subject: "Povpraševanje",
     html: `<div style='font-family:Verdana'>Ime in priimek:${
       options.name
@@ -47,8 +47,8 @@ export async function sendComplaint(options: {
 
   //2. Define the email options
   const mailOptions = {
-    from: "info@silo-jelicic.rs",
-    to: "info@silo-jelicic.rs",
+    from: "silojelicic@lamastrategies.com",
+    to: process.env.RECEIVER_MAIL,
     subject: options.subject,
     html: `${options.message.replaceAll("\r\n", "<br/>")}`,
   };
@@ -72,8 +72,8 @@ export async function sendApplication(options: {
 
   //2. Define the email options
   const mailOptions = {
-    from: "info@silo-jelicic.rs",
-    to: "info@silo-jelicic.rs",
+    from: "silojelicic@lamastrategies.com",
+    to: process.env.RECEIVER_MAIL,
     subject: `Prijava na delovno mesto ${options.position}`,
     html: `<div style='font-family:Verdana'>Ime in priimek:${
       options.name

@@ -3,7 +3,7 @@
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 function NavMenu() {
@@ -11,7 +11,9 @@ function NavMenu() {
   const [sloSite, setSloSite] = useState("");
   const [engSite, setEngSite] = useState("");
   const pathname = usePathname();
-  const router = useRouter();
+  const params = useSearchParams();
+
+  const query = Object.fromEntries(params);
 
   useEffect(() => {
     if (isOpen) {
@@ -56,7 +58,7 @@ function NavMenu() {
       setSloSite("/si/piskotki");
       setEngSite("/cookies");
     }
-  }, [isOpen, pathname, router]);
+  }, [isOpen, pathname]);
 
   function handleClick() {
     setIsOpen((isOpen) => !isOpen);
@@ -128,7 +130,7 @@ function NavMenu() {
                 </Link>
               </li>
               <li className={`${isOpen ? "h-6" : "hidden h-0"} flex gap-8`}>
-                <Link href={engSite}>
+                <Link href={{ pathname: engSite, query }}>
                   <Image
                     src="https://flagicons.lipis.dev/flags/4x3/gb.svg"
                     alt="gb-flag"
@@ -137,7 +139,7 @@ function NavMenu() {
                     className="rounded-sm object-contain"
                   />
                 </Link>
-                <Link href={sloSite}>
+                <Link href={{ pathname: sloSite, query }}>
                   <Image
                     src="https://flagicons.lipis.dev/flags/4x3/si.svg"
                     alt="slo-flag"
@@ -206,7 +208,7 @@ function NavMenu() {
             </Link>
           </li>
           <li className="flex gap-1">
-            <Link href={engSite}>
+            <Link href={{ pathname: engSite, query }}>
               <Image
                 src="https://flagicons.lipis.dev/flags/4x3/gb.svg"
                 alt="gb-flag"
@@ -215,7 +217,7 @@ function NavMenu() {
                 className="rounded-sm object-contain"
               />
             </Link>
-            <Link href={sloSite}>
+            <Link href={{ pathname: sloSite, query }}>
               <Image
                 src="https://flagicons.lipis.dev/flags/4x3/si.svg"
                 alt="slo-flag"
