@@ -28,7 +28,7 @@ async function OpenPositions({ srb, slo }: { srb?: boolean; slo?: boolean }) {
             : slo
               ? "Trenutno ni razpoložljivih delovnih mest "
               : "No job openings at the moment "}
-          :
+          :(
         </h4>
         <p>
           {srb

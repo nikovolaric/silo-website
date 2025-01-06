@@ -14,7 +14,7 @@ function ComplaintForm({ srb, slo }: { srb?: boolean; slo?: boolean }) {
     const result = await newComplaint(formData);
     if (result.includes("250")) {
       setMessage(
-        srb || slo ? "Mail poslan uspešno!" : "Mail snet successfully",
+        srb || slo ? "Mail poslan uspešno!" : "Mail sent successfully",
       );
     } else {
       setMessage(
