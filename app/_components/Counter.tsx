@@ -9,8 +9,8 @@ function Counter({ srb, slo }: { srb?: boolean; slo?: boolean }) {
 
   const [start, setStart] = useState(false);
   const [experienceCount, setExperienceCount] = useState(0);
-  const [kmCount, setKmCount] = useState(495000);
-  const [vehiceleCount, SetVehicleCount] = useState(100);
+  const [kmCount, setKmCount] = useState(998500);
+  const [vehiceleCount, SetVehicleCount] = useState(70);
 
   useEffect(
     function () {
@@ -34,10 +34,10 @@ function Counter({ srb, slo }: { srb?: boolean; slo?: boolean }) {
           if (experienceCount < new Date().getFullYear() - 1998) {
             setExperienceCount((count: number) => count + 1);
           }
-          if (kmCount < 500000) {
+          if (kmCount < 1000000) {
             setKmCount((count: number) => count + 50);
           }
-          if (vehiceleCount < 150) {
+          if (vehiceleCount < 120) {
             SetVehicleCount((count: number) => count + 1);
           }
         }, 50);
