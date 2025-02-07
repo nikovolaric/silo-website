@@ -130,7 +130,7 @@ function CareerForm({ srb, slo }: { srb?: boolean; slo?: boolean }) {
             />
           </div>
           <div className="flex items-start gap-4 lg:col-span-3">
-            <input type="checkbox" required className="mt-2" />
+            <input type="checkbox" required className="mt-2" name="agree" />
             <label>
               {srb
                 ? "Podnošenjem ove prijave garantujem tačnost datih informacija. Popunjavanjem ove prijave dajem saglasnost da preduzeće Silo Jeličić, d.o.o. korišćenje ovih podataka u svrhu zapošljavanja na odgovarajuće radno mesto u skladu sa Zakonom o zaštiti podataka o ličnosti."
@@ -138,6 +138,7 @@ function CareerForm({ srb, slo }: { srb?: boolean; slo?: boolean }) {
                   ? "Z oddajo te vloge jamčim za točnost navedenih podatkov. Z izpolnitvijo te prijave soglašam, da podjetje Silo Jeličić, d.o.o., te podatke uporabi za namene zaposlitve na ustreznem delovnem mestu v skladu z Zakonom o varstvu osebnih podatkov."
                   : "By submitting this application, I guarantee the accuracy of the provided information. By completing this application, I consent to the company Silo Jelicic, d.o.o. using this data for employment purposes for the appropriate position in accordance with the Personal Data Protection Act."}
             </label>
+            <input type="checkbox" className="hidden" name="honeypot" />
           </div>
         </div>
         {message && (

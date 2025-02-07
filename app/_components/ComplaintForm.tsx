@@ -60,6 +60,7 @@ function ComplaintForm({ srb, slo }: { srb?: boolean; slo?: boolean }) {
             name="message"
             autoComplete="off"
           />
+          <input type="checkbox" name="honeypot" className="hidden" />
         </div>
         {message && (
           <p className="mt-2 text-primary md:mx-auto md:w-7/12 lg:w-3/4">

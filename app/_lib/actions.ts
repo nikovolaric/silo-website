@@ -17,6 +17,8 @@ export async function SendMail(formData: FormData) {
     message: formData.get("message") as string,
   };
 
+  if (formData.has("honeypot")) return "error";
+
   const result = await sendEnquiry(data);
 
   return result;
@@ -27,6 +29,8 @@ export async function newComplaint(formData: FormData) {
     subject: formData.get("subject") as string,
     message: formData.get("message") as string,
   };
+
+  if (formData.has("honeypot")) return "error";
 
   const result = await sendComplaint(data);
 
@@ -56,6 +60,10 @@ export async function newApplication(formData: FormData) {
     message: formData.get("message") as string,
     file: [{ filename: CV.name, path: filePath }],
   };
+
+  if (!formData.has("agree")) return "error";
+
+  if (formData.has("honeypot")) return "error";
 
   const result = await sendApplication(data);
 
