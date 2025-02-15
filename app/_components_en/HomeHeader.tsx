@@ -14,7 +14,6 @@ function HomeHeader() {
           alt="background photo"
           fill
           className="object-cover opacity-60"
-          placeholder="blur"
           quality={50}
           sizes="100vw"
           priority

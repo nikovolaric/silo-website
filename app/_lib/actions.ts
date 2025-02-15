@@ -290,7 +290,7 @@ export async function declineAllCookies() {
     domain: ".silo-jelicic.com",
   });
 
-  cookies().set("_ga_E0QE91KPQW", "", {
+  cookies().set("_ga_JE9CVLG7FP", "", {
     expires: new Date(Date.now() + 1000),
     domain: ".silo-jelicic.com",
   });
@@ -322,7 +322,7 @@ export async function declineAnalytics() {
     domain: ".silo-jelicic.com",
   });
 
-  cookies().set("_ga_E0QE91KPQW", "", {
+  cookies().set("_ga_JE9CVLG7FP", "", {
     expires: new Date(Date.now() + 1000),
     domain: ".silo-jelicic.com",
   });

@@ -7,6 +7,7 @@ import GoogleAnalytics from "./_components/GoogleAnalytics";
 const inter = Inter({
   subsets: ["latin"],
   weight: "variable",
+  display: "swap",
 });
 
 const raj = Rajdhani({
