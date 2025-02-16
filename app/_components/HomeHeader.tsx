@@ -17,6 +17,7 @@ function HomeHeader({ slo }: { slo?: boolean }) {
           className="object-cover opacity-60"
           quality={50}
           sizes="100vw"
+          loading="eager"
           priority
         />
         <div className="relative flex max-w-7xl items-center justify-between px-4 pt-6 md:px-8 lg:mx-20 xl:mx-auto xl:px-20">

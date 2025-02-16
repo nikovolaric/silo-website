@@ -58,7 +58,6 @@ function Counter({ srb, slo }: { srb?: boolean; slo?: boolean }) {
           alt="image"
           fill
           className="object-cover object-left opacity-50 md:object-bottom 2xl:object-[0,-700px]"
-          placeholder="blur"
           sizes="(max-width:1024px)95vw, 66vw"
           quality={50}
         />

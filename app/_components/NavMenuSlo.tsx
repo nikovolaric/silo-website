@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import gbflag from "@/public/icons/gb-flag.svg";
+import rsflag from "@/public/icons/rs-flag.svg";
 
 function NavMenuSlo() {
   const [isOpen, setIsOpen] = useState(false);
@@ -132,7 +134,7 @@ function NavMenuSlo() {
               <li className={`${isOpen ? "h-6" : "hidden h-0"} flex gap-8`}>
                 <Link href={{ pathname: engSite, query }}>
                   <Image
-                    src="https://flagicons.lipis.dev/flags/4x3/gb.svg"
+                    src={gbflag}
                     alt="gb-flag"
                     height={18}
                     width={24}
@@ -141,7 +143,7 @@ function NavMenuSlo() {
                 </Link>
                 <Link href={{ pathname: srbSite, query }}>
                   <Image
-                    src="https://flagicons.lipis.dev/flags/4x3/rs.svg"
+                    src={rsflag}
                     alt="gb-flag"
                     height={18}
                     width={24}
@@ -210,7 +212,7 @@ function NavMenuSlo() {
           <li className="flex gap-1">
             <Link href={{ pathname: engSite, query }}>
               <Image
-                src="https://flagicons.lipis.dev/flags/4x3/gb.svg"
+                src={gbflag}
                 alt="gb-flag"
                 height={15}
                 width={20}
@@ -219,7 +221,7 @@ function NavMenuSlo() {
             </Link>
             <Link href={{ pathname: srbSite, query }}>
               <Image
-                src="https://flagicons.lipis.dev/flags/4x3/rs.svg"
+                src={rsflag}
                 alt="gb-flag"
                 height={15}
                 width={20}

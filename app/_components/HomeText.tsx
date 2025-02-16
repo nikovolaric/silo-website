@@ -9,7 +9,6 @@ function HomeText({ srb, slo }: { srb?: boolean; slo?: boolean }) {
           src={img1}
           alt="about us image"
           fill
-          placeholder="blur"
           className="rounded-lg object-cover"
           sizes="(max-width:768px)95vw,50vw"
           quality={50}
