@@ -31,6 +31,14 @@ function DashboardJobCard({ job }: { job: iJob }) {
   const { titleSrb, _id, hidden } = job;
   const [isOpen, setIsOpen] = useState(false);
 
+  async function handleAddToCareer(formData: FormData) {
+    await addToCareer(formData, _id);
+  }
+
+  async function handleHideFromCareer(formData: FormData) {
+    await hideFromCareer(formData, _id);
+  }
+
   return (
     <div className="flex items-center justify-between gap-6 border-b border-gray-400 py-6">
       <p className="grow text-2xl font-bold">{titleSrb}</p>
@@ -38,13 +46,13 @@ function DashboardJobCard({ job }: { job: iJob }) {
         preview
       </p>
       {hidden ? (
-        <form action={() => addToCareer(_id)}>
+        <form action={handleAddToCareer}>
           <Button>
             <XMarkIcon className="h-6 bg-red-400 p-1" />
           </Button>
         </form>
       ) : (
-        <form action={() => hideFromCareer(_id)}>
+        <form action={handleHideFromCareer}>
           <Button>
             <CheckIcon className="h-6 bg-green-300 p-1" />
           </Button>

@@ -90,7 +90,7 @@ export async function deleteAsset(public_id: string) {
     headers: {
       authorization: auth,
       accept: "aplication/json",
-      "content-type": "application/json",
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({ id: public_id }),
   });
@@ -115,7 +115,7 @@ export async function createDownload(formData: FormData) {
     headers: {
       authorization: auth,
       accept: "aplication/json",
-      "content-type": "application/json",
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(data),
   });
@@ -153,7 +153,7 @@ export async function editDownload(formData: FormData, id: string) {
     headers: {
       authorization: auth,
       accept: "aplication/json",
-      "content-type": "application/json",
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(data),
   });
@@ -173,7 +173,7 @@ export async function editDownload(formData: FormData, id: string) {
   redirect("/dashboard/downloads");
 }
 
-export async function deleteDownload(id: string) {
+export async function deleteDownload(formData: FormData, id: string) {
   await connectDB();
   const session = cookies().get("jwt")?.value as string;
   const { id: userId }: { id: string } = await jwtDecode(session);
@@ -222,7 +222,7 @@ export async function login(formData: FormData) {
       method: "POST",
       headers: {
         accept: "aplication/json",
-        "content-type": "application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(user),
     });
@@ -388,7 +388,7 @@ export async function addJob(formData: FormData) {
     headers: {
       authorization: auth,
       accept: "aplication/json",
-      "content-type": "application/json",
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(job),
   });
@@ -430,7 +430,7 @@ export async function updateJob(formData: FormData, id: string) {
     headers: {
       authorization: auth,
       accept: "aplication/json",
-      "content-type": "application/json",
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(job),
   });
@@ -443,7 +443,7 @@ export async function updateJob(formData: FormData, id: string) {
   redirect("/dashboard/kariera");
 }
 
-export async function deleteJob(id: string) {
+export async function deleteJob(formData: FormData, id: string) {
   await connectDB();
   const session = cookies().get("jwt")?.value as string;
   const { id: userId }: { id: string } = await jwtDecode(session);
@@ -468,7 +468,7 @@ export async function deleteJob(id: string) {
   redirect("/dashboard/kariera");
 }
 
-export async function addToCareer(id: string) {
+export async function addToCareer(fromData: FormData, id: string) {
   await connectDB();
   const session = cookies().get("jwt")?.value as string;
   const { id: userId }: { id: string } = await jwtDecode(session);
@@ -485,7 +485,7 @@ export async function addToCareer(id: string) {
     headers: {
       authorization: auth,
       accept: "aplication/json",
-      "content-type": "application/json",
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({ hidden: false }),
   });
@@ -496,7 +496,7 @@ export async function addToCareer(id: string) {
   revalidatePath("/career");
 }
 
-export async function hideFromCareer(id: string) {
+export async function hideFromCareer(fromData: FormData, id: string) {
   await connectDB();
   const session = cookies().get("jwt")?.value as string;
   const { id: userId }: { id: string } = await jwtDecode(session);
@@ -513,7 +513,7 @@ export async function hideFromCareer(id: string) {
     headers: {
       authorization: auth,
       accept: "aplication/json",
-      "content-type": "application/json",
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({ hidden: true }),
   });
