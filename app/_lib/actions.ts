@@ -89,7 +89,7 @@ export async function deleteAsset(public_id: string) {
     method: "POST",
     headers: {
       authorization: auth,
-      accept: "aplication/json",
+      accept: "application/json",
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ id: public_id }),
@@ -114,7 +114,7 @@ export async function createDownload(formData: FormData) {
     method: "POST",
     headers: {
       authorization: auth,
-      accept: "aplication/json",
+      accept: "application/json",
       "Content-Type": "application/json",
     },
     body: JSON.stringify(data),
@@ -152,7 +152,7 @@ export async function editDownload(formData: FormData, id: string) {
     method: "PATCH",
     headers: {
       authorization: auth,
-      accept: "aplication/json",
+      accept: "application/json",
       "Content-Type": "application/json",
     },
     body: JSON.stringify(data),
@@ -221,7 +221,7 @@ export async function login(formData: FormData) {
     const res = await fetch(`${process.env.API_URL}/api/users/login`, {
       method: "POST",
       headers: {
-        accept: "aplication/json",
+        accept: "application/json",
         "Content-Type": "application/json",
       },
       body: JSON.stringify(user),
@@ -387,7 +387,7 @@ export async function addJob(formData: FormData) {
     method: "POST",
     headers: {
       authorization: auth,
-      accept: "aplication/json",
+      accept: "application/json",
       "Content-Type": "application/json",
     },
     body: JSON.stringify(job),
@@ -429,7 +429,7 @@ export async function updateJob(formData: FormData, id: string) {
     method: "PATCH",
     headers: {
       authorization: auth,
-      accept: "aplication/json",
+      accept: "application/json",
       "Content-Type": "application/json",
     },
     body: JSON.stringify(job),
@@ -484,7 +484,7 @@ export async function addToCareer(fromData: FormData, id: string) {
     method: "PATCH",
     headers: {
       authorization: auth,
-      accept: "aplication/json",
+      accept: "application/json",
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ hidden: false }),
@@ -512,7 +512,7 @@ export async function hideFromCareer(fromData: FormData, id: string) {
     method: "PATCH",
     headers: {
       authorization: auth,
-      accept: "aplication/json",
+      accept: "application/json",
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ hidden: true }),
