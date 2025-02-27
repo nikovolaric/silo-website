@@ -7,6 +7,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import User from "@/app/_models/userModel";
 import { jwtDecode } from "jwt-decode";
+import connectDB from "@/app/_config/database";
 
 export const dynamic = "force-dynamic";
 
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
 };
 
 async function Page() {
+  await connectDB();
   const session = cookies().get("jwt")?.value;
   if (!session) {
     redirect("/login");

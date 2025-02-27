@@ -1,5 +1,6 @@
 import DashboardGetOneJobEdit from "@/app/_components/DashboardGetOneJobEdit";
 import Spinner from "@/app/_components/Spinner";
+import connectDB from "@/app/_config/database";
 import User from "@/app/_models/userModel";
 import { jwtDecode } from "jwt-decode";
 import { Metadata } from "next";
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
 };
 
 async function Page({ params }: { params: { _id: string } }) {
+  await connectDB();
   const session = cookies().get("jwt")?.value as string;
   if (!session) {
     redirect("/login");

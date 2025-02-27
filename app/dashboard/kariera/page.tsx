@@ -7,6 +7,7 @@ import { cookies } from "next/headers";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Suspense } from "react";
+import connectDB from "@/app/_config/database";
 
 export const dynamic = "force-dynamic";
 
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
 };
 
 async function Page() {
+  await connectDB();
   const session = cookies().get("jwt")?.value as string;
   if (!session) {
     redirect("/login");

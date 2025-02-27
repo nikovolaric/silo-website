@@ -1,4 +1,5 @@
 import DashboardNewJobForm from "@/app/_components/DashboardNewJobForm";
+import connectDB from "@/app/_config/database";
 import User from "@/app/_models/userModel";
 import { jwtDecode } from "jwt-decode";
 import { Metadata } from "next";
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
 };
 
 async function Page() {
+  await connectDB();
   const session = cookies().get("jwt")?.value as string;
   if (!session) {
     redirect("/login");
