@@ -494,8 +494,6 @@ export async function addToCareer(id: string) {
   revalidatePath("/rs/karijera");
   revalidatePath("/si/zaposlitev");
   revalidatePath("/career");
-
-  redirect("/dashboard/kariera");
 }
 
 export async function hideFromCareer(id: string) {
@@ -524,6 +522,4 @@ export async function hideFromCareer(id: string) {
   revalidatePath("/rs/karijera");
   revalidatePath("/si/zaposlitev");
   revalidatePath("/career");
-
-  redirect("/dashboard/kariera");
 }
