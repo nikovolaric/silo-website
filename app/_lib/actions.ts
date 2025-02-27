@@ -7,6 +7,7 @@ import { cookies } from "next/headers";
 import { Attachment } from "nodemailer/lib/mailer";
 import User from "../_models/userModel";
 import { jwtDecode } from "jwt-decode";
+import connectDB from "../_config/database";
 
 /*-----------------------------------------------------------maili--------------------------------------------------------------------*/
 export async function SendMail(formData: FormData) {
@@ -73,6 +74,7 @@ export async function newApplication(formData: FormData) {
 /*-------------------------------------------------------------downloadi----------------------------------------------------------------*/
 
 export async function deleteAsset(public_id: string) {
+  await connectDB();
   const session = cookies().get("jwt")?.value as string;
   const { id: userId }: { id: string } = await jwtDecode(session);
   const user = await User.findById(userId);
@@ -95,6 +97,7 @@ export async function deleteAsset(public_id: string) {
 }
 
 export async function createDownload(formData: FormData) {
+  await connectDB();
   const session = cookies().get("jwt")?.value as string;
   const { id: userId }: { id: string } = await jwtDecode(session);
   const user = await User.findById(userId);
@@ -132,6 +135,7 @@ export async function createDownload(formData: FormData) {
 }
 
 export async function editDownload(formData: FormData, id: string) {
+  await connectDB();
   const session = cookies().get("jwt")?.value as string;
   const { id: userId }: { id: string } = await jwtDecode(session);
   const user = await User.findById(userId);
@@ -170,6 +174,7 @@ export async function editDownload(formData: FormData, id: string) {
 }
 
 export async function deleteDownload(id: string) {
+  await connectDB();
   const session = cookies().get("jwt")?.value as string;
   const { id: userId }: { id: string } = await jwtDecode(session);
   const user = await User.findById(userId);
@@ -355,6 +360,7 @@ export async function declineThirdParty() {
 /*---------------------------------------------------------------kariera--------------------------------------------------------------------------*/
 
 export async function addJob(formData: FormData) {
+  await connectDB();
   const session = cookies().get("jwt")?.value as string;
   const { id: userId }: { id: string } = await jwtDecode(session);
   const user = await User.findById(userId);
@@ -396,6 +402,7 @@ export async function addJob(formData: FormData) {
 }
 
 export async function updateJob(formData: FormData, id: string) {
+  await connectDB();
   const session = cookies().get("jwt")?.value as string;
   const { id: userId }: { id: string } = await jwtDecode(session);
   const user = await User.findById(userId);
@@ -437,6 +444,7 @@ export async function updateJob(formData: FormData, id: string) {
 }
 
 export async function deleteJob(id: string) {
+  await connectDB();
   const session = cookies().get("jwt")?.value as string;
   const { id: userId }: { id: string } = await jwtDecode(session);
   const user = await User.findById(userId);
@@ -461,6 +469,7 @@ export async function deleteJob(id: string) {
 }
 
 export async function addToCareer(id: string) {
+  await connectDB();
   const session = cookies().get("jwt")?.value as string;
   const { id: userId }: { id: string } = await jwtDecode(session);
   const user = await User.findById(userId);
@@ -490,6 +499,7 @@ export async function addToCareer(id: string) {
 }
 
 export async function hideFromCareer(id: string) {
+  await connectDB();
   const session = cookies().get("jwt")?.value as string;
   const { id: userId }: { id: string } = await jwtDecode(session);
   const user = await User.findById(userId);
