@@ -383,7 +383,7 @@ export async function addJob(formData: FormData) {
     qualificationsSlo: formData.getAll("qualificationsSlo"),
   };
 
-  fetch(`${process.env.API_URL}/api/jobs`, {
+  await fetch(`${process.env.API_URL}/api/jobs`, {
     method: "POST",
     headers: {
       authorization: auth,
@@ -425,7 +425,7 @@ export async function updateJob(formData: FormData, id: string) {
     qualificationsSlo: formData.getAll("qualificationsSlo"),
   };
 
-  fetch(`${process.env.API_URL}/api/jobs/${id}`, {
+  await fetch(`${process.env.API_URL}/api/jobs/${id}`, {
     method: "PATCH",
     headers: {
       authorization: auth,
@@ -455,7 +455,7 @@ export async function deleteJob(id: string) {
 
   const auth = "Bearer " + session;
 
-  fetch(`${process.env.API_URL}/api/jobs/${id}`, {
+  await fetch(`${process.env.API_URL}/api/jobs/${id}`, {
     method: "DELETE",
     headers: { authorization: auth },
   });
@@ -480,7 +480,7 @@ export async function addToCareer(id: string) {
 
   const auth = "Bearer " + session;
 
-  fetch(`${process.env.API_URL}/api/jobs/${id}`, {
+  await fetch(`${process.env.API_URL}/api/jobs/${id}`, {
     method: "PATCH",
     headers: {
       authorization: auth,
@@ -508,7 +508,7 @@ export async function hideFromCareer(id: string) {
 
   const auth = "Bearer " + session;
 
-  fetch(`${process.env.API_URL}/api/jobs/${id}`, {
+  await fetch(`${process.env.API_URL}/api/jobs/${id}`, {
     method: "PATCH",
     headers: {
       authorization: auth,
