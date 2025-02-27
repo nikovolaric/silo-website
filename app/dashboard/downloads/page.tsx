@@ -3,30 +3,12 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { Metadata } from "next";
 import DownloadCards from "@/app/_components/DownloadCards";
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
-import User from "@/app/_models/userModel";
-import { jwtDecode } from "jwt-decode";
-import connectDB from "@/app/_config/database";
-
-export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Downloadi",
 };
 
-async function Page() {
-  await connectDB();
-  const session = cookies().get("jwt")?.value;
-  if (!session) {
-    redirect("/login");
-  }
-  const { id: userId }: { id: string } = await jwtDecode(session);
-  const user = await User.findById(userId);
-  if (!user || user.role !== "admin") {
-    redirect("/login");
-  }
-
+function Page() {
   return (
     <div className="mx-auto flex h-dvh max-w-7xl flex-col">
       <h2 className="py-10 text-center text-2xl">Downloadi</h2>

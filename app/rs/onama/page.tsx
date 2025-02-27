@@ -10,30 +10,34 @@ import Spinner from "@/app/_components/Spinner";
 export async function generateMetadata({
   searchParams,
 }: {
-  searchParams: { history?: boolean; quality?: boolean };
+  searchParams: Promise<{ history?: boolean; quality?: boolean }>;
 }) {
-  if (!searchParams.history && !searchParams.quality) {
+  const params = await searchParams;
+
+  if (!params.history && !params.quality) {
     return { title: "O nama" };
   }
-  if (searchParams.history) {
+  if (params.history) {
     return { title: "Istorijat" };
   }
-  if (searchParams.quality) {
+  if (params.quality) {
     return { title: "Kvalitet" };
   }
 }
 
-function Page({
+async function Page({
   searchParams,
 }: {
-  searchParams: { history?: boolean; quality?: boolean };
+  searchParams: Promise<{ history?: boolean; quality?: boolean }>;
 }) {
+  const params = await searchParams;
+
   return (
     <>
       <Header />
       <main className="mx-4 max-w-7xl md:mx-8 lg:mx-20 xl:mx-auto xl:px-20">
-        <AboutUsNav srb params={searchParams} />
-        {!searchParams.history && !searchParams.quality && (
+        <AboutUsNav srb params={params} />
+        {!params.history && !params.quality && (
           <>
             <HeadText>
               Ponosni smo na dugogodišnju saradnju sa našim klijentima,
@@ -44,7 +48,7 @@ function Page({
             </Suspense>
           </>
         )}
-        {searchParams.history && (
+        {params.history && (
           <>
             <HeadText>
               Više od {new Date().getFullYear() - 1998} godina iskustva i više
@@ -53,7 +57,7 @@ function Page({
             <HistoryText srb />
           </>
         )}
-        {searchParams.quality && (
+        {params.quality && (
           <>
             <HeadText>
               Naša kompanija je posvećena pružanju vrhunskih usluga drumskog

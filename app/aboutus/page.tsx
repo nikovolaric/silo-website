@@ -10,30 +10,34 @@ import { Suspense } from "react";
 export async function generateMetadata({
   searchParams,
 }: {
-  searchParams: { history?: boolean; quality?: boolean };
+  searchParams: Promise<{ history?: boolean; quality?: boolean }>;
 }) {
-  if (!searchParams.history && !searchParams.quality) {
+  const params = await searchParams;
+
+  if (!params.history && !params.quality) {
     return { title: "About us" };
   }
-  if (searchParams.history) {
+  if (params.history) {
     return { title: "History" };
   }
-  if (searchParams.quality) {
+  if (params.quality) {
     return { title: "Quality" };
   }
 }
 
-function Page({
+async function Page({
   searchParams,
 }: {
-  searchParams: { history?: boolean; quality?: boolean };
+  searchParams: Promise<{ history?: boolean; quality?: boolean }>;
 }) {
+  const params = await searchParams;
+
   return (
     <>
       <Header />
       <main className="mx-4 max-w-7xl md:mx-8 lg:mx-20 xl:mx-auto xl:px-20">
-        <AboutUsNav params={searchParams} />
-        {!searchParams.history && !searchParams.quality && (
+        <AboutUsNav params={params} />
+        {!params.history && !params.quality && (
           <>
             <HeadText>
               We are proud of long-term cooperation with our clients, built on
@@ -44,7 +48,7 @@ function Page({
             </Suspense>
           </>
         )}
-        {searchParams.history && (
+        {params.history && (
           <>
             <HeadText>
               More than {new Date().getFullYear() - 1998} years of experience,
@@ -53,7 +57,7 @@ function Page({
             <HistoryText />
           </>
         )}
-        {searchParams.quality && (
+        {params.quality && (
           <>
             <HeadText>
               Our company is committed to providing top-quality road transport

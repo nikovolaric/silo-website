@@ -10,30 +10,34 @@ import { Suspense } from "react";
 export async function generateMetadata({
   searchParams,
 }: {
-  searchParams: { history?: boolean; quality?: boolean };
+  searchParams: Promise<{ history?: boolean; quality?: boolean }>;
 }) {
-  if (!searchParams.history && !searchParams.quality) {
+  const params = await searchParams;
+
+  if (!params.history && !params.quality) {
     return { title: "O nas" };
   }
-  if (searchParams.history) {
+  if (params.history) {
     return { title: "Zgodovina" };
   }
-  if (searchParams.quality) {
+  if (params.quality) {
     return { title: "Kakovost" };
   }
 }
 
-function Page({
+async function Page({
   searchParams,
 }: {
-  searchParams: { history?: boolean; quality?: boolean };
+  searchParams: Promise<{ history?: boolean; quality?: boolean }>;
 }) {
+  const params = await searchParams;
+
   return (
     <>
       <Header slo />
       <main className="mx-4 max-w-7xl md:mx-8 lg:mx-20 xl:mx-auto xl:px-20">
-        <AboutUsNav slo params={searchParams} />
-        {!searchParams.history && !searchParams.quality && (
+        <AboutUsNav slo params={params} />
+        {!params.history && !params.quality && (
           <>
             <HeadText>
               Ponosni smo na dolgoletno sodelovanje z našimi naročniki, ki
@@ -44,7 +48,7 @@ function Page({
             </Suspense>
           </>
         )}
-        {searchParams.history && (
+        {params.history && (
           <>
             <HeadText>
               Več kot {new Date().getFullYear() - 1998} let izkušenj in več kot
@@ -53,7 +57,7 @@ function Page({
             <HistoryText slo />
           </>
         )}
-        {searchParams.quality && (
+        {params.quality && (
           <>
             <HeadText>
               Naše podjetje se zavezuje k zagotavljanju vrhunskih storitev

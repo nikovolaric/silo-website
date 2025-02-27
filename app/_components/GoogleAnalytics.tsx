@@ -1,8 +1,9 @@
 import { cookies } from "next/headers";
 import Script from "next/script";
 
-function GoogleAnalytics() {
-  const session = cookies().get("analyticsConsent")?.value;
+async function GoogleAnalytics() {
+  const cookieStore = await cookies();
+  const session = cookieStore.get("analyticsConsent")?.value;
 
   return (
     <>

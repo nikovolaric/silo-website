@@ -13,38 +13,40 @@ import { Suspense } from "react";
 export async function generateMetadata({
   searchParams,
 }: {
-  searchParams?: {
+  searchParams?: Promise<{
     suppliers?: boolean;
     software?: boolean;
-  };
+  }>;
 }) {
-  if (!searchParams?.software && !searchParams?.suppliers) {
+  const params = await searchParams;
+
+  if (!params?.software && !params?.suppliers) {
     return { title: "Services" };
   }
-  if (searchParams?.suppliers) {
+  if (params?.suppliers) {
     return { title: "Suppliers" };
   }
-  if (searchParams?.software) {
+  if (params?.software) {
     return { title: "Software" };
   }
 }
 
-// export const dynamic = "force-static";
-
-function Page({
+async function Page({
   searchParams,
 }: {
-  searchParams?: {
+  searchParams?: Promise<{
     suppliers?: boolean;
     software?: boolean;
-  };
+  }>;
 }) {
+  const params = await searchParams;
+
   return (
     <>
       <Header />
       <main className="mx-4 max-w-7xl md:mx-8 lg:mx-20 xl:mx-auto xl:px-20">
-        <ServicesNav srb={false} params={searchParams} />
-        {!searchParams?.software && !searchParams?.suppliers && (
+        <ServicesNav srb={false} params={params} />
+        {!params?.software && !params?.suppliers && (
           <>
             <HeadText>
               We are specialized in road transport of goods with silo tanks of
@@ -56,7 +58,7 @@ function Page({
             <ServiceText srb={false} />
           </>
         )}
-        {searchParams?.suppliers && (
+        {params?.suppliers && (
           <>
             <HeadText>
               In our company, responsible supply chain management forms the
@@ -67,7 +69,7 @@ function Page({
             </Suspense>
           </>
         )}
-        {searchParams?.software && (
+        {params?.software && (
           <>
             <HeadText>
               We strive for most efficient application of available modern

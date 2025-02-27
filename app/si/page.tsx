@@ -12,8 +12,9 @@ export const metadata: Metadata = {
   title: "Dobrodošli",
 };
 
-function Page() {
-  const cookie = cookies().get("analyticsConsent")?.value;
+async function Page() {
+  const cookieStore = await cookies();
+  const cookie = cookieStore.get("analyticsConsent")?.value;
 
   return (
     <>

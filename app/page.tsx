@@ -7,14 +7,15 @@ import HomeText from "@/app/_components/HomeText";
 import CookiesFirstPage from "@/app/_components/CookiesFirstPage";
 import { cookies } from "next/headers";
 
-function Page() {
-  const cookie = cookies().get("analyticsConsent");
+async function Page() {
+  const cookieStore = await cookies();
+  const cookie = cookieStore.get("analyticsConsent");
 
   return (
     <>
       <HomeHeader />
       <main>
-        <div className="mx-4 md:mx-8 lg:mx-20 xl:px-20 xl:mx-auto max-w-7xl">
+        <div className="mx-4 max-w-7xl md:mx-8 lg:mx-20 xl:mx-auto xl:px-20">
           <HomeServices />
           <WhySilo
             srb={false}
@@ -26,7 +27,7 @@ function Page() {
           <HomeText />
         </div>
         <Counter srb={false} />
-        <div className="mx-4 md:mx-8 lg:mx-20 xl:px-20 xl:mx-auto max-w-7xl">
+        <div className="mx-4 max-w-7xl md:mx-8 lg:mx-20 xl:mx-auto xl:px-20">
           <ContactForm srb={false} />
         </div>
       </main>

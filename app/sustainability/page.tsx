@@ -7,8 +7,6 @@ export const metadata: Metadata = {
   title: "Sustainability",
 };
 
-export const dynamic = "force-static";
-
 function Page() {
   return (
     <>

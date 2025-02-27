@@ -1,32 +1,14 @@
 import JobCards from "@/app/_components/JobCards";
 import Spinner from "@/app/_components/Spinner";
-import User from "@/app/_models/userModel";
-import { jwtDecode } from "jwt-decode";
 import { Metadata } from "next";
-import { cookies } from "next/headers";
 import Link from "next/link";
-import { redirect } from "next/navigation";
 import { Suspense } from "react";
-import connectDB from "@/app/_config/database";
-
-export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Delovna mesta",
 };
 
-async function Page() {
-  await connectDB();
-  const session = cookies().get("jwt")?.value as string;
-  if (!session) {
-    redirect("/login");
-  }
-  const { id: userId }: { id: string } = await jwtDecode(session);
-  const user = await User.findById(userId);
-  if (!user || user.role !== "admin") {
-    redirect("/login");
-  }
-
+function Page() {
   return (
     <div className="mx-auto flex h-dvh max-w-7xl flex-col">
       <h2 className="py-10 text-center text-2xl">Delovna mesta</h2>

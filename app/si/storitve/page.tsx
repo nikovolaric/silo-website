@@ -13,36 +13,40 @@ import { Suspense } from "react";
 export async function generateMetadata({
   searchParams,
 }: {
-  searchParams?: {
+  searchParams?: Promise<{
     suppliers?: boolean;
     software?: boolean;
-  };
+  }>;
 }) {
-  if (!searchParams?.software && !searchParams?.suppliers) {
+  const params = await searchParams;
+
+  if (!params?.software && !params?.suppliers) {
     return { title: "Storitve" };
   }
-  if (searchParams?.suppliers) {
+  if (params?.suppliers) {
     return { title: "Dobavitelji" };
   }
-  if (searchParams?.software) {
+  if (params?.software) {
     return { title: "Programska oprema" };
   }
 }
 
-function Page({
+async function Page({
   searchParams,
 }: {
-  searchParams?: {
+  searchParams?: Promise<{
     suppliers?: boolean;
     software?: boolean;
-  };
+  }>;
 }) {
+  const params = await searchParams;
+
   return (
     <>
       <Header slo />
       <main className="mx-4 max-w-7xl md:mx-8 lg:mx-20 xl:mx-auto xl:px-20">
-        <ServicesNav slo params={searchParams} />
-        {!searchParams?.software && !searchParams?.suppliers && (
+        <ServicesNav slo params={params} />
+        {!params?.software && !params?.suppliers && (
           <>
             <HeadText>
               Specializirani smo za cestni prevoz blaga s silo cisternami
@@ -54,7 +58,7 @@ function Page({
             <ServiceText slo />
           </>
         )}
-        {searchParams?.suppliers && (
+        {params?.suppliers && (
           <>
             <HeadText>
               V našem podjetju je odgovorno upravljanje dobavne verige temelj
@@ -65,7 +69,7 @@ function Page({
             </Suspense>
           </>
         )}
-        {searchParams?.software && (
+        {params?.software && (
           <>
             <HeadText>
               Stremimo k čim bolj učinkoviti uporabi sodobnih tehnologij. To nam

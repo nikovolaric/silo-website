@@ -75,11 +75,12 @@ export async function newApplication(formData: FormData) {
 
 export async function deleteAsset(public_id: string) {
   await connectDB();
-  const session = cookies().get("jwt")?.value as string;
+  const cookieStore = await cookies();
+  const session = cookieStore.get("jwt")?.value as string;
   const { id: userId }: { id: string } = await jwtDecode(session);
   const user = await User.findById(userId);
   if (!user || user.role !== "admin") {
-    cookies().delete("jwt");
+    cookieStore.delete("jwt");
     redirect("/login");
   }
 
@@ -98,11 +99,12 @@ export async function deleteAsset(public_id: string) {
 
 export async function createDownload(formData: FormData) {
   await connectDB();
-  const session = cookies().get("jwt")?.value as string;
+  const cookieStore = await cookies();
+  const session = cookieStore.get("jwt")?.value as string;
   const { id: userId }: { id: string } = await jwtDecode(session);
   const user = await User.findById(userId);
   if (!user || user.role !== "admin") {
-    cookies().delete("jwt");
+    cookieStore.delete("jwt");
     redirect("/login");
   }
 
@@ -136,11 +138,12 @@ export async function createDownload(formData: FormData) {
 
 export async function editDownload(formData: FormData, id: string) {
   await connectDB();
-  const session = cookies().get("jwt")?.value as string;
+  const cookieStore = await cookies();
+  const session = cookieStore.get("jwt")?.value as string;
   const { id: userId }: { id: string } = await jwtDecode(session);
   const user = await User.findById(userId);
   if (!user || user.role !== "admin") {
-    cookies().delete("jwt");
+    cookieStore.delete("jwt");
     redirect("/login");
   }
 
@@ -175,11 +178,12 @@ export async function editDownload(formData: FormData, id: string) {
 
 export async function deleteDownload(formData: FormData, id: string) {
   await connectDB();
-  const session = cookies().get("jwt")?.value as string;
+  const cookieStore = await cookies();
+  const session = cookieStore.get("jwt")?.value as string;
   const { id: userId }: { id: string } = await jwtDecode(session);
   const user = await User.findById(userId);
   if (!user || user.role !== "admin") {
-    cookies().delete("jwt");
+    cookieStore.delete("jwt");
     redirect("/login");
   }
 
@@ -235,7 +239,9 @@ export async function login(formData: FormData) {
 
     const { token } = loggedInUser;
 
-    cookies().set("jwt", token, {
+    const cookieStore = await cookies();
+
+    cookieStore.set("jwt", token, {
       httpOnly: true,
       secure: true,
       sameSite: "strict",
@@ -251,21 +257,23 @@ export async function login(formData: FormData) {
 }
 
 export async function logout() {
-  cookies().delete("jwt");
+  const cookieStore = await cookies();
+  cookieStore.delete("jwt");
 
   redirect("/");
 }
 
 /*---------------------------------------------------------------cookies------------------------------------------------------------------------ */
 export async function acceptAllCookies() {
-  cookies().set("analyticsConsent", "true", {
+  const cookieStore = await cookies();
+  cookieStore.set("analyticsConsent", "true", {
     secure: true,
     sameSite: "lax",
     httpOnly: true,
     expires: new Date(Date.now() + 730 * 24 * 60 * 60 * 1000),
   });
 
-  cookies().set("thirdPartyConsent", "true", {
+  cookieStore.set("thirdPartyConsent", "true", {
     secure: true,
     sameSite: "lax",
     httpOnly: true,
@@ -276,26 +284,28 @@ export async function acceptAllCookies() {
 }
 
 export async function declineAllCookies() {
-  cookies().set("analyticsConsent", "false", {
+  const cookieStore = await cookies();
+
+  cookieStore.set("analyticsConsent", "false", {
     secure: true,
     sameSite: "lax",
     httpOnly: true,
     expires: new Date(Date.now() + 730 * 24 * 60 * 60 * 1000),
   });
 
-  cookies().set("thirdPartyConsent", "false", {
+  cookieStore.set("thirdPartyConsent", "false", {
     secure: true,
     sameSite: "lax",
     httpOnly: true,
     expires: new Date(Date.now() + 730 * 24 * 60 * 60 * 1000),
   });
 
-  cookies().set("_ga", "", {
+  cookieStore.set("_ga", "", {
     expires: new Date(Date.now() + 1000),
     domain: ".silo-jelicic.com",
   });
 
-  cookies().set("_ga_JE9CVLG7FP", "", {
+  cookieStore.set("_ga_JE9CVLG7FP", "", {
     expires: new Date(Date.now() + 1000),
     domain: ".silo-jelicic.com",
   });
@@ -304,7 +314,9 @@ export async function declineAllCookies() {
 }
 
 export async function acceptAnalytics() {
-  cookies().set("analyticsConsent", "true", {
+  const cookieStore = await cookies();
+
+  cookieStore.set("analyticsConsent", "true", {
     secure: true,
     sameSite: "lax",
     httpOnly: true,
@@ -315,19 +327,21 @@ export async function acceptAnalytics() {
 }
 
 export async function declineAnalytics() {
-  cookies().set("analyticsConsent", "false", {
+  const cookieStore = await cookies();
+
+  cookieStore.set("analyticsConsent", "false", {
     secure: true,
     sameSite: "lax",
     httpOnly: true,
     expires: new Date(Date.now() + 730 * 24 * 60 * 60 * 1000),
   });
 
-  cookies().set("_ga", "", {
+  cookieStore.set("_ga", "", {
     expires: new Date(Date.now() + 1000),
     domain: ".silo-jelicic.com",
   });
 
-  cookies().set("_ga_JE9CVLG7FP", "", {
+  cookieStore.set("_ga_JE9CVLG7FP", "", {
     expires: new Date(Date.now() + 1000),
     domain: ".silo-jelicic.com",
   });
@@ -336,7 +350,9 @@ export async function declineAnalytics() {
 }
 
 export async function acceptThirdParty() {
-  cookies().set("thirdPartyConsent", "true", {
+  const cookieStore = await cookies();
+
+  cookieStore.set("thirdPartyConsent", "true", {
     secure: true,
     sameSite: "lax",
     httpOnly: true,
@@ -347,7 +363,9 @@ export async function acceptThirdParty() {
 }
 
 export async function declineThirdParty() {
-  cookies().set("thirdPartyConsent", "false", {
+  const cookieStore = await cookies();
+
+  cookieStore.set("thirdPartyConsent", "false", {
     secure: true,
     sameSite: "lax",
     httpOnly: true,
@@ -361,11 +379,12 @@ export async function declineThirdParty() {
 
 export async function addJob(formData: FormData) {
   await connectDB();
-  const session = cookies().get("jwt")?.value as string;
+  const cookieStore = await cookies();
+  const session = cookieStore.get("jwt")?.value as string;
   const { id: userId }: { id: string } = await jwtDecode(session);
   const user = await User.findById(userId);
   if (!user || user.role !== "admin") {
-    cookies().delete("jwt");
+    cookieStore.delete("jwt");
     redirect("/login");
   }
 
@@ -403,11 +422,12 @@ export async function addJob(formData: FormData) {
 
 export async function updateJob(formData: FormData, id: string) {
   await connectDB();
-  const session = cookies().get("jwt")?.value as string;
+  const cookieStore = await cookies();
+  const session = cookieStore.get("jwt")?.value as string;
   const { id: userId }: { id: string } = await jwtDecode(session);
   const user = await User.findById(userId);
   if (!user || user.role !== "admin") {
-    cookies().delete("jwt");
+    cookieStore.delete("jwt");
     redirect("/login");
   }
 
@@ -445,11 +465,12 @@ export async function updateJob(formData: FormData, id: string) {
 
 export async function deleteJob(formData: FormData, id: string) {
   await connectDB();
-  const session = cookies().get("jwt")?.value as string;
+  const cookieStore = await cookies();
+  const session = cookieStore.get("jwt")?.value as string;
   const { id: userId }: { id: string } = await jwtDecode(session);
   const user = await User.findById(userId);
   if (!user || user.role !== "admin") {
-    cookies().delete("jwt");
+    cookieStore.delete("jwt");
     redirect("/login");
   }
 
@@ -470,11 +491,12 @@ export async function deleteJob(formData: FormData, id: string) {
 
 export async function addToCareer(fromData: FormData, id: string) {
   await connectDB();
-  const session = cookies().get("jwt")?.value as string;
+  const cookieStore = await cookies();
+  const session = cookieStore.get("jwt")?.value as string;
   const { id: userId }: { id: string } = await jwtDecode(session);
   const user = await User.findById(userId);
   if (!user || user.role !== "admin") {
-    cookies().delete("jwt");
+    cookieStore.delete("jwt");
     redirect("/login");
   }
 
@@ -498,11 +520,12 @@ export async function addToCareer(fromData: FormData, id: string) {
 
 export async function hideFromCareer(fromData: FormData, id: string) {
   await connectDB();
-  const session = cookies().get("jwt")?.value as string;
+  const cookieStore = await cookies();
+  const session = cookieStore.get("jwt")?.value as string;
   const { id: userId }: { id: string } = await jwtDecode(session);
   const user = await User.findById(userId);
   if (!user || user.role !== "admin") {
-    cookies().delete("jwt");
+    cookieStore.delete("jwt");
     redirect("/login");
   }
 

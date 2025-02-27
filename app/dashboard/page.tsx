@@ -2,33 +2,15 @@ import {
   DocumentArrowDownIcon,
   UserPlusIcon,
 } from "@heroicons/react/24/outline";
-import { cookies } from "next/headers";
 import Link from "next/link";
-import { redirect } from "next/navigation";
 import { Metadata } from "next";
 import Logout from "../_components/Logout";
-import { jwtDecode } from "jwt-decode";
-import User from "../_models/userModel";
-import connectDB from "../_config/database";
-
-export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Dashboard",
 };
 
-async function Page() {
-  await connectDB();
-  const session = cookies().get("jwt")?.value as string;
-  if (!session) {
-    redirect("/login");
-  }
-  const { id: userId }: { id: string } = await jwtDecode(session);
-  const user = await User.findById(userId);
-  if (!user || user.role !== "admin") {
-    redirect("/login");
-  }
-
+function Page() {
   return (
     <div className="mx-auto h-dvh max-w-7xl text-primary">
       <h2 className="py-6 font-raj text-3xl font-bold">Dashboard</h2>

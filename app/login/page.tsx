@@ -5,8 +5,6 @@ export const metadata: Metadata = {
   title: "Vpis",
 };
 
-export const dynamic = "force-dynamic";
-
 async function Page() {
   return (
     <>

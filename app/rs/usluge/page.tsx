@@ -13,36 +13,40 @@ import BigBagComparison from "@/app/_components/BigBagComparison";
 export async function generateMetadata({
   searchParams,
 }: {
-  searchParams?: {
+  searchParams?: Promise<{
     suppliers?: boolean;
     software?: boolean;
-  };
+  }>;
 }) {
-  if (!searchParams?.software && !searchParams?.suppliers) {
+  const params = await searchParams;
+
+  if (!params?.software && !params?.suppliers) {
     return { title: "Usluge" };
   }
-  if (searchParams?.suppliers) {
+  if (params?.suppliers) {
     return { title: "Dobavljaći" };
   }
-  if (searchParams?.software) {
+  if (params?.software) {
     return { title: "Softver" };
   }
 }
 
-function Page({
+async function Page({
   searchParams,
 }: {
-  searchParams?: {
+  searchParams?: Promise<{
     suppliers?: boolean;
     software?: boolean;
-  };
+  }>;
 }) {
+  const params = await searchParams;
+
   return (
     <>
       <Header />
       <main className="mx-4 max-w-7xl md:mx-8 lg:mx-20 xl:mx-auto xl:px-20">
-        <ServicesNav srb={true} params={searchParams} />
-        {!searchParams?.software && !searchParams?.suppliers && (
+        <ServicesNav srb={true} params={params} />
+        {!params?.software && !params?.suppliers && (
           <>
             <HeadText>
               Specijalizovani smo za drumski transport robe silo cisternama
@@ -54,7 +58,7 @@ function Page({
             <ServiceText srb />
           </>
         )}
-        {searchParams?.suppliers && (
+        {params?.suppliers && (
           <>
             <HeadText>
               U našoj kompaniji, odgovorno upravljanje lancem snabdevanja čini
@@ -65,7 +69,7 @@ function Page({
             </Suspense>
           </>
         )}
-        {searchParams?.software && (
+        {params?.software && (
           <>
             <HeadText>
               Težimo što efikasnijoj primeni dostupnih savremenih tehnologija.

@@ -14,13 +14,14 @@ export const metadata: Metadata = {
     "Transportna kompanija Silo Jeličić d.o.o. je vodeći drumski prevoznik suvih materijala u rasutom stanju.",
 };
 
-function Page() {
-  const cookie = cookies().get("analyticsConsent");
+async function Page() {
+  const cookieStore = await cookies();
+  const cookie = cookieStore.get("analyticsConsent");
   return (
     <>
       <HomeHeader />
       <main>
-        <div className="mx-4 md:mx-8 lg:mx-20 xl:px-20 xl:mx-auto max-w-7xl">
+        <div className="mx-4 max-w-7xl md:mx-8 lg:mx-20 xl:mx-auto xl:px-20">
           <HomeServices srb />
           <WhySilo
             srb
@@ -32,7 +33,7 @@ function Page() {
           <HomeText srb />
         </div>
         <Counter srb />
-        <div className="mx-4 md:mx-8 lg:mx-20 xl:px-20 xl:mx-auto max-w-7xl">
+        <div className="mx-4 max-w-7xl md:mx-8 lg:mx-20 xl:mx-auto xl:px-20">
           <ContactForm srb={true} />
         </div>
       </main>
