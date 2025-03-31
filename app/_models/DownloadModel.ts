@@ -6,6 +6,7 @@ const downloadSchema = new Schema({
     type: String,
     required: true,
   },
+  imeSlo:String,
   descriptionSrb: String,
   descriptionSlo: String,
   descriptionEng: String,

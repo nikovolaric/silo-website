@@ -42,7 +42,7 @@ export const metadata: Metadata = {
       "We are leading dry bulk transporter dedicated to needs of our partners since 2001.",
     images: [
       {
-        url: "https://silo-jelicic.com/naslovna.png",
+        url: "https://www.silo-jelicic.com/naslovna.png",
         width: 1200,
         height: 630,
       },

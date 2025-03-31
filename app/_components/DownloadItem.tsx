@@ -1,21 +1,22 @@
 function DownloadItem({
   download,
   srb,
+  slo,
 }: {
-  download: { ime: string; name: string; downloadLink: string };
+  download: { ime: string; name: string; imeSlo: string; downloadLink: string };
   srb?: boolean;
+  slo?: boolean;
 }) {
-  const { ime, name, downloadLink } = download;
+  const { ime, imeSlo, name, downloadLink } = download;
 
   return (
     <a
-      href={`https://res.cloudinary.com/dho3nkc4l/image/upload/${downloadLink}`}
+      href={`https://res.cloudinary.com/dho3nkc4l/image/upload/fl_attachment/${downloadLink}`}
       download
-      target="_blank"
-      className="font-medium py-2.5 px-3 mx-auto flex justify-between items-center bg-neutraltwo rounded-lg shadow-lg w-full md:w-3/4 lg:w-3/5 lg:hover:shadow-xl transition-shadow duration-300"
+      className="mx-auto flex w-full items-center justify-between rounded-lg bg-neutraltwo px-3 py-2.5 font-medium shadow-lg transition-shadow duration-300 md:w-3/4 lg:w-3/5 lg:hover:shadow-xl"
     >
-      {srb ? ime : name}
-      <span className="bg-accent text-white px-2 py-0.5 rounded-full">
+      {srb ? ime : slo ? imeSlo : name}
+      <span className="rounded-full bg-accent px-2 py-0.5 text-white">
         &darr;
       </span>
     </a>

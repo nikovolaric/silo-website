@@ -137,10 +137,11 @@ async function SuppliersText({ slo, srb }: { slo?: boolean; srb?: boolean }) {
             (el: {
               ime: string;
               name: string;
+              imeSlo: string;
               downloadLink: string;
               _id: string;
             }) => (
-              <DownloadItem key={el._id} download={el} srb={srb} />
+              <DownloadItem key={el._id} download={el} srb={srb} slo={slo} />
             ),
           )}
         </div>

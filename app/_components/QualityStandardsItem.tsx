@@ -18,17 +18,16 @@ function QualityStandardsItem({
   return (
     <li className="font-bold text-primary">
       {name}
-      <p className="font-light text-secondary ml-5 mt-2 mb-8">
+      <p className="mb-8 ml-5 mt-2 font-light text-secondary">
         {srb ? descriptionSrb : slo ? descriptionSlo : descriptionEng}
       </p>
       <a
-        href={`https://res.cloudinary.com/dho3nkc4l/image/upload/${downloadLink}`}
+        href={`https://res.cloudinary.com/dho3nkc4l/image/upload/fl_attachment/${downloadLink}`}
         download
-        target="_blank"
-        className="py-2.5 px-3 flex justify-between items-center bg-neutraltwo rounded-lg shadow-lg md:w-3/4 lg:w-3/5 lg:hover:shadow-xl transition-shadow duration-300"
+        className="flex items-center justify-between rounded-lg bg-neutraltwo px-3 py-2.5 shadow-lg transition-shadow duration-300 md:w-3/4 lg:w-3/5 lg:hover:shadow-xl"
       >
         {name}
-        <span className="bg-accent text-white px-1.5 py-0.5 rounded-full">
+        <span className="rounded-full bg-accent px-1.5 py-0.5 text-white">
           &darr;
         </span>
       </a>

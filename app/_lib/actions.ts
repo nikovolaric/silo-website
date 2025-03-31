@@ -248,11 +248,10 @@ export async function login(formData: FormData) {
       expires: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000),
     });
 
-    return loggedInUser;
-  } catch (err) {
-    return err;
-  } finally {
     redirect("/dashboard");
+  } catch (err) {
+    if ((err as Error).message === "NEXT_REDIRECT") redirect("/dashboard");
+    return err;
   }
 }
 

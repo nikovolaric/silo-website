@@ -20,10 +20,11 @@ async function ESM({ srb, slo }: { srb?: boolean; slo?: boolean }) {
           (el: {
             _id: string;
             ime: string;
+            imeSlo: string;
             name: string;
             downloadLink: string;
           }) => (
-            <DownloadItem key={el._id} download={el} srb={srb} />
+            <DownloadItem key={el._id} download={el} srb={srb} slo={slo} />
           ),
         )}
       </div>

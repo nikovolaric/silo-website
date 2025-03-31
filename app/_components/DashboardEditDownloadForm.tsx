@@ -12,6 +12,7 @@ function DashboardEditDownloadForm({
   download: {
     ime: string;
     name: string;
+    imeSlo: string;
     descriptionSrb: string;
     descriptionSlo: string;
     descriptionEng: string;
@@ -23,6 +24,7 @@ function DashboardEditDownloadForm({
   const {
     ime,
     name,
+    imeSlo,
     descriptionSrb,
     descriptionEng,
     descriptionSlo,
@@ -43,18 +45,28 @@ function DashboardEditDownloadForm({
           {site === "quality" ? (
             <label>Ime:</label>
           ) : (
-            <label>Ime (Srpski | Angleški)</label>
+            <label>Ime (Srpski | Slovenski | Angleški)</label>
           )}
           <div className="flex flex-col gap-2">
             {site !== "quality" && (
-              <input
-                type="text"
-                name="ime"
-                required
-                autoComplete="off"
-                defaultValue={ime}
-                className="h-7 w-1/2 rounded-lg border border-primary px-2"
-              />
+              <>
+                <input
+                  type="text"
+                  name="ime"
+                  required
+                  autoComplete="off"
+                  defaultValue={ime}
+                  className="h-7 w-1/2 rounded-lg border border-primary px-2"
+                />
+                <input
+                  type="text"
+                  name="imeSlo"
+                  required
+                  autoComplete="off"
+                  defaultValue={imeSlo}
+                  className="h-7 w-1/2 rounded-lg border border-primary px-2"
+                />
+              </>
             )}
             <input
               type="text"

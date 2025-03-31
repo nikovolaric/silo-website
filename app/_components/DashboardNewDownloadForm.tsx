@@ -21,17 +21,26 @@ function DashboardNewDownloadForm() {
           {site === "quality" ? (
             <label>Ime:</label>
           ) : (
-            <label>Ime (Srpski | Angleški)</label>
+            <label>Ime (Srpski | Slovenski | Angleški)</label>
           )}
           <div className="flex flex-col gap-2">
             {site !== "quality" && (
-              <input
-                type="text"
-                name="ime"
-                required
-                autoComplete="off"
-                className="h-7 w-1/2 rounded-lg border border-primary px-2"
-              />
+              <>
+                <input
+                  type="text"
+                  name="ime"
+                  required
+                  autoComplete="off"
+                  className="h-7 w-1/2 rounded-lg border border-primary px-2"
+                />
+                <input
+                  type="text"
+                  name="imeSlo"
+                  required
+                  autoComplete="off"
+                  className="h-7 w-1/2 rounded-lg border border-primary px-2"
+                />
+              </>
             )}
             <input
               type="text"
