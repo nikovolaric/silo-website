@@ -8,20 +8,20 @@ function LoginForm() {
   const [err, setErr] = useState("");
 
   async function clientAction(formData: FormData) {
-    const result: { error?: string } = await login(formData);
+    const result = await login(formData);
 
-    if (result?.error) {
-      setErr(result.error);
+    if (result instanceof Error) {
+      setErr(result.message);
     }
   }
 
   return (
     <form
-      className="h-dvh flex flex-col gap-6 max-w-7xl mx-auto pt-20"
+      className="mx-auto flex h-dvh max-w-7xl flex-col gap-6 pt-20"
       action={clientAction}
     >
-      <h2 className="font-bold font-raj text-2xl text-primary">Vpiši se!</h2>
-      <div className="flex flex-col gap-1 w-1/3">
+      <h2 className="font-raj text-2xl font-bold text-primary">Vpiši se!</h2>
+      <div className="flex w-1/3 flex-col gap-1">
         <label>Username:</label>
         <input
           type="text"
@@ -31,7 +31,7 @@ function LoginForm() {
           autoComplete="off"
         />
       </div>
-      <div className="flex flex-col gap-1 w-1/3">
+      <div className="flex w-1/3 flex-col gap-1">
         <label>Geslo:</label>
         <input
           type="password"
@@ -41,7 +41,7 @@ function LoginForm() {
           autoComplete="off"
         />
       </div>
-      {err && <p className="text-red-400 font-bold">{err}</p>}
+      {err && <p className="font-bold text-red-400">{err}</p>}
       <LoginButton />
     </form>
   );
@@ -52,7 +52,7 @@ function LoginButton() {
 
   return (
     <button
-      className="bg-primary text-neutral w-28 rounded-lg py-1 text-lg transition-colors duration-200 disabled:bg-gray-400 disabled:cursor-not-allowed hover:bg-accent"
+      className="w-28 rounded-lg bg-primary py-1 text-lg text-neutral transition-colors duration-200 hover:bg-accent disabled:cursor-not-allowed disabled:bg-gray-400"
       disabled={pending}
     >
       {!pending ? "Vpiši se" : "..."}
